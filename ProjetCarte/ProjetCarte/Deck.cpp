@@ -2,13 +2,20 @@
 #include "Deck.h"
 
 
+
 Deck::Deck()
 {
+	
 
-	for (int i = 0; i <= 104; i++)
+	for (int i = 0; i < 104; i++)
 	{
-		Card
+		Card *my_Card = new Card(i);
+		*tab_Cards[i+1] = *my_Card;
+
+		delete my_Card;
+		my_Card = nullptr;
 	}
+
 }
 
 

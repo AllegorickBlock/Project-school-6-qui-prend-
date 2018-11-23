@@ -1,7 +1,9 @@
 #pragma once
+#include "Card.h"
 class Deck
 {
-	int tab_Cards[104];
+	Card *tab_Cards[104];
+	
 
 
 public:
@@ -9,6 +11,5 @@ public:
 	~Deck();
 
 	void Mix_card();
-
 };
 

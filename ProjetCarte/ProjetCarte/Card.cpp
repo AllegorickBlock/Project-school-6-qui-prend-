@@ -4,7 +4,7 @@
 
 using namespace std;
 
-Card::Card(int nbr)
+Card::Card(int &nbr)
 {
 	number = nbr;
 

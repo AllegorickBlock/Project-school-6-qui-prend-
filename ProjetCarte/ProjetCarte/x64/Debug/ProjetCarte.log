@@ -1,3 +1,2 @@
-﻿  Card.cpp
-c:\users\martin\desktop\vraiprojetprogra\groupe10\projetcarte\projetcarte\card.cpp(22): warning C4715: 'Card::Compare_number' : les chemins de contrôle ne retournent pas tous une valeur
-  ProjetCarte.vcxproj -> C:\Users\Martin\Desktop\VraiProjetProgra\groupe10\ProjetCarte\x64\Debug\ProjetCarte.exe
+﻿  ProjetCarte.cpp
+  ProjetCarte.vcxproj -> C:\Users\Jason\OneDrive - Haute Ecole Louvain en Hainaut\Projet carte\groupe10\ProjetCarte\x64\Debug\ProjetCarte.exe

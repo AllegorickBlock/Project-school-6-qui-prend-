@@ -1,9 +1,19 @@
 #include "stdafx.h"
 #include "Card.h"
+#include <iostream>
 
+using namespace std;
 
-Card::Card()
+Card::Card(int nbr)
 {
+	number = nbr;
+
+	if (nbr = 55) beef_number = 7;
+	else if ((nbr % 11) == 0) beef_number = 5;
+	else if ((nbr % 10) == 0) beef_number = 3;
+	else if ((nbr % 5 ) == 0) beef_number = 2;
+	else beef_number = 1;
+
 }
 
 

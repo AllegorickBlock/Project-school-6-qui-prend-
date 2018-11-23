@@ -5,7 +5,7 @@ class Card
 	int beef_number;
 
 public:
-	Card();
+	Card(int nmbr);
 	~Card();
 	int Get_number();
 	int Get_beef_number();

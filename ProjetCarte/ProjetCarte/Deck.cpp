@@ -22,3 +22,8 @@ Deck::Deck()
 Deck::~Deck()
 {
 }
+
+Card Deck::get_Card(int some_Card)
+{
+	return tab_Cards(some_Card);
+}

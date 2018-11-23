@@ -1,6 +1,3 @@
-﻿  stdafx.cpp
-  Carte.cpp
-  ProjetCarte.cpp
-  Génération de code en cours...
-c:\users\martin\desktop\vraiprojetprogra\groupe10\projetcarte\projetcarte\carte.cpp(22): warning C4715: 'Carte::Compare_numero' : les chemins de contrôle ne retournent pas tous une valeur
+﻿  Card.cpp
+c:\users\martin\desktop\vraiprojetprogra\groupe10\projetcarte\projetcarte\card.cpp(22): warning C4715: 'Card::Compare_number' : les chemins de contrôle ne retournent pas tous une valeur
   ProjetCarte.vcxproj -> C:\Users\Martin\Desktop\VraiProjetProgra\groupe10\ProjetCarte\x64\Debug\ProjetCarte.exe

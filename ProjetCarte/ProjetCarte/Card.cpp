@@ -4,11 +4,11 @@
 
 using namespace std;
 
-Card::Card(int &nbr)
+Card::Card(int nbr) //Constructeur dans lequel on va definir le beef_number de l'objet Crd en fonction de son number
 {
 	number = nbr;
 
-	if (nbr = 55) beef_number = 7;
+	if (nbr == 55) beef_number = 7;
 	else if ((nbr % 11) == 0) beef_number = 5;
 	else if ((nbr % 10) == 0) beef_number = 3;
 	else if ((nbr % 5 ) == 0) beef_number = 2;

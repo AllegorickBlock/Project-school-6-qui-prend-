@@ -1,4 +1,2 @@
-﻿  Deck.cpp
-c:\users\martin\desktop\vraiprojetprogra\groupe10\projetcarte\projetcarte\deck.cpp(29): warning C4244: 'argument' : conversion de 'time_t' en 'unsigned int', perte possible de données
-c:\users\martin\desktop\vraiprojetprogra\groupe10\projetcarte\projetcarte\deck.cpp(45): error C3867: 'Card::Get_number' : syntaxe non-standard ; utilisez '&' pour créer un pointeur vers un membre
-c:\users\martin\desktop\vraiprojetprogra\groupe10\projetcarte\projetcarte\deck.cpp(45): error C3867: 'Card::Get_beef_number' : syntaxe non-standard ; utilisez '&' pour créer un pointeur vers un membre
+﻿  ProjetCarte.cpp
+  ProjetCarte.vcxproj -> C:\Users\Martin\Desktop\VraiProjetProgra\groupe10\ProjetCarte\x64\Debug\ProjetCarte.exe

@@ -22,7 +22,7 @@ Deck::~Deck() // Destructeur necessaire pour detruire toutes les carte créé dyna
 	}
 }
 
-Card Deck::Get_Card(int some_Card) { return *tab_Cards[some_Card]; }
+Card Deck::Get_Card(int card_Number) { return *tab_Cards[card_Number]; }
 
 void Deck::Mix_card()
 {

@@ -28,21 +28,20 @@ void Deck::Mix_card()
 {
 	srand(time(0)); // Prend un temps random comme valeur, permet de s'assurer d'avoir des chifres differents a chaque compilation
 	int random_number;
-
-	bool card_of_deck_out[104];
-	for (int i = 0; i < 104; i++) { card_of_deck_out[i] = false; }
-
-	for (int j = 0; j < 104; ++j)
-	{
-		random_number = ((rand() % 104) + 1);
-
-		if (card_of_deck_out[random_number] == false)
+	int number_mix_cards[104];
+	for (int i = 0; i < 104; i++) number_mix_cards[i] = 0; // On met toute les valeurs à 0 car par defaut les valeurs d'un tableau créé statiquement en C++ sont inconnue
+	for (int i = 0; i < 104; i++) 
+	{ 
+		random_number = ((rand() % 104) + 1); // On aura ainsi un nombre aleatoir different a chaque fois que l'on entre dans la boucle
+		number_mix_cards[i] = random_number;
+		for (int j = 0; j < 104; j++) // Boucle verifiant si le numero de carte sorti n'a pas dgea été attribué
 		{
-			*tab_Cards[j] = Card(random_number + 1);
-			card_of_deck_out[random_number] = true;
+			if ( (number_mix_cards[i] == number_mix_cards[j]) && (i != j) )
+			{
+				i--;
+				break;
+			}
 		}
-		else --j;
 	}
-
-
+	for (int i = 0; i < 104; i++) { *tab_Cards[i] = Card(number_mix_cards[i]); } // On inscrit le resultat du melange dans notre tableau de cartes
 }

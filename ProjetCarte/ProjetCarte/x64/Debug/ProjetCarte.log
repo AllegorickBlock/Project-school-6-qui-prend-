@@ -1,2 +1,4 @@
-﻿  ProjetCarte.cpp
+﻿  Deck.cpp
+c:\users\martin\desktop\vraiprojetprogra\groupe10\projetcarte\projetcarte\deck.cpp(28): warning C4244: 'argument' : conversion de 'time_t' en 'unsigned int', perte possible de données
+c:\users\martin\desktop\vraiprojetprogra\groupe10\projetcarte\projetcarte\deck.cpp(48): warning C4154: suppression d'une expression de tableau ; conversion en pointeur fournie
   ProjetCarte.vcxproj -> C:\Users\Martin\Desktop\VraiProjetProgra\groupe10\ProjetCarte\x64\Debug\ProjetCarte.exe

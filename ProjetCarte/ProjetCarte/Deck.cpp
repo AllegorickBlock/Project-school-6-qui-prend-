@@ -22,28 +22,27 @@ Deck::~Deck() // Destructeur necessaire pour detruire toutes les carte créé dyna
 	}
 }
 
-Card Deck::get_Card(int some_Card) { return *tab_Cards[some_Card]; }
+Card Deck::Get_Card(int some_Card) { return *tab_Cards[some_Card]; }
+
 void Deck::Mix_card()
 {
 	srand(time(0)); // Prend un temps random comme valeur, permet de s'assurer d'avoir des chifres differents a chaque compilation
 	int random_number;
-	Card *store_cards[104];
-	for (int i = 0; i < 104; i++)
-	{ 
-		Card *my_card = new Card(i + 1);
-		store_cards[i] = my_card;	
+
+	bool card_of_deck_out[104];
+	for (int i = 0; i < 104; i++) { card_of_deck_out[i] = false; }
+
+	for (int j = 0; j < 104; ++j)
+	{
+		random_number = ((rand() % 104) + 1);
+
+		if (card_of_deck_out[random_number] == false)
+		{
+			*tab_Cards[j] = Card(random_number + 1);
+			card_of_deck_out[random_number] = true;
+		}
+		else --j;
 	}
 
-	for (int j = 0; j < 104; j++)
-	{
-		random_number = ( (rand() % 104) + 1 );
-		if (store_cards[random_number] != nullptr)
-		{
-			tab_Cards[j] = store_cards[random_number];
-			delete store_cards[j];
-			store_cards[random_number] = nullptr;
-		}
-		else j--;
-	}
-	delete[] store_cards;
+
 }

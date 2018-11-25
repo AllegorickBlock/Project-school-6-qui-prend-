@@ -3,12 +3,12 @@
 
 
 
-Deck::Deck()// Constructeur par defaut qui reference chaque Carte A son adresse associé dans le tableau de carte
+Deck::Deck()  // Constructeur par defaut qui reference chaque Carte à son adresse associée dans le tableau de carte
 {
 	for (int i = 0; i < 104; i++)
 	{
-		Card *my_Card = new Card(i+1); // on instancie dynamiquement une carte
-		tab_Cards[i] = my_Card; // On dit a cette même carte qu'elle pointera vers tel adresse du tableau
+		Card *my_Card = new Card(i+1); // On instancie dynamiquement une carte
+		tab_Cards[i] = my_Card;		   // On dit a cette même carte qu'elle pointera vers tel adresse du tableau
 	}
 }
 
@@ -32,9 +32,9 @@ void Deck::Mix_card()
 	for (int i = 0; i < 104; i++) number_mix_cards[i] = 0; // On met toute les valeurs à 0 car par defaut les valeurs d'un tableau créé statiquement en C++ sont inconnue
 	for (int i = 0; i < 104; i++) 
 	{ 
-		random_number = ((rand() % 104) + 1); // On aura ainsi un nombre aleatoir different a chaque fois que l'on entre dans la boucle
+		random_number = ((rand() % 104) + 1); // On aura ainsi un nombre aleatoire different a chaque fois que l'on entre dans la boucle
 		number_mix_cards[i] = random_number;
-		for (int j = 0; j < 104; j++) // Boucle verifiant si le numero de carte sorti n'a pas dgea été attribué
+		for (int j = 0; j < 104; j++) // Boucle verifiant si le numero de carte sorti n'a pas deja été attribué
 		{
 			if ( (number_mix_cards[i] == number_mix_cards[j]) && (i != j) )
 			{

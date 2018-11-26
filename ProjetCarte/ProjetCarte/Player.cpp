@@ -2,11 +2,10 @@
 #include "Player.h"
 
 
-Player::Player(Hand_Player hand)
-{ this->hand = &hand; }
+Player::Player() { this->hand = new Hand_Player; } // On cree dynamiquement notre objet main apparenté au joueur
 
 
-Player::~Player()
+Player::~Player() // Le destructeur va detruite l'instendce dynamique créé par le constructeur
 {
 	delete this->hand;
 	this->hand = nullptr;

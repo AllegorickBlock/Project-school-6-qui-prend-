@@ -1,5 +1,8 @@
 #pragma once
 #include <iostream>
+
+using namespace std;
+
 class Card
 {
 	int number;

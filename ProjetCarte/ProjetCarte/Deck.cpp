@@ -22,9 +22,23 @@ Deck::~Deck() // Destructeur necessaire pour detruire toutes les cartes créé dyn
 	}
 }
 
-Card Deck::Get_Card(int card_Number) { return *tab_Cards[card_Number]; }
+Card Deck::Get_Card(int card_Number) // ajoute une carte au paquet
+{ 
+	if(card_Number <104 && card_Number >= 0) return *tab_Cards[card_Number];
+	else throw "On essaye de recuperer une carte du Deck inexistante";
+}
 
-void Deck::Mix_card()
+void Deck::Remove_card(int card_Number) // Enleve une carte du paquet
+{
+	if (card_Number < 104 && card_Number >= 0)
+	{
+		delete tab_Cards[card_Number]; 
+		tab_Cards[card_Number] = nullptr;
+	}
+	else throw "On essaye de retirer une carte du Deck inexistante";
+}
+
+void Deck::Mix_card()// Reprend les 104 cartes du jeux et les mellanges
 {
 	srand(time(0)); // Prend un temps random comme valeur, permet de s'assurer d'avoir des chifres differents a chaque compilation
 	int random_number;

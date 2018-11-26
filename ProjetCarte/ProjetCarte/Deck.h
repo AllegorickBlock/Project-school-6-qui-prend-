@@ -11,6 +11,7 @@ public:
 	~Deck();
 
 	Card Get_Card(int card_Number); // Accesseur à l'objet Card de tab_Cards en fonction du parametre
+	void Remove_card(int card_Number);
 	void Mix_card();
 };
 

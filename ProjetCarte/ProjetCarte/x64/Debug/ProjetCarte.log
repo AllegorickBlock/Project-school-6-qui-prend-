@@ -1,9 +1,17 @@
-﻿  stdafx.cpp
-  Card.cpp
-  Deck.cpp
-c:\users\jason\onedrive - haute ecole louvain en hainaut\projet carte\groupe10\projetcarte\projetcarte\deck.cpp(29): warning C4244: 'argument' : conversion de 'time_t' en 'unsigned int', perte possible de données
-  ProjetCarte.cpp
+﻿  Hand_Player.cpp
+c:\users\martin\desktop\vraiprojetprogra\groupe10\projetcarte\projetcarte\player.h(10): error C2143: erreur de syntaxe : absence de ';' avant '*'
+c:\users\martin\desktop\vraiprojetprogra\groupe10\projetcarte\projetcarte\player.h(10): error C4430: spécificateur de type manquant - int est pris en compte par défaut. Remarque : C++ ne prend pas en charge int par défaut
+c:\users\martin\desktop\vraiprojetprogra\groupe10\projetcarte\projetcarte\player.h(10): error C2238: jetons inattendus avant ';'
+c:\users\martin\desktop\vraiprojetprogra\groupe10\projetcarte\projetcarte\player.h(15): error C3646: 'Get_hand_player' : spécificateur de substitution inconnu
+c:\users\martin\desktop\vraiprojetprogra\groupe10\projetcarte\projetcarte\player.h(15): error C2059: erreur de syntaxe : '('
+c:\users\martin\desktop\vraiprojetprogra\groupe10\projetcarte\projetcarte\player.h(15): error C2238: jetons inattendus avant ';'
+c:\users\martin\desktop\vraiprojetprogra\groupe10\projetcarte\projetcarte\hand_player.cpp(23): error C2062: type 'int' inattendu
+c:\users\martin\desktop\vraiprojetprogra\groupe10\projetcarte\projetcarte\hand_player.cpp(23): error C2065: 'hand_counter' : identificateur non déclaré
+c:\users\martin\desktop\vraiprojetprogra\groupe10\projetcarte\projetcarte\hand_player.cpp(23): error C2059: erreur de syntaxe : ')'
+c:\users\martin\desktop\vraiprojetprogra\groupe10\projetcarte\projetcarte\hand_player.cpp(25): error C2059: erreur de syntaxe : 'if'
+c:\users\martin\desktop\vraiprojetprogra\groupe10\projetcarte\projetcarte\hand_player.cpp(26): error C2143: erreur de syntaxe : absence de ';' avant '{'
+c:\users\martin\desktop\vraiprojetprogra\groupe10\projetcarte\projetcarte\hand_player.cpp(27): error C2065: 'hand_counter' : identificateur non déclaré
+c:\users\martin\desktop\vraiprojetprogra\groupe10\projetcarte\projetcarte\hand_player.cpp(31): error C2059: erreur de syntaxe : '}'
+c:\users\martin\desktop\vraiprojetprogra\groupe10\projetcarte\projetcarte\hand_player.cpp(31): error C2143: erreur de syntaxe : absence de ';' avant '}'
+  Player.cpp
   Génération de code en cours...
-c:\users\jason\onedrive - haute ecole louvain en hainaut\projet carte\groupe10\projetcarte\projetcarte\card.cpp(31): warning C4715: 'Card::Compare_number' : les chemins de contrôle ne retournent pas tous une valeur
-  LINK : C:\Users\Jason\OneDrive - Haute Ecole Louvain en Hainaut\Projet carte\groupe10\ProjetCarte\x64\Debug\ProjetCarte.exe introuvable ou non généré par la dernière édition de liens incrémentielle ; édition de liens complète en cours
-  ProjetCarte.vcxproj -> C:\Users\Jason\OneDrive - Haute Ecole Louvain en Hainaut\Projet carte\groupe10\ProjetCarte\x64\Debug\ProjetCarte.exe

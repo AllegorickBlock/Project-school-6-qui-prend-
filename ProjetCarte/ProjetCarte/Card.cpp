@@ -1,7 +1,6 @@
 #include "stdafx.h"
 #include "Card.h"
 
-using namespace std;
 
 Card::Card(int nbr) //Constructeur dans lequel on va definir le beef_number de l'objet Card en fonction de son number
 {

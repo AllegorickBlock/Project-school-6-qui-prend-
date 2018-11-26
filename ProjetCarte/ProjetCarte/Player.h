@@ -3,14 +3,16 @@
 #include "Deck.h"
 #include "Hand_Player.h"
 
+
+
 class Player
 {
-	Hand_Player *hand;
+	Hand_Player * hand;
 
 public:
-	Player(Hand_Player hand);
+	Player();
 	~Player();
-	Hand_Player Get_hand_player();
+	Hand_Player Get_hand_player(); // Accesseur pour le membre hand 
 
 };
 

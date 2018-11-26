@@ -1,10 +1,10 @@
 #pragma once
 #include "Card.h"
-#include <ctime>   //permet d'utiliser time()
+#include <ctime>   //Permet d'utiliser time()
 #include <cstdlib> //Permet d'utiliser srand()
 class Deck
 {
-	Card *tab_Cards[104]; // Pointeur renvoyant un tableau de differentes adresse ou l'on souhaitera stockuer nos objets Card
+	Card *tab_Cards[104]; // Pointeur renvoyant un tableau de differentes adresses ou l'on souhaitera stocker nos objets Card
 	
 public:
 	Deck();

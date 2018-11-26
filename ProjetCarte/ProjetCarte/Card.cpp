@@ -3,7 +3,7 @@
 
 using namespace std;
 
-Card::Card(int nbr) //Constructeur dans lequel on va definir le beef_number de l'objet Crd en fonction de son number
+Card::Card(int nbr) //Constructeur dans lequel on va definir le beef_number de l'objet Card en fonction de son number
 {
 	number = nbr;
 
@@ -26,7 +26,7 @@ int Card::Get_beef_number() { return beef_Number; }
 
 bool Card::Compare_number(Card carte_a_comparer)
 {
-	if (Get_number() > carte_a_comparer.Get_number()) return true; // Si superieur return true
+	if (Get_number() > carte_a_comparer.Get_number()) return true;  // Si superieur return true
 	if (Get_number() < carte_a_comparer.Get_number()) return false; // Si inferieur return false
 }
 

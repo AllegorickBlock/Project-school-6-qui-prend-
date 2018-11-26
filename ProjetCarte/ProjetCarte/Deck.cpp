@@ -13,7 +13,7 @@ Deck::Deck()  // Constructeur par defaut qui reference chaque Carte à son adress
 }
 
 
-Deck::~Deck() // Destructeur necessaire pour detruire toutes les carte créé dynamiquement, TRES IMPORTANT Car il permet d'éviter un stackoverflow
+Deck::~Deck() // Destructeur necessaire pour detruire toutes les cartes créé dynamiquement, TRES IMPORTANT car il permet d'éviter un stackoverflow
 {
 	for (int i = 0; i < 104; i++)
 	{
@@ -34,7 +34,7 @@ void Deck::Mix_card()
 	{ 
 		random_number = ((rand() % 104) + 1); // On aura ainsi un nombre aleatoire different a chaque fois que l'on entre dans la boucle
 		number_mix_cards[i] = random_number;
-		for (int j = 0; j < 104; j++) // Boucle verifiant si le numero de carte sorti n'a pas deja été attribué
+		for (int j = 0; j < 104; j++)		  // Boucle verifiant si le numero de carte sorti n'a pas deja été attribué
 		{
 			if ( (number_mix_cards[i] == number_mix_cards[j]) && (i != j) )
 			{

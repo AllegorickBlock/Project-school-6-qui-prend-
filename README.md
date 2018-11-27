@@ -9,7 +9,7 @@ LA170005 : Bourlet Jason
 
 -[X] Etape 1  
 -[ ] Etape 2  
-Verifier si lee code fonctionne en debuguant et corrigeant les erreurs, ajouter le code dans le Main pour voir le fonctionnement  
+Logique du code terminé pour ce qui a été demandeé dans l'etape, il reste à faire certaine verification et mettre a jour le fichier StarUML  
 -[ ] Etape 3  
 -[ ] Etape 4  
 -[ ] Etape 5  

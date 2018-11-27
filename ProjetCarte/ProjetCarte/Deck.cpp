@@ -28,12 +28,12 @@ Card Deck::Get_Card(int card_Number) // ajoute une carte au paquet
 	else throw "On essaye de recuperer une carte du Deck inexistante";
 }
 
+
 void Deck::Remove_card(int card_Number) // Enleve une carte du paquet
 {
 	if (card_Number < 104 && card_Number >= 0)
 	{
-		//delete tab_Cards[card_Number]; 
-		tab_Cards[card_Number] = nullptr;
+		tab_Cards[card_Number]->Set_number(0); // une carte est considéré comme retirée du paquet si sont attributs "number" dans le paquet est égal à 0 /!\ A AMELIORER SI POSSIBLE
 	}
 	else throw "On essaye de retirer une carte du Deck inexistante";
 }

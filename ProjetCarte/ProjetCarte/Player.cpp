@@ -39,12 +39,12 @@ Card Player::Hand_Player::Get_card_of_hand(int card) // Gere les exceptions dans
 	else throw "On essaye d'acceder a une carte de la main du joueur n'existant pas/plus !";
 }
 
-void Player::Hand_Player::Add_start_card(Deck game_deck)
+void Player::Hand_Player::Add_start_card(Deck& game_deck) // ON DOIT FAIRE UN PASSAGE PAR REFERENCE OU SINON LE DECK NE SE VERRA PAS MODIFIE
 {
 	int hand_counter = 0;
 	for (int i = 103; ((i > 0) ); --i) // On regarde toute les cartes du paquet et on va en soustraire j'usqu'à 10 pour les ajouter dans la main du joueur
 	{
-		if (&game_deck.Get_Card(i) != nullptr && (hand_counter < 10) ) // On regarde si les carte restantes dans le paquets
+		if ( game_deck.Get_Card(i).Get_number() != 0 && (hand_counter < 10)) // /!\ game_deck.Get_Card(i).Get_number() != 0 est utilisé pour voir sir la carte a été retré ou pas (voir Deck.Remove_card(i) ) A ameliorer si possible
 		{
 			*this->player_Cards[hand_counter] = game_deck.Get_Card(i); // On attribue la VALEUR ET LE CONTENU de l'objet Card provenant de Get_card a la carte de main du joueur attribuée
 			game_deck.Remove_card(i);

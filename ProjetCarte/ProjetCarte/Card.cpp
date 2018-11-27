@@ -24,6 +24,11 @@ Card::~Card()
 
 int Card::Get_number() { return number; }
 
+void Card::Set_number(int nbr) // Permet de modifier le numero de carte
+{
+	this->number = nbr;
+}
+
 int Card::Get_beef_number() { return beef_Number; }
 
 bool Card::Compare_number(Card carte_a_comparer)

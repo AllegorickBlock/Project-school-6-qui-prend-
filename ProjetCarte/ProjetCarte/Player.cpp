@@ -22,10 +22,19 @@ Player::Hand_Player Player::Get_hand_player()
 
 Player::Hand_Player::Hand_Player()
 {
+	for (int i = 0; i < 10; i++)
+	{
+		this->player_Cards[i] = new Card(0);
+	}
 }
 
 Player::Hand_Player::~Hand_Player()
 {
+	for (int i = 0; i < 10; i++)
+	{
+		delete this->player_Cards[i];
+		this->player_Cards[i] = nullptr;
+	}
 }
 
 Card Player::Hand_Player::Get_card_of_hand(int card) // Gere les exceptions dans lesquelles on veut acceder à des cartes qui ne sont plus/pas dans la main du joueur
@@ -41,7 +50,8 @@ void Player::Hand_Player::Add_start_card(Deck game_deck)
 	{
 		if (&game_deck.Get_Card(i) != nullptr) // On regarde si les carte restantes dans le paquets
 		{
-			*this->player_Cards[hand_counter] = game_deck.Get_Card(i); // On attribue la VALEUR ET LE CONTENU de l'objet Card provenant de Get_card a la carte de main du joueur attribuée
+			Card copy = game_deck.Get_Card(i);
+			*this->player_Cards[hand_counter] = copy; // On attribue la VALEUR ET LE CONTENU de l'objet Card provenant de Get_card a la carte de main du joueur attribuée
 			game_deck.Remove_card(i);
 			hand_counter++;
 		}

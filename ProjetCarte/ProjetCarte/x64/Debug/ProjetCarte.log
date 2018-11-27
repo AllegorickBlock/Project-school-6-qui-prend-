@@ -5,13 +5,3 @@ c:\users\martin\desktop\vraiprojetprogra\groupe10\projetcarte\projetcarte\player
 c:\users\martin\desktop\vraiprojetprogra\groupe10\projetcarte\projetcarte\player.h(15): error C3646: 'Get_hand_player' : spécificateur de substitution inconnu
 c:\users\martin\desktop\vraiprojetprogra\groupe10\projetcarte\projetcarte\player.h(15): error C2059: erreur de syntaxe : '('
 c:\users\martin\desktop\vraiprojetprogra\groupe10\projetcarte\projetcarte\player.h(15): error C2238: jetons inattendus avant ';'
-c:\users\martin\desktop\vraiprojetprogra\groupe10\projetcarte\projetcarte\hand_player.cpp(23): error C2062: type 'int' inattendu
-c:\users\martin\desktop\vraiprojetprogra\groupe10\projetcarte\projetcarte\hand_player.cpp(23): error C2065: 'hand_counter' : identificateur non déclaré
-c:\users\martin\desktop\vraiprojetprogra\groupe10\projetcarte\projetcarte\hand_player.cpp(23): error C2059: erreur de syntaxe : ')'
-c:\users\martin\desktop\vraiprojetprogra\groupe10\projetcarte\projetcarte\hand_player.cpp(25): error C2059: erreur de syntaxe : 'if'
-c:\users\martin\desktop\vraiprojetprogra\groupe10\projetcarte\projetcarte\hand_player.cpp(26): error C2143: erreur de syntaxe : absence de ';' avant '{'
-c:\users\martin\desktop\vraiprojetprogra\groupe10\projetcarte\projetcarte\hand_player.cpp(27): error C2065: 'hand_counter' : identificateur non déclaré
-c:\users\martin\desktop\vraiprojetprogra\groupe10\projetcarte\projetcarte\hand_player.cpp(31): error C2059: erreur de syntaxe : '}'
-c:\users\martin\desktop\vraiprojetprogra\groupe10\projetcarte\projetcarte\hand_player.cpp(31): error C2143: erreur de syntaxe : absence de ';' avant '}'
-  Player.cpp
-  Génération de code en cours...

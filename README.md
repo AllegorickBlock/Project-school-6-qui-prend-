@@ -1,18 +1,20 @@
-# Groupe10
+# Groupe10  
 
-LA163852 : Beaussart Martin 
-LA170005 : Bourlet Jason
-
-
-
-# Avancement du projet
-
-Biento arrivés à la fin de l'Etape 1, des verifications mineurs doivent être encore faites
-en ce qui consiste la constitution des classe et des methode créés et modifiée
-
-Il faudra bientot passer à l'etape 2 du projet, et continuer jusqu'à sa finalisation à l'etape 10
+LA163852 : Beaussart Martin  
+LA170005 : Bourlet Jason  
 
 
 
+# Avancement du projet  
 
-
+-[X] Etape 1  
+-[ ] Etape 2  
+Verifier si lee code fonctionne en debuguant et corrigeant les erreurs, ajouter le code dans le Main pour voir le fonctionnement  
+-[ ] Etape 3  
+-[ ] Etape 4  
+-[ ] Etape 5  
+-[ ] Etape 6  
+-[ ] Etape 7  
+-[ ] Etape 8  
+-[ ] Etape 9  
+-[ ] Etape 10  

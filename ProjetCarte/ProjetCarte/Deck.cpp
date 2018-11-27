@@ -17,7 +17,7 @@ Deck::~Deck() // Destructeur necessaire pour detruire toutes les cartes créé dyn
 {
 	for (int i = 0; i < 104; i++)
 	{
-		delete tab_Cards[i];
+		//delete tab_Cards[i];
 		tab_Cards[i] = nullptr;
 	}
 }
@@ -32,7 +32,7 @@ void Deck::Remove_card(int card_Number) // Enleve une carte du paquet
 {
 	if (card_Number < 104 && card_Number >= 0)
 	{
-		delete tab_Cards[card_Number]; 
+		//delete tab_Cards[card_Number]; 
 		tab_Cards[card_Number] = nullptr;
 	}
 	else throw "On essaye de retirer une carte du Deck inexistante";

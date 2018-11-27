@@ -1,7 +1,2 @@
-﻿  Hand_Player.cpp
-c:\users\martin\desktop\vraiprojetprogra\groupe10\projetcarte\projetcarte\player.h(10): error C2143: erreur de syntaxe : absence de ';' avant '*'
-c:\users\martin\desktop\vraiprojetprogra\groupe10\projetcarte\projetcarte\player.h(10): error C4430: spécificateur de type manquant - int est pris en compte par défaut. Remarque : C++ ne prend pas en charge int par défaut
-c:\users\martin\desktop\vraiprojetprogra\groupe10\projetcarte\projetcarte\player.h(10): error C2238: jetons inattendus avant ';'
-c:\users\martin\desktop\vraiprojetprogra\groupe10\projetcarte\projetcarte\player.h(15): error C3646: 'Get_hand_player' : spécificateur de substitution inconnu
-c:\users\martin\desktop\vraiprojetprogra\groupe10\projetcarte\projetcarte\player.h(15): error C2059: erreur de syntaxe : '('
-c:\users\martin\desktop\vraiprojetprogra\groupe10\projetcarte\projetcarte\player.h(15): error C2238: jetons inattendus avant ';'
+﻿  ProjetCarte.cpp
+  ProjetCarte.vcxproj -> C:\Users\Martin\Desktop\VraiProjetProgra\groupe10\ProjetCarte\x64\Debug\ProjetCarte.exe

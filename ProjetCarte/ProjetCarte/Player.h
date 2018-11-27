@@ -1,18 +1,27 @@
 #pragma once
 #include "Card.h"
 #include "Deck.h"
-#include "Hand_Player.h"
-
-
 
 class Player
 {
-	Hand_Player * hand;
+
+	class Hand_Player
+	{
+		Card * player_Cards[10]; //Contenant des 10 cartes du joueur
+	public:
+		Hand_Player();
+		~Hand_Player();
+		Card Get_card_of_hand(int card);
+		void Add_start_card(Deck game_deck);
+	};
+
+
+	Hand_Player * main;
 
 public:
 	Player();
 	~Player();
-	Hand_Player Get_hand_player(); // Accesseur pour le membre hand 
+	Hand_Player Get_hand_player();
 
 };
 

@@ -2,17 +2,17 @@
 #include "Card.h"
 
 
-Card::Card(int nbr) //Constructeur dans lequel on va definir le beef_number de l'objet Card en fonction de son number
+Card::Card(int nmbr) //Constructeur dans lequel on va definir le beef_number de l'objet Card en fonction de son number
 {
 	
-	if (nbr != 0)
+	if (nmbr != 0)
 	{
-		number = nbr;
-		if (nbr == 55) beef_Number = 7;
-		else if ((nbr % 11) == 0) beef_Number = 5;
-		else if ((nbr % 10) == 0) beef_Number = 3;
-		else if ((nbr % 5) == 0) beef_Number = 2;
-		else beef_Number = 1;
+		this->number = nmbr;
+		if (nmbr == 55) this->beef_Number = 7;
+		else if ((nmbr % 11) == 0) this->beef_Number = 5;
+		else if ((nmbr % 10) == 0) this->beef_Number = 3;
+		else if ((nmbr % 5) == 0) this->beef_Number = 2;
+		else this->beef_Number = 1;
 	}
 
 }
@@ -24,9 +24,9 @@ Card::~Card()
 
 int Card::Get_number() { return number; }
 
-void Card::Set_number(int nbr) // Permet de modifier le numero de carte
+void Card::Set_number(int nmbr) // Permet de modifier le numero de carte
 {
-	this->number = nbr;
+	this->number = nmbr;
 }
 
 int Card::Get_beef_number() { return beef_Number; }

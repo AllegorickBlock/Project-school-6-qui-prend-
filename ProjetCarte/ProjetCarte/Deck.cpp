@@ -22,7 +22,7 @@ Deck::~Deck() // Destructeur necessaire pour detruire toutes les cartes créé dyn
 	}
 }
 
-Card Deck::Get_Card(int card_Number) // ajoute une carte au paquet
+Card Deck::Get_Card(int card_Number) // renvoie une carte du paquet
 { 
 	if(card_Number <104 && card_Number >= 0) return *tab_Cards[card_Number];
 	else throw "On essaye de recuperer une carte du Deck inexistante";

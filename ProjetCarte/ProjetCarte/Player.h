@@ -15,7 +15,7 @@ class Player
 		void Add_start_card(Deck&  game_deck);
 	};
 
-	Hand_Player * main; // Membre liant la classe Hand_Player au la classe Player
+	Hand_Player * main; // Membre liant la classe Hand_Player a la classe Player
 
 public:
 	Player();

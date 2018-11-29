@@ -18,7 +18,7 @@ Player::Hand_Player Player::Get_hand_player() { return *this->hand; }
 
 Player::Hand_Player::Hand_Player() { for (int i = 0; i < 10; i++) this->player_Cards[i] = new Card(0); } //Cree le tableau de la main du joueur 
 
-Player::Hand_Player::~Hand_Player() // Pas besoin d'eefacer les objets Hand Player car on les effacera en même temps que Player, dans son destructeur
+Player::Hand_Player::~Hand_Player() // Pas besoin d'effacer les objets Hand Player car on les effacera en même temps que Player, dans son destructeur
 {}
 
 void Player::Hand_Player::Add_start_card(Deck& game_deck) // ON DOIT FAIRE UN PASSAGE PAR REFERENCE OU SINON LE DECK NE SE VERRA PAS MODIFIE -> CAR COPIE

@@ -10,8 +10,8 @@ public:
 	Deck();
 	~Deck();
 
-	Card Get_Card(int card_Number); // Accesseur à l'objet Card de tab_Cards en fonction du parametre
-	void Remove_card(int card_Number);
+	Card Get_Card(int card_Number);	   // Accesseur à l'objet Card de tab_Cards en fonction du parametre
+	void Remove_card(int card_Number); // On retire une carte du dack
 	void Mix_card();
 };
 

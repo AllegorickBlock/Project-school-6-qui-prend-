@@ -22,7 +22,7 @@ Deck::~Deck() // Destructeur necessaire pour detruire toutes les cartes créé dyn
 	}
 }
 
-Card Deck::Get_Card(int card_Number) // renvoie une carte du paquet
+Card Deck::Get_Card(int card_Number) // Renvoie une carte du paquet
 { 
 	if(card_Number <104 && card_Number >= 0) return *tab_Cards[card_Number];
 	else throw "On essaye de recuperer une carte du Deck inexistante";
@@ -31,13 +31,13 @@ Card Deck::Get_Card(int card_Number) // renvoie une carte du paquet
 
 void Deck::Remove_card(int card_Number) // Enleve une carte du paquet
 {
-	if (card_Number < 104 && card_Number >= 0) tab_Cards[card_Number]->Set_number(0); // une carte est considéré comme retirée du paquet si sont attributs "number" dans le paquet est égal à 0 
+	if (card_Number < 104 && card_Number >= 0) tab_Cards[card_Number]->Set_number(0); // Une carte est considérée comme retirée du paquet si son attribut "number" dans le paquet est égal à 0 
 	else throw "On essaye de retirer une carte du Deck inexistante";
 }
 
-void Deck::Mix_card()// Reprend les 104 cartes du jeux et les mellanges
+void Deck::Mix_card()// Reprend les 104 cartes du jeux et les mellange
 {
-	srand(time(0)); // Prend un temps random comme valeur, permet de s'assurer d'avoir des chifres differents a chaque compilation
+	srand(time(0));  // Prend un temps random comme valeur, permet de s'assurer d'avoir des chifres differents a chaque compilation
 	int random_number;
 	int number_mix_cards[104];
 	for (int i = 0; i < 104; i++) number_mix_cards[i] = 0; // On met toute les valeurs à 0 car par defaut les valeurs d'un tableau créé statiquement en C++ sont inconnue
@@ -47,7 +47,7 @@ void Deck::Mix_card()// Reprend les 104 cartes du jeux et les mellanges
 		number_mix_cards[i] = random_number;
 		for (int j = 0; j < 104; j++)		  // Boucle verifiant si le numero de carte sorti n'a pas deja été attribué
 		{
-			if ( (number_mix_cards[i] == number_mix_cards[j]) && (i != j) ) // Si le nombre aleatoire obtenu est dega choisi, on va recalculer un autre nombre aleatoire pour cette même carte
+			if ( (number_mix_cards[i] == number_mix_cards[j]) && (i != j) ) // Si le nombre aleatoire obtenu est deja choisi, on va recalculer un autre nombre aleatoire pour cette même carte
 			{
 				i--;
 				break;

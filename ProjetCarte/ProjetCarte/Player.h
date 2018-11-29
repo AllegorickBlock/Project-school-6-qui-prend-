@@ -7,12 +7,12 @@ class Player
 
 	class Hand_Player // Classe interne a Player 
 	{
-		Card * player_Cards[10]; //Contenant des 10 cartes du joueur
+		Card * player_Cards[10]; // Contient les 10 cartes du joueur
 	public:
 		Hand_Player();
 		~Hand_Player();
-		Card Get_card_of_hand(int card);
-		void Add_start_card(Deck&  game_deck);
+		Card Get_card_of_hand(int card);	   // Affiche la main du joueur
+		void Add_start_card(Deck&  game_deck); // Ajoute une carte a la main du joueur
 	};
 
 	Hand_Player * hand; // Membre liant la classe Hand_Player a la classe Player

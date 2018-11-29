@@ -18,9 +18,9 @@ Card::Card(int nmbr) //Constructeur dans lequel on va definir le beef_number de 
 
 Card::~Card() {}
 
-int Card::Get_number() { return number; }
-
 void Card::Set_number(int nmbr)  { this->number = nmbr; } // Permet de modifier le numero de carte
+
+int Card::Get_number() { return number; }
 
 int Card::Get_beef_number() { return beef_Number; }
 

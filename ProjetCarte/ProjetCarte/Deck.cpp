@@ -17,7 +17,7 @@ Deck::~Deck() // Destructeur necessaire pour detruire toutes les cartes créé dyn
 {
 	for (int i = 0; i < 104; i++)
 	{
-		//delete tab_Cards[i];
+		delete tab_Cards[i];
 		tab_Cards[i] = nullptr;
 	}
 }
@@ -31,10 +31,7 @@ Card Deck::Get_Card(int card_Number) // renvoie une carte du paquet
 
 void Deck::Remove_card(int card_Number) // Enleve une carte du paquet
 {
-	if (card_Number < 104 && card_Number >= 0)
-	{
-		tab_Cards[card_Number]->Set_number(0); // une carte est considéré comme retirée du paquet si sont attributs "number" dans le paquet est égal à 0 /!\ A AMELIORER SI POSSIBLE
-	}
+	if (card_Number < 104 && card_Number >= 0) tab_Cards[card_Number]->Set_number(0); // une carte est considéré comme retirée du paquet si sont attributs "number" dans le paquet est égal à 0 
 	else throw "On essaye de retirer une carte du Deck inexistante";
 }
 
@@ -50,12 +47,12 @@ void Deck::Mix_card()// Reprend les 104 cartes du jeux et les mellanges
 		number_mix_cards[i] = random_number;
 		for (int j = 0; j < 104; j++)		  // Boucle verifiant si le numero de carte sorti n'a pas deja été attribué
 		{
-			if ( (number_mix_cards[i] == number_mix_cards[j]) && (i != j) )
+			if ( (number_mix_cards[i] == number_mix_cards[j]) && (i != j) ) // Si le nombre aleatoire obtenu est dega choisi, on va recalculer un autre nombre aleatoire pour cette même carte
 			{
 				i--;
 				break;
 			}
 		}
 	}
-	for (int i = 0; i < 104; i++) { *tab_Cards[i] = Card(number_mix_cards[i]); } // On inscrit le resultat du melange dans notre tableau de cartes
+	for (int i = 0; i < 104; i++)  *tab_Cards[i] = Card(number_mix_cards[i]);  // On inscrit le resultat du melange dans notre tableau de cartes
 }

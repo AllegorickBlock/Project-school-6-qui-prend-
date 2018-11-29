@@ -1,8 +1,6 @@
-﻿  Card.cpp
-  Deck.cpp
-c:\users\jason\onedrive - haute ecole louvain en hainaut\projet carte\groupe10\projetcarte\projetcarte\deck.cpp(43): warning C4244: 'argument' : conversion de 'time_t' en 'unsigned int', perte possible de données
+﻿  Deck.cpp
+c:\users\martin\desktop\vraiprojetprogra\groupe10\projetcarte\projetcarte\deck.cpp(40): warning C4244: 'argument' : conversion de 'time_t' en 'unsigned int', perte possible de données
   Player.cpp
   ProjetCarte.cpp
   Génération de code en cours...
-c:\users\jason\onedrive - haute ecole louvain en hainaut\projet carte\groupe10\projetcarte\projetcarte\card.cpp(38): warning C4715: 'Card::Compare_number' : les chemins de contrôle ne retournent pas tous une valeur
-  ProjetCarte.vcxproj -> C:\Users\Jason\OneDrive - Haute Ecole Louvain en Hainaut\Projet carte\groupe10\ProjetCarte\x64\Debug\ProjetCarte.exe
+  ProjetCarte.vcxproj -> C:\Users\Martin\Desktop\VraiProjetProgra\groupe10\ProjetCarte\x64\Debug\ProjetCarte.exe

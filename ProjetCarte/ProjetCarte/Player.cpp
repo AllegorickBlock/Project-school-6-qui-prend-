@@ -26,10 +26,11 @@ void Player::Hand_Player::Add_start_card(Deck& game_deck) // ON DOIT FAIRE UN PA
 	int hand_counter = 0;
 	for (int i = 103; i > 0 ; --i) // On regarde toute les cartes du paquet et on va en soustraire jusqu'a 10 pour les ajouter dans la main du joueur
 	{
-		if ( game_deck.Get_Card(i).Get_number() != 0 && (hand_counter < 10)) // /!\ game_deck.Get_Card(i).Get_number() != 0 est utilisé pour voir si la carte a ete rentre ou pas (voir Deck.Remove_card(i) ) A ameliorer si possible
+		if ( game_deck.Get_Card(i).Get_status() == 0 && (hand_counter < 10)) // /!\ game_deck.Get_Card(i).Get_number() != 0 est utilisé pour voir si la carte a ete rentre ou pas (voir Deck.Remove_card(i) ) A ameliorer si possible
 		{
-			*this->player_Cards[hand_counter] = game_deck.Get_Card(i); // On attribue la VALEUR ET LE CONTENU de l'objet Card provenant de Get_card a la carte de main du joueur attribue
-			game_deck.Remove_card(i);
+			this->player_Cards[hand_counter] = &game_deck.Get_Card(i); // On attribue la VALEUR ET LE CONTENU de l'objet Card provenant de Get_card a la carte de main du joueur attribue
+			
+			game_deck.Get_Card(i).Set_status(1);
 			hand_counter++;
 		}
 	}

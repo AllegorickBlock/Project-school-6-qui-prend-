@@ -12,15 +12,22 @@ Card::Card(int nmbr) //Constructeur dans lequel on va definir le beef_number de 
 		else if ((nmbr % 10) == 0) this->beef_Number = 3;
 		else if ((nmbr % 5) == 0) this->beef_Number = 2;
 		else this->beef_Number = 1;
+
+		this->status = 0;
 	}
+	
+
+
 }
 
 
 Card::~Card() {}
 
 void Card::Set_number(int nmbr)  { this->number = nmbr; } // Permet de modifier le numero de carte
-
 int Card::Get_number() { return number; }
+
+void Card::Set_status(int nbr_status) { this->status = nbr_status; }
+int Card::Get_status() { return this->status; }
 
 int Card::Get_beef_number() { return beef_Number; }
 

@@ -39,20 +39,19 @@ void Deck::Mix_card()// Reprend les 104 cartes du jeux et les mellange
 {
 	srand(time(0));  // Prend un temps random comme valeur, permet de s'assurer d'avoir des chifres differents a chaque compilation
 	int random_number;
-	int number_mix_cards[104];
-	for (int i = 0; i < 104; i++) number_mix_cards[i] = 0; // On met toute les valeurs à 0 car par defaut les valeurs d'un tableau créé statiquement en C++ sont inconnue
+	Card * tampon_deck_cards[104];
+	for (int i = 0; i < 104; i++) tampon_deck_cards[i] = tab_Cards[i]; // On met toute les valeurs à 0 car par defaut les valeurs d'un tableau créé statiquement en C++ sont inconnue
 	for (int i = 0; i < 104; i++) 
 	{ 
 		random_number = ((rand() % 104) + 1); // On aura ainsi un nombre aleatoire different a chaque fois que l'on entre dans la boucle
-		number_mix_cards[i] = random_number;
+		tab_Cards[i] = tampon_deck_cards[random_number];
 		for (int j = 0; j < 104; j++)		  // Boucle verifiant si le numero de carte sorti n'a pas deja été attribué
 		{
-			if ( (number_mix_cards[i] == number_mix_cards[j]) && (i != j) ) // Si le nombre aleatoire obtenu est deja choisi, on va recalculer un autre nombre aleatoire pour cette même carte
+			if ( (tab_Cards[i] == tab_Cards[j]) && (i != j) ) // Si le nombre aleatoire obtenu est deja choisi, on va recalculer un autre nombre aleatoire pour cette même carte
 			{
 				i--;
-				break;
+				break; // Permet d'eviter de continuer les boucles du for inutiles
 			}
 		}
 	}
-	for (int i = 0; i < 104; i++)  *tab_Cards[i] = Card(number_mix_cards[i]);  // On inscrit le resultat du melange dans notre tableau de cartes
 }

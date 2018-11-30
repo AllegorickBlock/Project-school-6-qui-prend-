@@ -34,7 +34,7 @@ void Deck::Add_card_to_player(Player & my_player)
 	{
 		if (this->tab_Cards[i]->Get_status() == 0 && hand_counter < 10)
 		{
-			my_player.Get_hand_player().Add_card(*this->tab_Cards[i], i);
+			my_player.Get_hand_player().Add_card(this->tab_Cards[i], hand_counter);
 			hand_counter++;
 		}
 		else if (hand_counter == 10 ) break;

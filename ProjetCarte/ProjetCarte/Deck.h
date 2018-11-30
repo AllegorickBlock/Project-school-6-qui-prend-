@@ -12,7 +12,7 @@ public:
 	~Deck();
 
 	Card Get_Card(int card_Number);	   // Accesseur à l'objet Card de tab_Cards en fonction du parametre
-	void Add_card_to_player(Player my_player);
+	void Add_card_to_player(Player & my_player);
 	void Mix_card();
 };
 

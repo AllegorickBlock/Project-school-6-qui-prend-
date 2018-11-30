@@ -27,17 +27,17 @@ Card Deck::Get_Card(int card_Number) // Renvoie une carte du paquet
 	if(card_Number <104 && card_Number >= 0) return *tab_Cards[card_Number];
 }
 
-void Deck::Add_card_to_player(Player
-	my_player)
+void Deck::Add_card_to_player(Player & my_player)
 {
 	int hand_counter = 0;
 	for (int i = 103; i > 0; --i) // On regarde toute les cartes du paquet et on va en soustraire jusqu'a 10 pour les ajouter dans la main du joueur
 	{
 		if (this->tab_Cards[i]->Get_status() == 0 && hand_counter < 10)
 		{
-			my_player.Get_hand_player().Add_card(this->tab_Cards[i], i);
+			my_player.Get_hand_player().Add_card(*this->tab_Cards[i], i);
 			hand_counter++;
 		}
+		else if (hand_counter == 10 ) break;
 	}
 }
 

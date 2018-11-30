@@ -24,15 +24,10 @@ Deck::~Deck() // Destructeur necessaire pour detruire toutes les cartes créé dyn
 
 Card Deck::Get_Card(int card_Number) // Renvoie une carte du paquet
 { 
-	if(card_Number <104 && card_Number > 0) return *tab_Cards[card_Number];
+	if(card_Number <104 && card_Number >= 0) return *tab_Cards[card_Number];
 }
 
 
-void Deck::Remove_card(int card_Number) // Enleve une carte du paquet
-{
-	if (card_Number < 104 && card_Number >= 0) tab_Cards[card_Number]->Set_number(0); // Une carte est considérée comme retirée du paquet si son attribut "number" dans le paquet est égal à 0 
-	else throw "On essaye de retirer une carte du Deck inexistante";
-}
 
 void Deck::Mix_card()// Reprend les 104 cartes du jeux et les mellange
 {
@@ -47,13 +42,13 @@ void Deck::Mix_card()// Reprend les 104 cartes du jeux et les mellange
 		
 		for (int j = 0; j < 104; j++)		  // Boucle verifiant si le numero de carte sorti n'a pas deja été attribué
 		{
-			if ( (tab_Cards[i] == tab_Cards[j]) && (i != j) ) // Si le nombre aleatoire obtenu est deja choisi, on va recalculer un autre nombre aleatoire pour cette même carte
+			if ( (tampon_deck_cards[i] == tampon_deck_cards[j]) && (i != j) ) // Si le nombre aleatoire obtenu est deja choisi, on va recalculer un autre nombre aleatoire pour cette même carte
 			{
 				i--;
 				a = false;
 				break; // Permet d'eviter de continuer les boucles du for inutiles
 			}
 		}
-		if (a == true) tab_Cards[i] = tampon_deck_cards[random_number];;
+		if (a == true) tab_Cards[i] = tampon_deck_cards[random_number];
 	}
 }

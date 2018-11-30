@@ -26,7 +26,7 @@ Card::~Card() {}
 void Card::Set_number(int nmbr)  { this->number = nmbr; } // Permet de modifier le numero de carte
 int Card::Get_number() { return number; }
 
-void Card::Set_status(int nbr_status) { this->status = nbr_status; }
+void Card::Set_status(int nbr_status) { this->status = nbr_status; } // Si status : 0 = deck, 1 = hand, 2 = row 
 int Card::Get_status() { return this->status; }
 
 int Card::Get_beef_number() { return this->beef_Number; }

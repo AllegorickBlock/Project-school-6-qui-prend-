@@ -31,7 +31,7 @@ Card & Deck::Get_Card(int card_Number) // Renvoie une carte du paquet
 void Deck::Add_card_to_player(Player & my_player)
 {
 	int hand_counter = 0;
-	for (int i = 103; i > 0; --i) // On regarde toute les cartes du paquet et on va en soustraire jusqu'a 10 pour les ajouter dans la main du joueur
+	for (int i = (deck_cards_104 -1) ; i > 0; --i) // On regarde toute les cartes du paquet et on va en soustraire jusqu'a 10 pour les ajouter dans la main du joueur
 	{
 		if ( (this->tab_Cards[i]->In_Deck() == true) && hand_counter < player_cards_10 )
 		{

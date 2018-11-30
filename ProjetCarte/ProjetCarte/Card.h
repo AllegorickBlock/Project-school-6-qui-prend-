@@ -7,7 +7,7 @@ class Card
 {
 	const int deck_status = 0;
 	const int hand_status = 1;
-	const int row_statuw = 2;
+	const int row_status = 2;
 	int number;
 	int beef_Number;
 	int status; // Definira quand quel etate est la carte, c'est a dire soit dans une mains, soit dans le deck, soit dans une rangée 

@@ -30,7 +30,7 @@ void Card::Set_status(int nbr_status) { this->status = nbr_status; } // Si statu
 bool Card::In_hand()
 {
 	if (status == deck_status) return true;
-	return false;
+	else return false;
 }
 bool Card::In_Deck()
 {
@@ -39,7 +39,7 @@ bool Card::In_Deck()
 }
 bool Card::In_Row()
 {
-	if (status == row_statuw) return true;
+	if (status == row_status) return true;
 	else return false;
 }
 
@@ -51,12 +51,12 @@ void Card::Set_number(int nmbr) { this->number = nmbr; } // Permet de modifier l
 
 int Card::Get_beef_number() { return this->beef_Number; }
 
-bool Card::Compare_number(Card carte_a_comparer)
-{
-	if (Get_number() > carte_a_comparer.Get_number()) return true;  // Si superieur return true
-	if (Get_number() < carte_a_comparer.Get_number()) return false; // Si inferieur return false
-}
+//bool Card::Compare_number(Card carte_a_comparer)
+//{
+//	if (Get_number() > carte_a_comparer.Get_number()) return true;  // Si superieur return true
+//	if (Get_number() < carte_a_comparer.Get_number()) return false; // Si inferieur return false
+//}
 
-int Card::Difference_number(Card card_to_compare) { return (Get_number() - card_to_compare.Get_number()); }
+//int Card::Difference_number(Card card_to_compare) { return (Get_number() - card_to_compare.Get_number()); }
 //Si negatif, il faut gerer le fait que l'on ne peut pas placer la carte
 

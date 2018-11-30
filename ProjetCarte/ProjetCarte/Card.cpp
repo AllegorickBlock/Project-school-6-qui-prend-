@@ -29,7 +29,7 @@ int Card::Get_number() { return number; }
 void Card::Set_status(int nbr_status) { this->status = nbr_status; }
 int Card::Get_status() { return this->status; }
 
-int Card::Get_beef_number() { return beef_Number; }
+int Card::Get_beef_number() { return this->beef_Number; }
 
 bool Card::Compare_number(Card carte_a_comparer)
 {

@@ -16,7 +16,6 @@ Card::Card(int nmbr) //Constructeur dans lequel on va definir le beef_number de 
 
 		this->status = 0;
 	}
-	else throw "Tentative de creation de carte non valide";
 }
 
 Card::~Card() {}

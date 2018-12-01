@@ -42,6 +42,28 @@ void Deck::Add_card_to_player(Player & my_player)
 	}
 }
 
+void Deck::Add_card_to_row(Row & my_row)
+{
+	bool card_added = false;
+	for (int i = (deck_cards_104 - 1); i > 0; --i) // On regarde toute les cartes du paquet 
+	{
+		if ((this->tab_Cards[i]->In_Deck() == true) ) // ON regarde celle qui restent dans le paquet
+		{
+			for (int j = 0; j < row_cards_6; j++) // On regarde les cartes dans la rangée
+			{
+				if (&my_row.Get_card(j) == nullptr) // ON ajoute les cartes dns l'espace de la rangée disponible
+				{
+					my_row.Add_card(this->tab_Cards[i],j);
+					card_added = true;
+					break;
+				}
+			}
+			if (card_added == true) break;
+		}
+	}
+
+}
+
 void Deck::Mix_card()// Reprend les 104 cartes du jeux et les mellange
 {
 	srand(time(0));  // Prend un temps random comme valeur, permet de s'assurer d'avoir des chifres differents a chaque compilation

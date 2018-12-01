@@ -1,14 +1,15 @@
 #pragma once
+#include "Card.h"
+#include "Player.h"
 class Row
 {
-public:
-	Row();
-	~Row();
-};
+	const int row_cards_6 = 6;
 
-class Row
-{
+	Card * row_card[6];
 public:
+
+	void Add_card(Card * my_card, int index);
+	Card& Get_card(int index);
 	Row();
 	~Row();
 };

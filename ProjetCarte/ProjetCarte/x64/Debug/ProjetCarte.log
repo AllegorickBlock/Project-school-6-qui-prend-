@@ -1,3 +1,3 @@
 ﻿  Row.cpp
-c:\users\martin\desktop\vraiprojetprogra\groupe10\projetcarte\projetcarte\row.cpp(18): warning C4715: 'Row::Get_card' : les chemins de contrôle ne retournent pas tous une valeur
-  ProjetCarte.vcxproj -> C:\Users\Martin\Desktop\VraiProjetProgra\groupe10\ProjetCarte\x64\Debug\ProjetCarte.exe
+c:\users\user\onedrive - haute ecole louvain en hainaut\projet carte\groupe10\projetcarte\projetcarte\row.cpp(18): warning C4715: 'Row::Get_card' : les chemins de contrôle ne retournent pas tous une valeur
+  ProjetCarte.vcxproj -> C:\Users\user\OneDrive - Haute Ecole Louvain en Hainaut\Projet carte\groupe10\ProjetCarte\x64\Debug\ProjetCarte.exe

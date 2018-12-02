@@ -4,7 +4,7 @@
 
 void Row::Add_card(Card * my_card, int index)// index doit etre tel : index
 {
-	if (index >= 0 && index < 6)
+	if (index >= 0 && index < row_cards_6)
 	{
 		row_card[index] = my_card;
 		row_card[index]->Set_status(2);

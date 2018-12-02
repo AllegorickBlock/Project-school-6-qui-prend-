@@ -9,7 +9,7 @@ LA170005 : Bourlet Jason
 
 -[X] Etape 1  
 -[X] Etape 2  
--[ ] Etape 3  
+-[X] Etape 3  
 -[ ] Etape 4  
 -[ ] Etape 5  
 -[ ] Etape 6  

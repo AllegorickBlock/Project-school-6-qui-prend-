@@ -1,7 +1,7 @@
 #pragma once
 #include "Card.h"
 #include "Player.h"
-#include "Row.h"
+#include "Game_Board.h"
 #include <ctime>   //Permet d'utiliser time()
 #include <cstdlib> //Permet d'utiliser srand()
 class Deck
@@ -17,7 +17,7 @@ public:
 
 	Card& Get_Card(int card_Number);	   // Accesseur à l'objet Card de tab_Cards en fonction du parametre
 	void Add_card_to_player(Player & my_player);
-	void Add_card_to_row(Row & my_row);
+	void Add_card_to_row(Game_Board::Row & my_row);
 	void Mix_card();
 };
 

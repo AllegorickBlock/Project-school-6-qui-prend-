@@ -42,7 +42,7 @@ void Deck::Add_card_to_player(Player & my_player)
 	}
 }
 
-void Deck::Add_card_to_row(Row & my_row)
+void Deck::Add_card_to_row(Game_Board::Row & my_row)
 {
 	bool card_added = false;
 	for (int i = (deck_cards_104 - 1); i > 0; --i) // On regarde toute les cartes du paquet 

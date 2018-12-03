@@ -5,8 +5,8 @@ class Player
 {
 	class Hand_Player // Classe interne a Player 
 	{
-		const int player_cards_10 = 10;
-		Card * player_Cards[10]; // Contient les 10 cartes du joueur
+		const int nbr_player_cards = 10;
+		Card * player_Cards[10]; // Contient les 10 pointeurs de cartes du joueur
 	public:
 		Hand_Player();
 		~Hand_Player();

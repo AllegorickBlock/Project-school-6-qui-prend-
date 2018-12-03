@@ -5,7 +5,7 @@
 
 Card::Card(int nmbr) //Constructeur dans lequel on va definir le beef_number de l'objet Card en fonction de son number
 {
-	if (nmbr > 0 && nmbr < 105) // On mettera en parametre 0 si l'on souhaite creer des cartes "vides", donc des emplacements pour cartes
+	if (nmbr > 0 && nmbr <= 104) // On mettera en parametre 0 si l'on souhaite creer des cartes "vides", donc des emplacements pour cartes
 	{
 		this->number = nmbr;
 		if (nmbr == 55) this->beef_Number = 7;
@@ -14,7 +14,7 @@ Card::Card(int nmbr) //Constructeur dans lequel on va definir le beef_number de 
 		else if ((nmbr % 5) == 0) this->beef_Number = 2;
 		else this->beef_Number = 1;
 
-		this->status = 0;
+		this->Set_status(0);
 	}
 }
 

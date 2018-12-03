@@ -5,13 +5,13 @@
 
 class Game_Board
 {
-	const int row_4 = 4;
+	const int nbr_row = 4;
 
 public:
 
 	class Row
 	{
-		const int row_cards_6 = 6;
+		const int nbr_cards_in_rows = 6;
 
 		Card * row_card[6];
 	public:

@@ -1,2 +1,3 @@
-﻿  Projet_Carte.cpp
+﻿  Game_Board.cpp
+c:\users\martin\desktop\vraiprojetprogra\groupe10\projetcarte\projetcarte\game_board.cpp(46): warning C4715: 'Game_Board::Row::Get_card' : les chemins de contrôle ne retournent pas tous une valeur
   ProjetCarte.vcxproj -> C:\Users\Martin\Desktop\VraiProjetProgra\groupe10\ProjetCarte\x64\Debug\ProjetCarte.exe

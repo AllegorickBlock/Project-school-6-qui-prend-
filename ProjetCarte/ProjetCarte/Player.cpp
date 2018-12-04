@@ -20,9 +20,9 @@ Player::Hand_Player& Player::Get_hand_player() { return *this->hand; }
 #pragma region Classe Player::Hand_Player
 
 #pragma region Player::Hand_Player : Constructeur & Destructeur
-Player::Hand_Player::Hand_Player() { } //Cree le tableau de la main du joueur 
+Player::Hand_Player::Hand_Player() { } 
 
-Player::Hand_Player::~Hand_Player() {} // Pas besoin d'effacer les objets Hand Player car on les effacera en même temps que Player, dans son destructeur
+Player::Hand_Player::~Hand_Player() {} 
 
 #pragma endregion
 

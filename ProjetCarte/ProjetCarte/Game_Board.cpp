@@ -45,20 +45,6 @@ Card & Game_Board::Row::Get_card(int index)
 	if (index < nbr_cards_in_rows && nbr_cards_in_rows >= 0) return *row_card[index];
 }
 
-Game_Board::Row::Row()
-{
-	for (int i = 0; i < nbr_cards_in_rows; i++)
-	{
-		row_card[i] = nullptr;
-	}
-}
+Game_Board::Row::Row() { for (int i = 0; i < nbr_cards_in_rows; i++) row_card[i] = nullptr; }
 
-
-Game_Board::Row::~Row()
-{
-	for (int i = 0; i < nbr_cards_in_rows; i++)
-	{
-		delete row_card[i];
-		row_card[i] = nullptr;
-	}
-}
+Game_Board::Row::~Row() { for (int i = 0; i < nbr_cards_in_rows; i++) row_card[i] = nullptr; }

@@ -17,7 +17,7 @@ Game::Game(Player les_joueurs[4], Game_Board& plateau, Deck& my_deck)
 	cout << " \n\n\n\n Deck melangé : \n\n";
 	Show_deck(my_deck);
 
-	for (int i = 0; i < 4; i++) // ajout des cartes dans les mains des joueurs et des rangées
+	for (int i = 0; i < number_Gamer; i++) // ajout des cartes dans les mains des joueurs et des rangées
 	{
 		my_deck.Add_card_to_player(les_joueurs[i]);
 		my_deck.Add_card_to_row(plateau.Get_row(i));
@@ -99,6 +99,7 @@ inline void Game::Show_row(Game_Board & plateau)
 	}
 }
 
+
 #pragma endregion
 
 #pragma endregion
@@ -110,10 +111,50 @@ inline void Game::Show_row(Game_Board & plateau)
 Game::Turn:: Turn(Player les_joueurs[4], Game_Board& plateau, Deck& my_deck)
 {
 	this->number_Turn++;
+	srand(time(0));  // Prend un temps random comme valeur, permet de s'assurer d'avoir des chifres differents
+	int random_number = 0;
+	int card_choices[4];
+	for (int i = 0; i < number_Gamer ; i++)
+	{
+		random_number = ((rand() % nbr_hand_cards) + 1);
+		card_choices[i] = les_joueurs[i].Get_hand_player().Get_card_of_hand(random_number).Get_number();
+	}
+
+	Sort_asc(card_choices);
+
+	for (int i = 0; i < number_Row; i++)
+	{
+		int index = 0;
+		for (int i = 0; i < number_Gamer; i++)
+		{
+			if (&plateau.Get_row(i).Get_last_card() < &les_joueurs[i].Get_hand_player().Get_card_of_hand(i));
+		}
+	}
 
 
 
 }
+
+
+ inline void Game::Sort_asc(int my_tab[]) // tri dans l'ordre croissant
+{
+	 int my_copy_tab[sizeof(my_tab)];
+
+	for (int i = 0; i < sizeof(my_tab) ; i++)
+	{
+		int index = 0;
+		for (int j = 0; j < sizeof(my_tab); j++)
+		{
+			if (my_tab[i] < my_tab[j]) index++;
+		}
+		my_copy_tab[i] = my_tab[sizeof(my_tab) - index];
+	}
+
+	for (int i = 0; i < sizeof(my_tab); i++) my_tab[i] = my_copy_tab[i];
+}
+
+
+
 
 Game::Turn:: ~Turn()
 {

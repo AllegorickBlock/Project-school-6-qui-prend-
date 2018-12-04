@@ -18,6 +18,7 @@ public:
 
 		void Add_card(Card * my_card, int index);
 		Card& Get_card(int index);
+		Card& Get_last_card();
 		Row();
 		~Row();
 	};

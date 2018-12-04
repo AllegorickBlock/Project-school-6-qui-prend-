@@ -47,15 +47,45 @@ bool Card::In_Row()
 int Card::Get_number() { return number; }
 void Card::Set_number(int nmbr) { this->number = nmbr; } // Permet de modifier le numero de carte
 
-
 int Card::Get_beef_number() { return this->beef_Number; }
 
-//bool Card::Compare_number(Card carte_a_comparer)
-//{
-//	if (Get_number() > carte_a_comparer.Get_number()) return true;  // Si superieur return true
-//	if (Get_number() < carte_a_comparer.Get_number()) return false; // Si inferieur return false
-//}
+#pragma region surcharges operateurs
 
-//int Card::Difference_number(Card card_to_compare) { return (Get_number() - card_to_compare.Get_number()); }
-//Si negatif, il faut gerer le fait que l'on ne peut pas placer la carte
+Card Card::operator==(const Card & other_card) const
+{
+	if (this->number == other_card.number ) return true;
+	else return false;
+}
+
+Card Card::operator!=(const Card & other_card) const
+{
+	if (this->number != other_card.number) return true;
+	else return false;
+}
+
+Card Card::operator<=(const Card & other_card) const
+{
+	if (this->number <= other_card.number) return true;
+	else return false;
+}
+
+Card Card::operator>=(const Card & other_card) const
+{
+	if (this->number >= other_card.number) return true;
+	else return false;
+}
+
+Card Card::operator>(const Card & other_card) const
+{
+	if (this->number > other_card.number) return true;
+	else return false;
+}
+
+Card Card::operator<(const Card & other_card) const
+{
+	if (this->number < other_card.number) return true;
+	else return false;
+}
+
+#pragma endregion
 

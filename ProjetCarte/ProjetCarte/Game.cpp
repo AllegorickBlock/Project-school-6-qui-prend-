@@ -111,34 +111,32 @@ inline void Game::Show_row(Game_Board & plateau)
 Game::Turn:: Turn(Player les_joueurs[4], Game_Board& plateau, Deck& my_deck)
 {
 	this->number_Turn++;
+	cout << "\t----|Tour " + number_Turn << "|----";
 	srand(time(0));  // Prend un temps random comme valeur, permet de s'assurer d'avoir des chifres differents
 	int random_number = 0;
-	int card_choices[4];
 	for (int i = 0; i < number_Gamer ; i++)
 	{
 		random_number = ((rand() % nbr_hand_cards) + 1);
-		card_choices[i] = les_joueurs[i].Get_hand_player().Get_card_of_hand(random_number).Get_number();
+		cards_selection[i] = &les_joueurs[i].Get_hand_player().Get_card_of_hand(random_number);
 	}
 
-	Sort_asc(card_choices);
+	Sort_asc(cards_selection);
 
 	for (int i = 0; i < number_Row; i++)
 	{
 		int index = 0;
 		for (int i = 0; i < number_Gamer; i++)
 		{
-			if (&plateau.Get_row(i).Get_last_card() < &les_joueurs[i].Get_hand_player().Get_card_of_hand(i));
+			if (plateau.Get_row(i).Get_last_card().Get_number() < cards_selection[i]->Get_number());
 		}
 	}
-
-
 
 }
 
 
- inline void Game::Sort_asc(int my_tab[]) // tri dans l'ordre croissant
+ inline void Game::Sort_asc(Card * my_tab[]) // tri dans l'ordre croissant
 {
-	 int my_copy_tab[sizeof(my_tab)];
+	 Card * my_copy_tab[sizeof(my_tab)];
 
 	for (int i = 0; i < sizeof(my_tab) ; i++)
 	{

@@ -5,8 +5,12 @@
 
 #pragma region Game : Constructeur & Destructeur
 
+
+int number_turn;
+
 Game::Game(Player les_joueurs[4], Game_Board& plateau, Deck& my_deck)
 {
+
 	number_turn = 0;
 
 	cout << " \n\n\n\n Deck non melangé : \n\n";
@@ -30,6 +34,9 @@ Game::Game(Player les_joueurs[4], Game_Board& plateau, Deck& my_deck)
 	cout << "\n\n\n\n Carte restante dans le Paquets \n\n";
 
 	Show_deck(my_deck);
+
+
+	Turn my_Turn(les_joueurs,plateau,my_deck);
 
 }
 
@@ -108,10 +115,10 @@ inline void Game::Show_row(Game_Board & plateau)
 
 #pragma region Turn
 
-Game::Turn:: Turn(Player les_joueurs[4], Game_Board& plateau, Deck& my_deck)
+Game::Turn::Turn(Player les_joueurs[4], Game_Board & plateau, Deck & my_deck)
 {
-	this->number_Turn++;
-	cout << "\t----|Tour " + number_Turn << "|----";
+	number_turn++;
+	cout << "\n\n\n\n\t----|Tour " << number_turn << "|----";
 	srand(time(0));  // Prend un temps random comme valeur, permet de s'assurer d'avoir des chifres differents
 	int random_number = 0;
 	for (int i = 0; i < number_Gamer ; i++)
@@ -120,16 +127,36 @@ Game::Turn:: Turn(Player les_joueurs[4], Game_Board& plateau, Deck& my_deck)
 		cards_selection[i] = &les_joueurs[i].Get_hand_player().Get_card_of_hand(random_number);
 	}
 
-	Sort_asc(cards_selection);
+	Sort_asc(cards_selection); 
+	int copy_number_diff[4];
 
-	for (int i = 0; i < number_Row; i++)
+	for (int i = 0; i < number_Gamer; i++) // On regarde toute les differences des nombres de la carte selectionné du joueur avec celles des colonnes
 	{
-		int index = 0;
-		for (int i = 0; i < number_Gamer; i++)
+		for (int j = 0; j < number_Row; j++) copy_number_diff[j] = (cards_selection[i]->Get_number()) - (plateau.Get_row(j).Get_last_card().Get_number());
+		for (int j = 0; j < number_Gamer; j++)
 		{
-			if (plateau.Get_row(i).Get_last_card().Get_number() < cards_selection[i]->Get_number());
+			int index = 0;
+			for (int k = 0; k < number_Gamer; k++) // On compare les differences obtenues pour connaitre la plus petite
+			{
+				if (copy_number_diff[j] < copy_number_diff[k]) index++;
+				if (index == number_Gamer - 1) // Si on a trouvé la plus petite difference
+				{
+					for (int l = 0; l < 6; l++) // On va chercher apres un emplacement vide a remplir 
+					{
+						if (&plateau.Get_row(index).Get_card(l) == nullptr && plateau.Get_row(index).Get_card(l).In_hand() != true)
+						{ 
+								plateau.Get_row(index).Add_card(cards_selection[i], l); // Si il existe encore un emplacement de la rangée choisie
+						}
+					}
+					break;
+				}
+			}
+			if (index = number_Gamer - 1) break;
 		}
 	}
+
+	Show_hand(les_joueurs);
+	Show_row(plateau);
 
 }
 

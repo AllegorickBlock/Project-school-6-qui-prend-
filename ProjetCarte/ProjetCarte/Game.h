@@ -14,14 +14,13 @@ class Game
 {
 	
 	const int number_Gamer = 4;
-	int number_turn;
 	class Turn
 	{
-		Card * cards_selection[6];
+		Card * cards_selection[4];
 		const int nbr_hand_cards = 10;
 		const int number_Gamer = 4;
 		const int number_Row = 4;
-		int number_Turn;
+	public:
 
 		Turn(Player les_joueurs[4], Game_Board& plateau, Deck& my_deck);
 		~Turn();

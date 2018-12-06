@@ -131,30 +131,59 @@ Game::Turn::Turn(Player les_joueurs[], Game_Board & plateau, Deck & my_deck)
 	Sort_asc(cards_selection); 
 	int copy_number_diff[4];
 
-	for (int i = 0; i < number_Gamer; i++) // On regarde toute les differences des nombres de la carte selectionné du joueur avec celles des colonnes
+	for (int i = 0; i < number_Gamer; i++) // On regarde toute les differences des nombres de la carte selectionné du joueur avec celles des rangées
 	{
 		for (int j = 0; j < number_Row; j++) copy_number_diff[j] = (cards_selection[i]->Get_number()) - (plateau.Get_row(j).Get_last_card().Get_number());
+		// On stoque toute les differences de notre cards_selection[i] avec toute les cartes des rangées
+
+		int index_lower_diff = 0;
+		bool can_add_card_in_row = false;
 		for (int j = 0; j < number_Gamer; j++)
 		{
-			int index = 0;
-			for (int k = 0; k < number_Gamer; k++) // On compare les differences obtenues pour connaitre la plus petite
+			if ((copy_number_diff[index_lower_diff] < copy_number_diff[j]) && copy_number_diff[index_lower_diff] > 0)
 			{
-				if (copy_number_diff[j] < copy_number_diff[k]) index++;
-				if (index == number_Gamer - 1) // Si on a trouvé la plus petite difference
+				// ON recupere l'indice de la plus petit difference dans notre tableau copy_number_diff, refletant la rangée avec la derniere carte
+				// On fait bien attention de recuperer une Difference POSITIVE, signifiant que notre carte avec la plus petite difference est bien superieur à la rangée definie
+				index_lower_diff = j;
+				can_add_card_in_row = true;
+			}
+
+			if (can_add_card_in_row == true)
+			{
+				for (int l = 0; l < 6; l++) // On va chercher apres un emplacement vide à remplir de notre rangée
 				{
-					for (int l = 0; l < 6; l++) // On va chercher apres un emplacement vide a remplir 
+					if (&plateau.Get_row(index_lower_diff).Get_card(l) == nullptr)
 					{
-						if (&plateau.Get_row(index).Get_card(l) == nullptr && plateau.Get_row(index).Get_card(l).In_hand() != true)
-						{ 
-								plateau.Get_row(index).Add_card(cards_selection[i], l); // Si il existe encore un emplacement de la rangée choisie
-						}
+						plateau.Get_row(index_lower_diff).Add_card(cards_selection[i], l); // Si il existe encore un emplacement de la rangée choisie
+						break;
 					}
-					break;
 				}
 			}
-			if (index = number_Gamer - 1) break;
+
+						////// ANCIEN CODE DE L'ALGO, PEUT AIDER POUR LINSPIRATION. A EFFACER PAR LA SUITE ////
+			//for (int k = 0; k < number_Gamer; k++) // On compare les differences obtenues pour connaitre la plus petite
+			//{
+
+			//	if (copy_number_diff[j] < copy_number_diff[k] )
+
+			//	if (copy_number_diff[j] > 0 ) index++; // Si la carte[j] est bien superieur a une des carte des rangées, on fait index++
+			//	if (index == number_Gamer - 1) // Si on a trouvé la plus petite difference
+			//	{
+			//		for (int l = 0; l < 6; l++) // On va chercher apres un emplacement vide des Row a remplir 
+			//		{
+			//			if (&plateau.Get_row(index).Get_card(l) == nullptr && plateau.Get_row(index).Get_card(l).In_hand() != true)
+			//			{ 
+			//					plateau.Get_row(index).Add_card(cards_selection[i], l); // Si il existe encore un emplacement de la rangée choisie
+			//			}
+			//		}
+			//		break;
+			//	}
+			//}
+			//if (index = number_Gamer - 1) break;
 		}
+
 	}
+
 
 	Show_hand(les_joueurs);
 	Show_row(plateau);

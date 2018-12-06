@@ -50,7 +50,11 @@ Card & Game_Board::Row::Get_last_card()
 	for (int i = 0; i < nbr_cards_in_rows; i++)
 	{
 		if(i == 5) return *this->row_card[5];
-		else if (this->row_card[i + 1] != nullptr || (this->row_card[i + 1]->In_Row() == false)) return *this->row_card[i + 1];
+		else if (this->row_card[i + 1] == nullptr)
+		{
+			return *this->row_card[i];
+			break;
+		}
 	}
 }
 

@@ -35,5 +35,6 @@ public:
 	static inline void Show_hand(Player les_joueurs[]);
 	static inline void Show_row(Game_Board & my_game_board);
 	static inline void Sort_asc(Card * my_tab[]);
+	static inline void Sort_asc(int my_tab[]);
 };
 

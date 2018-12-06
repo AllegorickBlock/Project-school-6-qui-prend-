@@ -8,7 +8,7 @@
 
 int number_turn;
 
-Game::Game(Player les_joueurs[4], Game_Board& plateau, Deck& my_deck)
+Game::Game(Player les_joueurs[], Game_Board& plateau, Deck& my_deck)
 {
 
 	number_turn = 0;
@@ -115,16 +115,17 @@ inline void Game::Show_row(Game_Board & plateau)
 
 #pragma region Turn
 
-Game::Turn::Turn(Player les_joueurs[4], Game_Board & plateau, Deck & my_deck)
+Game::Turn::Turn(Player les_joueurs[], Game_Board & plateau, Deck & my_deck)
 {
+	
 	number_turn++;
 	cout << "\n\n\n\n\t----|Tour " << number_turn << "|----";
 	srand(time(0));  // Prend un temps random comme valeur, permet de s'assurer d'avoir des chifres differents
 	int random_number = 0;
 	for (int i = 0; i < number_Gamer ; i++)
 	{
-		random_number = ((rand() % nbr_hand_cards) + 1);
-		cards_selection[i] = &les_joueurs[i].Get_hand_player().Get_card_of_hand(random_number);
+		random_number = ((rand() % nbr_hand_cards) );
+		cards_selection[i] = &les_joueurs[i].Get_hand_player().Get_card_of_hand(random_number); // On prend toutes les cartes selectionné au hasard par notre joueurs lors de ce tour
 	}
 
 	Sort_asc(cards_selection); 
@@ -163,19 +164,19 @@ Game::Turn::Turn(Player les_joueurs[4], Game_Board & plateau, Deck & my_deck)
 
  inline void Game::Sort_asc(Card * my_tab[]) // tri dans l'ordre croissant
 {
-	 Card * my_copy_tab[sizeof(my_tab)];
+	 Card * my_copy_tab[4]; 
 
-	for (int i = 0; i < sizeof(my_tab) ; i++)
+	for (int i = 0; i < 4 ; i++) // on regarde le tableau de carte pris en parameter
 	{
 		int index = 0;
-		for (int j = 0; j < sizeof(my_tab); j++)
+		for (int j = 0; j < 4; j++) // On regarde toute les carte de my_tab
 		{
-			if (my_tab[i] < my_tab[j]) index++;
+			if (my_tab[i]->Get_number() > my_tab[j]->Get_number() ) index++; // on regarde les difference de notre carte[i] avec les tout les autres cartes[j]
 		}
-		my_copy_tab[i] = my_tab[sizeof(my_tab) - index];
+		my_copy_tab[index] = my_tab[i]; // ON assigne dans l'ordre les ellements de my_tab dans my_copy_tab
 	}
 
-	for (int i = 0; i < sizeof(my_tab); i++) my_tab[i] = my_copy_tab[i];
+	for (int i = 0; i < 4; i++) my_tab[i] = my_copy_tab[i];
 }
 
 

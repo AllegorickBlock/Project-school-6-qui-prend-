@@ -22,17 +22,17 @@ class Game
 		const int number_Row = 4;
 	public:
 
-		Turn(Player les_joueurs[4], Game_Board& plateau, Deck& my_deck);
+		Turn(Player les_joueurs[], Game_Board& plateau, Deck& my_deck);
 		~Turn();
 		
 	};
 
 public:
-	Game(Player les_joueurs[4], Game_Board& plateau, Deck& my_deck);
+	Game(Player les_joueurs[], Game_Board& plateau, Deck& my_deck);
 	~Game();
 	static inline void Show_beef_symbol();
 	static inline void Show_deck(Deck &my_deck);
-	static inline void Show_hand(Player les_joueurs[4]);
+	static inline void Show_hand(Player les_joueurs[]);
 	static inline void Show_row(Game_Board & my_game_board);
 	static inline void Sort_asc(Card * my_tab[]);
 };

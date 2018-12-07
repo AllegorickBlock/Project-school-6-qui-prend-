@@ -114,6 +114,17 @@ inline void Game::Show_row(Game_Board & plateau)
 	}
 }
 
+inline void Game::Show_cards_selection(Card * cards_selection[])
+{
+	cout << "\n\t Cartes selectionnes :  ";
+	for (int i = 0; i < Const_var::nmbr_Gamer; i++)
+	{
+		cout << "[" << cards_selection[i]->Get_number() << "|" << cards_selection[i]->Get_beef_number();
+		Show_beef_symbol();
+		cout << "]  ";
+	}
+	cout << "\n" ;
+}
 
 #pragma endregion
 
@@ -133,6 +144,42 @@ inline void Game::Pick_card_random(Card * cards_selec[], Player les_joueurs[])
 
 }
 
+inline void Game::Look_add_in_row(Game_Board & plateau, Card * cards_selection[])
+{
+
+	int copy_number_diff[Const_var::nmbr_Gamer];
+
+	for (int i = 0; i < Const_var::nmbr_Gamer; i++) // On regarde toute les differences des nombres de la carte selectionné du joueur avec celles des rangées
+	{
+		for (int j = 0; j < Const_var::nmbr_Gamer; j++)copy_number_diff[j] = (*cards_selection[i] - plateau.Get_row(j).Get_last_card());
+		// On stoque toute les differences de notre cards_selection[i] avec toute les cartes des rangées
+
+		int lower_diff = 0;
+		bool card_added_in_ronw = false;
+
+		Sort_asc(copy_number_diff); // On met dans l'ordre du plus petit au plus grand notre liste des differences mathématiques obtenues
+
+		for (int j = 0; j < Const_var::nmbr_Rows; j++)
+		{
+			if (copy_number_diff[j] > 0) // Si nous arrivons a notre premiere differences > 0
+			{
+				lower_diff = copy_number_diff[j]; 
+				for (int k = 0; k < Const_var::nmbr_Rows; k++) // On va comparer chaque rangée pour voir ou poser notre carte selectionnée
+				{
+					if (lower_diff == (*cards_selection[i] - plateau.Get_row(k).Get_last_card())) // Si nous recuperons la difference aparenté à la bonne rangé, on va ajouter notre carte selectionnée dans la rangée
+					{
+						plateau.Get_row(k).Add_card(cards_selection[i]); // Si il existe encore un emplacement de la rangée choisie
+						j = 4;
+						card_added_in_ronw = true;
+						break;
+					}
+					if (card_added_in_ronw == true) break;
+				}
+			}
+		}
+	}
+}
+
 #pragma region Turn
 
 Game::Turn::Turn(Player les_joueurs[], Game_Board & plateau, Deck & my_deck)
@@ -145,58 +192,11 @@ Game::Turn::Turn(Player les_joueurs[], Game_Board & plateau, Deck & my_deck)
 
 	Pick_card_random(cards_selection, les_joueurs);
 
-	//for (int i = 0; i < Const_var::nmbr_Gamer; i++)
-	//{
-	//	random_number = ((rand() % Const_var::nmbr_cards_in_Hand) );
-	//	cards_selection[i] = &les_joueurs[i].Get_hand_player().Get_card_of_hand(random_number); // On prend toutes les cartes selectionné au hasard par notre joueurs lors de ce tour
-	//	les_joueurs[i].Get_hand_player().Remove_card(random_number);
-	//}
-
 	Sort_asc(cards_selection); // L'index de cartes dans cards_selection ne va plus corespondre a l'index du joueur
-	cout << "\n\t Cartes selectionnées : ";
-	for (int i = 0; i < Const_var::nmbr_Gamer; i++)
-	{
-		cout << "[" << cards_selection[i]->Get_number() << "|" << cards_selection[i]->Get_beef_number();
-		Show_beef_symbol();
-		cout << "]  ";
-	}
 
-	int copy_number_diff[Const_var::nmbr_Gamer];
-	
+	Show_cards_selection(cards_selection);
 
-	for (int i = 0; i < Const_var::nmbr_Gamer; i++) // On regarde toute les differences des nombres de la carte selectionné du joueur avec celles des rangées
-	{
-		for (int j = 0; j < Const_var::nmbr_Gamer; j++)
-		{
-			copy_number_diff[j] = (cards_selection[i]->Get_number()) - (plateau.Get_row(j).Get_last_card().Get_number());	// *
-		}
-		// On stoque toute les differences de notre cards_selection[i] avec toute les cartes des rangées
-
-		int lower_diff = 0;
-		bool card_added_in_ronw = false;
-
-		Sort_asc(copy_number_diff);
-
-		for (int j = 0; j < Const_var::nmbr_Rows; j++)
-		{
-			if (copy_number_diff[j] > 0)
-			{
-				lower_diff = copy_number_diff[j];
-				for (int k = 0; k < Const_var::nmbr_Rows; k++)
-				{
-					if (lower_diff == (cards_selection[i]->Get_number()) - (plateau.Get_row(k).Get_last_card().Get_number())) // *
-					{
-						plateau.Get_row(k).Add_card(cards_selection[i]); // Si il existe encore un emplacement de la rangée choisie
-						j = 4;
-						card_added_in_ronw = true;
-						break;
-					}
-					if (card_added_in_ronw == true) break;
-				}
-			}
-		}
-	}
-
+	Look_add_in_row(plateau, cards_selection);
 
 	Show_hand(les_joueurs);
 	Show_row(plateau);

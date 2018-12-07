@@ -87,5 +87,10 @@ Card Card::operator<(const Card & other_card) const
 	else return false;
 }
 
+int Card::operator-(const Card & other_card) const
+{
+	return (this->number - other_card.number);
+}
+
 #pragma endregion
 

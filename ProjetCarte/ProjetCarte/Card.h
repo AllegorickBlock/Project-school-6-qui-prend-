@@ -30,6 +30,7 @@ public:
 	Card operator>=(const Card& other_card) const;
 	Card operator>(const Card& other_card) const;
 	Card operator<(const Card& other_card) const;
+	int  operator-(const Card& other_card) const;
 
 
 };

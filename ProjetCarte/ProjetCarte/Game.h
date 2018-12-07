@@ -32,7 +32,9 @@ public:
 	static inline void Show_deck(Deck &my_deck);
 	static inline void Show_hand(Player les_joueurs[]);
 	static inline void Show_row(Game_Board & my_game_board);
+	static inline void Show_cards_selection(Card * cards_selection[]);
 	static inline void Sort_asc(Card * my_tab[]);
 	static inline void Sort_asc(int my_tab[]);
 	static inline void Pick_card_random(Card * cards_selec[], Player les_joueurs[]);
+	static inline void Look_add_in_row(Game_Board & plateau, Card * cards_selection[] );
 };

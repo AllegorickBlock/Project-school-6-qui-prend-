@@ -161,7 +161,7 @@ inline void Game::Look_add_in_row(Game_Board & plateau, Card * cards_selection[]
 
 		for (int j = 0; j < Const_var::nmbr_Rows; j++)
 		{
-			if (copy_number_diff[j] > 0) // Si nous arrivons a notre premiere differences > 0
+			if (copy_number_diff[j] > 0) // Si nous arrivons a notre premiere differences > 0, Cas ou on peut poser la carte
 			{
 				lower_diff = copy_number_diff[j]; 
 				for (int k = 0; k < Const_var::nmbr_Rows; k++) // On va comparer chaque rangée pour voir ou poser notre carte selectionnée

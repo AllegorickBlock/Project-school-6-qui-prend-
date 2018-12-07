@@ -22,7 +22,6 @@ class Game
 		static int  Get_gamer();
 		Turn(Player les_joueurs[], Game_Board& plateau, Deck& my_deck);
 		~Turn();
-		
 	};
 
 public:

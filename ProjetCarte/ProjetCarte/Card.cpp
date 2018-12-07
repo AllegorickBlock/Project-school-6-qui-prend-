@@ -51,30 +51,6 @@ int Card::Get_beef_number() { return this->beef_Number; }
 
 #pragma region surcharges operateurs
 
-Card Card::operator==(const Card & other_card) const
-{
-	if (this->number == other_card.number ) return true;
-	else return false;
-}
-
-Card Card::operator!=(const Card & other_card) const
-{
-	if (this->number != other_card.number) return true;
-	else return false;
-}
-
-Card Card::operator<=(const Card & other_card) const
-{
-	if (this->number <= other_card.number) return true;
-	else return false;
-}
-
-Card Card::operator>=(const Card & other_card) const
-{
-	if (this->number >= other_card.number) return true;
-	else return false;
-}
-
 Card Card::operator>(const Card & other_card) const
 {
 	if (this->number > other_card.number) return true;

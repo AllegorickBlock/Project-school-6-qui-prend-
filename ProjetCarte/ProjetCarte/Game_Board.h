@@ -5,12 +5,10 @@
 
 class Game_Board
 {
-
 public:
 
 	class Row
 	{
-
 		Card * row_card[Const_var::nmbr_cards_in_Rows];
 	public:
 
@@ -22,7 +20,7 @@ public:
 	};
 
 	Row * game_rows[Const_var::nmbr_Rows];
-
+	
 
 	Row & Get_row(int index);
 	Game_Board();

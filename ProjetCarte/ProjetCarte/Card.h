@@ -24,10 +24,7 @@ public:
 	void Set_status(int nbr_status);
 	int	 Get_beef_number();		 // Accesseur a beef_number
 
-	Card operator==(const Card& other_card) const;
-	Card operator!=(const Card& other_card) const;
-	Card operator<=(const Card& other_card) const;
-	Card operator>=(const Card& other_card) const;
+
 	Card operator>(const Card& other_card) const;
 	Card operator<(const Card& other_card) const;
 	int  operator-(const Card& other_card) const;

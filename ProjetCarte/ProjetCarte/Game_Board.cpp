@@ -37,7 +37,8 @@ void Game_Board::Row::Add_card(Card * my_card)
 		if (row_card[l] == nullptr)
 		{
 			row_card[l] = my_card;
-			my_card->Set_status(2);
+			row_card[l]->Set_status(2);
+			my_card = nullptr;
 			break;
 		}
 	}

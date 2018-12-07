@@ -79,7 +79,7 @@ inline void Game::Show_hand(Player les_joueurs[4])
 		cout << "\n\n Joueur " << i << endl;
 		for (int j = 0; j < 10; j++)
 		{
-			if (&les_joueurs[i].Get_hand_player().Get_card_of_hand(j) != nullptr)
+			if (les_joueurs[i].Get_hand_player().Card_in_hand(j) == true)
 			{
 				cout << "[" << les_joueurs[i].Get_hand_player().Get_card_of_hand(j).Get_number() << "|" << les_joueurs[i].Get_hand_player().Get_card_of_hand(j).Get_beef_number();
 				Show_beef_symbol();
@@ -129,6 +129,7 @@ Game::Turn::Turn(Player les_joueurs[], Game_Board & plateau, Deck & my_deck)
 	{
 		random_number = ((rand() % nbr_hand_cards) );
 		cards_selection[i] = &les_joueurs[i].Get_hand_player().Get_card_of_hand(random_number); // On prend toutes les cartes selectionné au hasard par notre joueurs lors de ce tour
+		les_joueurs[i].Get_hand_player().Remove_card(random_number);
 	}
 
 	Sort_asc(cards_selection); // L'index de cartes dans cards_selection ne va plus corespondre a l'index du joueur

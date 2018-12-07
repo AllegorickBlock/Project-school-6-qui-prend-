@@ -12,6 +12,9 @@ class Player
 		~Hand_Player();
 		Card& Get_card_of_hand(int card);	   // Affiche la main du joueur
 		void Add_card(Card * my_card, int index); // Ajoute une carte a la main du joueur
+
+		void Remove_card(int & index);
+		bool Card_in_hand(int & index);
 	};
 
 	Hand_Player * hand; // Membre liant la classe Hand_Player a la classe Player

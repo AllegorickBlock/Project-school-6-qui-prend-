@@ -1,4 +1,5 @@
 #pragma once
+#include "Const_var.h"
 #include "Card.h"
 #include "Player.h"
 #include "Game_Board.h"

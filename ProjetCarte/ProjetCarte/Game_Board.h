@@ -1,7 +1,7 @@
 #pragma once
 #include "Card.h"
 #include "Player.h"
-
+#include "Const_var.h"
 
 class Game_Board
 {

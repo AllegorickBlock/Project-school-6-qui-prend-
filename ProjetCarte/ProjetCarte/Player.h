@@ -1,8 +1,6 @@
 #pragma once
 #include "Card.h"
-#include <ctime>   //Permet d'utiliser time()
-#include <cstdlib> //Permet d'utiliser srand()
-#include "Game.h"
+#include "Const_var.h"
 
 class Player
 {

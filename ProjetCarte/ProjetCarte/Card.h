@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include "Const_var.h"
 
 using namespace std;
 

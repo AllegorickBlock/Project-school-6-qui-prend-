@@ -1,10 +1,11 @@
 #pragma once
 #include "iostream"
-#include <ctime>
-#include "Deck.h"
-#include "Card.h"
+#include "Const_var.h"
 #include "Player.h"
 #include "Game_Board.h"
+#include "Card.h"
+#include "Deck.h"
+#include <ctime>
 #include <fcntl.h>   // Bibliotheque necessaire pour l'utilisation de _setmode
 #include <io.h>	
 #include <ctime>   //Permet d'utiliser time()
@@ -25,7 +26,7 @@ class Game
 	};
 
 public:
-	Game(Player les_joueurs[], Game_Board& plateau, Deck& my_deck);
+	Game();
 	~Game();
 	static inline void Show_beef_symbol();
 	static inline void Show_deck(Deck &my_deck);
@@ -33,14 +34,5 @@ public:
 	static inline void Show_row(Game_Board & my_game_board);
 	static inline void Sort_asc(Card * my_tab[]);
 	static inline void Sort_asc(int my_tab[]);
-	static inline void Pick_card_random(Card cards_selection[], Player les_joueurs[]);
-};
-
-static struct Const_var
-{
-	static const int nmbr_cards_in_Hand = 10;
-	static const int nmbr_Gamer = 4;
-	static const int nmbr_Rows = 4;
-	static const int nmbr_cards_in_Rows = 6;
-	static const int nmbr_deck_cards = 104;
+	static inline void Pick_card_random(Card * cards_selec[], Player les_joueurs[]);
 };

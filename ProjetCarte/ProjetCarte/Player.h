@@ -16,7 +16,6 @@ public:
 		~Hand_Player();
 		Card& Get_card_of_hand(int card);	   // Affiche la main du joueur
 		void Add_card(Card * my_card, int index); // Ajoute une carte a la main du joueur
-		void Pick_card_random(Card cards_selection[],Player les_joueurs[]);
 
 		void Remove_card(int & index);
 		bool Card_in_hand(int & index);

@@ -16,6 +16,8 @@ Player::~Player() // Le destructeur va detruite l'instance dynamique cree par le
 Player::Hand_Player& Player::Get_hand_player() { return *this->hand; }
 
 
+
+
 #pragma endregion
 
 #pragma region Classe Player::Hand_Player
@@ -33,18 +35,6 @@ void Player::Hand_Player::Add_card(Card * my_card, int index) // ON DOIT FAIRE U
 	player_Cards[index]->Set_status(1);
 }
 
-void Player::Hand_Player::Pick_card_random(Card cards_selection[],Player& les_joueurs[])
-{
-	srand(time(0)); // Prend un temps random comme valeur, permet de s'assurer d'avoir des chifres differents
-	int random_number = 0;
-	for (int i = 0; i < Const_var::nmbr_Gamer; i++)
-	{
-		random_number = ((rand() % Const_var::nmbr_cards_in_Hand) );
-		cards_selection[i] = les_joueurs[i].Get_hand_player().Get_card_of_hand(random_number); // On prend toutes les cartes selectionné au hasard par notre joueurs lors de ce tour
-		les_joueurs[i].Get_hand_player().Remove_card(random_number);
-	}
-
-}
 
 void Player::Hand_Player::Remove_card(int & index)
 {

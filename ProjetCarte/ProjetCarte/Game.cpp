@@ -71,7 +71,7 @@ inline void Game::Show_deck(Deck &my_deck)
 	}
 }
 
-inline void Game::Show_hand(Player les_joueurs[4])
+inline void Game::Show_hand(Player les_joueurs[])
 {
 	cout << "\n\n\n Carte des joueurs : \n";
 	for (int i = 0; i < 4; i++)
@@ -115,6 +115,18 @@ inline void Game::Show_row(Game_Board & plateau)
 #pragma endregion
 
 
+inline void Game::Pick_card_random(Card cards_selection[], Player les_joueurs[])
+{
+	srand(time(0)); // Prend un temps random comme valeur, permet de s'assurer d'avoir des chifres differents
+	int random_number = 0;
+	for (int i = 0; i < Const_var::nmbr_Gamer; i++)
+	{
+		random_number = ((rand() % Const_var::nmbr_cards_in_Hand));
+		cards_selection[i] = les_joueurs[i].Get_hand_player().Get_card_of_hand(random_number); // On prend toutes les cartes selectionné au hasard par notre joueurs lors de ce tour
+		les_joueurs[i].Get_hand_player().Remove_card(random_number);
+	}
+
+}
 
 #pragma region Turn
 
@@ -126,7 +138,7 @@ Game::Turn::Turn(Player les_joueurs[], Game_Board & plateau, Deck & my_deck)
 	srand(time(0));  // Prend un temps random comme valeur, permet de s'assurer d'avoir des chifres differents
 	int random_number = 0;
 
-	Player::Hand_Player::Pick_card_random(&cards_selection[], &les_joueurs[]);
+	Player::Hand_Player::Pick_card_random(cards_selection, les_joueurs);
 
 	//for (int i = 0; i < Const_var::nmbr_Gamer; i++)
 	//{

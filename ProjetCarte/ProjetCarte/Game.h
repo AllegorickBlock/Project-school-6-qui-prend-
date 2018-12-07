@@ -33,6 +33,7 @@ public:
 	static inline void Show_row(Game_Board & my_game_board);
 	static inline void Sort_asc(Card * my_tab[]);
 	static inline void Sort_asc(int my_tab[]);
+	static inline void Pick_card_random(Card cards_selection[], Player les_joueurs[]);
 };
 
 static struct Const_var

@@ -30,14 +30,17 @@ Game_Board::~Game_Board()
 
 /////////////////////////
 
-void Game_Board::Row::Add_card(Card * my_card, int index)
+void Game_Board::Row::Add_card(Card * my_card)
 {
-	if (index >= 0 && index < nbr_cards_in_rows)
+	for (int l = 0; l < nbr_cards_in_rows; l++)
 	{
-		row_card[index] = my_card;
-		row_card[index]->Set_status(2);
+		if (row_card[l] == nullptr)
+		{
+			row_card[l] = my_card;
+			my_card->Set_status(2);
+			break;
+		}
 	}
-	else throw new exception("On essaye d'ajouter une carte de trop dans les rangées");
 }
 
 Card & Game_Board::Row::Get_card(int index)

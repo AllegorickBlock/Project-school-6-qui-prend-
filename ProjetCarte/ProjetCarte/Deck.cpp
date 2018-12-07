@@ -50,19 +50,12 @@ void Deck::Add_card_to_row(Game_Board::Row & my_row)
 	{
 		if ((this->tab_Cards[i]->In_Deck() == true) ) // ON regarde celle qui restent dans le paquet
 		{
-			for (int j = 0; j < nbr_cards_in_rows; j++) // On regarde les cartes dans la rangée
-			{
-				if (&my_row.Get_card(j) == nullptr) // ON ajoute les cartes dns l'espace de la rangée disponible
-				{
-					my_row.Add_card(this->tab_Cards[i],j);
-					card_added = true;
-					break;
-				}
-			}
+			my_row.Add_card(this->tab_Cards[i]);
+			card_added = true;
+			break;
 			if (card_added == true) break;
 		}
 	}
-
 }
 
 void Deck::Mix_card()// Reprend les 104 cartes du jeux et les mellange

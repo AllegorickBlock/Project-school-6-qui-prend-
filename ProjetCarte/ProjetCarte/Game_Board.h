@@ -16,7 +16,7 @@ public:
 		Card * row_card[6];
 	public:
 
-		void Add_card(Card * my_card, int index);
+		void Add_card(Card * my_card);
 		Card& Get_card(int index);
 		Card& Get_last_card();
 		Row();

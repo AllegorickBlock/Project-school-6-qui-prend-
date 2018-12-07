@@ -79,9 +79,12 @@ inline void Game::Show_hand(Player les_joueurs[4])
 		cout << "\n\n Joueur " << i << endl;
 		for (int j = 0; j < 10; j++)
 		{
-			cout << "[" << les_joueurs[i].Get_hand_player().Get_card_of_hand(j).Get_number() << "|" << les_joueurs[i].Get_hand_player().Get_card_of_hand(j).Get_beef_number();
-			Show_beef_symbol();
-			cout << "]  ";
+			if (&les_joueurs[i].Get_hand_player().Get_card_of_hand(j) != nullptr)
+			{
+				cout << "[" << les_joueurs[i].Get_hand_player().Get_card_of_hand(j).Get_number() << "|" << les_joueurs[i].Get_hand_player().Get_card_of_hand(j).Get_beef_number();
+				Show_beef_symbol();
+				cout << "]  ";
+			}
 		}
 	}
 }
@@ -128,7 +131,7 @@ Game::Turn::Turn(Player les_joueurs[], Game_Board & plateau, Deck & my_deck)
 		cards_selection[i] = &les_joueurs[i].Get_hand_player().Get_card_of_hand(random_number); // On prend toutes les cartes selectionné au hasard par notre joueurs lors de ce tour
 	}
 
-	Sort_asc(cards_selection); 
+	Sort_asc(cards_selection); // L'index de cartes dans cards_selection ne va plus corespondre a l'index du joueur
 	cout << "\n\t Cartes selectionnées : ";
 	for (int i = 0; i < 4; i++)
 	{
@@ -142,7 +145,10 @@ Game::Turn::Turn(Player les_joueurs[], Game_Board & plateau, Deck & my_deck)
 
 	for (int i = 0; i < number_Gamer; i++) // On regarde toute les differences des nombres de la carte selectionné du joueur avec celles des rangées
 	{
-		for (int j = 0; j < number_Row; j++) copy_number_diff[j] = (cards_selection[i]->Get_number()) - (plateau.Get_row(j).Get_last_card().Get_number());
+		for (int j = 0; j < number_Row; j++)
+		{
+			copy_number_diff[j] = (cards_selection[i]->Get_number()) - (plateau.Get_row(j).Get_last_card().Get_number());	// *
+		}
 		// On stoque toute les differences de notre cards_selection[i] avec toute les cartes des rangées
 
 		int lower_diff = 0;
@@ -157,29 +163,17 @@ Game::Turn::Turn(Player les_joueurs[], Game_Board & plateau, Deck & my_deck)
 				lower_diff = copy_number_diff[j];
 				for (int k = 0; k < number_Row; k++)
 				{
-					if (lower_diff == (cards_selection[i]->Get_number()) - (plateau.Get_row(k).Get_last_card().Get_number()))
+					if (lower_diff == (cards_selection[i]->Get_number()) - (plateau.Get_row(k).Get_last_card().Get_number())) // *
 					{
-						for (int l = 0; l < 6; l++)
-						{
-							if (&plateau.Get_row(k).Get_card(l) == nullptr)
-							{
-								plateau.Get_row(k).Add_card(cards_selection[i], l); // Si il existe encore un emplacement de la rangée choisie
-								j = 4;
-								card_added_in_ronw = true;
-								break;
-							}
-						}
+						plateau.Get_row(k).Add_card(cards_selection[i]); // Si il existe encore un emplacement de la rangée choisie
+						j = 4;
+						card_added_in_ronw = true;
+						break;
 					}
 					if (card_added_in_ronw == true) break;
 				}
-				// ON recupere l'indice de la plus petit difference dans notre tableau copy_number_diff, refletant la rangée avec la derniere carte
-				// On fait bien attention de recuperer une Difference POSITIVE, signifiant que notre carte avec la plus petite difference est bien superieur à la rangée definie
-			
 			}
-			
 		}
-
-
 	}
 
 

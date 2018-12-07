@@ -44,7 +44,7 @@ bool Card::In_Row()
 
 #pragma endregion
 
-int Card::Get_number() { return number; }
+int Card::Get_number() { return this->number; }
 void Card::Set_number(int nmbr) { this->number = nmbr; } // Permet de modifier le numero de carte
 
 int Card::Get_beef_number() { return this->beef_Number; }

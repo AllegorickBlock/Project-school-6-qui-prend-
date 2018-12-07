@@ -21,7 +21,7 @@ Game::Game(Player les_joueurs[], Game_Board& plateau, Deck& my_deck)
 	cout << " \n\n\n\n Deck melangé : \n\n";
 	Show_deck(my_deck);
 
-	for (int i = 0; i < number_Gamer; i++) // ajout des cartes dans les mains des joueurs et des rangées
+	for (int i = 0; i < Const_var::nmbr_Gamer; i++) // ajout des cartes dans les mains des joueurs et des rangées
 	{
 		my_deck.Add_card_to_player(les_joueurs[i]);
 		my_deck.Add_card_to_row(plateau.Get_row(i));
@@ -125,28 +125,31 @@ Game::Turn::Turn(Player les_joueurs[], Game_Board & plateau, Deck & my_deck)
 	cout << "\n\n\n\n\t----|Tour " << number_turn << "|----";
 	srand(time(0));  // Prend un temps random comme valeur, permet de s'assurer d'avoir des chifres differents
 	int random_number = 0;
-	for (int i = 0; i < number_Gamer ; i++)
-	{
-		random_number = ((rand() % nbr_hand_cards) );
-		cards_selection[i] = &les_joueurs[i].Get_hand_player().Get_card_of_hand(random_number); // On prend toutes les cartes selectionné au hasard par notre joueurs lors de ce tour
-		les_joueurs[i].Get_hand_player().Remove_card(random_number);
-	}
+
+	Player::Hand_Player::Pick_card_random(&cards_selection[], &les_joueurs[]);
+
+	//for (int i = 0; i < Const_var::nmbr_Gamer; i++)
+	//{
+	//	random_number = ((rand() % Const_var::nmbr_cards_in_Hand) );
+	//	cards_selection[i] = &les_joueurs[i].Get_hand_player().Get_card_of_hand(random_number); // On prend toutes les cartes selectionné au hasard par notre joueurs lors de ce tour
+	//	les_joueurs[i].Get_hand_player().Remove_card(random_number);
+	//}
 
 	Sort_asc(cards_selection); // L'index de cartes dans cards_selection ne va plus corespondre a l'index du joueur
 	cout << "\n\t Cartes selectionnées : ";
-	for (int i = 0; i < 4; i++)
+	for (int i = 0; i < Const_var::nmbr_Gamer; i++)
 	{
 		cout << "[" << cards_selection[i]->Get_number() << "|" << cards_selection[i]->Get_beef_number();
 		Show_beef_symbol();
 		cout << "]  ";
 	}
 
-	int copy_number_diff[4];
+	int copy_number_diff[Const_var::nmbr_Gamer];
 	
 
-	for (int i = 0; i < number_Gamer; i++) // On regarde toute les differences des nombres de la carte selectionné du joueur avec celles des rangées
+	for (int i = 0; i < Const_var::nmbr_Gamer; i++) // On regarde toute les differences des nombres de la carte selectionné du joueur avec celles des rangées
 	{
-		for (int j = 0; j < number_Row; j++)
+		for (int j = 0; j < Const_var::nmbr_Gamer; j++)
 		{
 			copy_number_diff[j] = (cards_selection[i]->Get_number()) - (plateau.Get_row(j).Get_last_card().Get_number());	// *
 		}
@@ -157,12 +160,12 @@ Game::Turn::Turn(Player les_joueurs[], Game_Board & plateau, Deck & my_deck)
 
 		Sort_asc(copy_number_diff);
 
-		for (int j = 0; j < number_Row; j++)
+		for (int j = 0; j < Const_var::nmbr_Rows; j++)
 		{
 			if (copy_number_diff[j] > 0)
 			{
 				lower_diff = copy_number_diff[j];
-				for (int k = 0; k < number_Row; k++)
+				for (int k = 0; k < Const_var::nmbr_Rows; k++)
 				{
 					if (lower_diff == (cards_selection[i]->Get_number()) - (plateau.Get_row(k).Get_last_card().Get_number())) // *
 					{

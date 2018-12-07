@@ -13,15 +13,12 @@
 class Game
 {
 	
-	const int number_Gamer = 4;
 	class Turn
 	{
 		Card * cards_selection[4];
-		const int nbr_hand_cards = 10;
-		const int number_Gamer = 4;
-		const int number_Row = 4;
-	public:
 
+	public:
+		static int  Get_gamer();
 		Turn(Player les_joueurs[], Game_Board& plateau, Deck& my_deck);
 		~Turn();
 		
@@ -38,3 +35,11 @@ public:
 	static inline void Sort_asc(int my_tab[]);
 };
 
+static struct Const_var
+{
+	static const int nmbr_cards_in_Hand = 10;
+	static const int nmbr_Gamer = 4;
+	static const int nmbr_Rows = 4;
+	static const int nmbr_cards_in_Rows = 6;
+	static const int nmbr_deck_cards = 104;
+};

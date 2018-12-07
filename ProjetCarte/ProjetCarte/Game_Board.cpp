@@ -4,13 +4,13 @@
 
 Game_Board::Row & Game_Board::Get_row(int index)
 {
-	if(index >= 0 && index < nbr_row) return *this->game_rows[index];
+	if(index >= 0 && index < Const_var::nmbr_Rows) return *this->game_rows[index];
 	else throw new exception("On essaye d'acceder a une rangée inexistante");
 }
 
 Game_Board::Game_Board()
 {
-	for (int i = 0; i < nbr_row; i++)
+	for (int i = 0; i < Const_var::nmbr_Rows; i++)
 	{
 		this->game_rows[i] = new Row();
 	}
@@ -19,7 +19,7 @@ Game_Board::Game_Board()
 
 Game_Board::~Game_Board()
 {
-	for (int i = 0; i < nbr_row; i++)
+	for (int i = 0; i < Const_var::nmbr_Rows; i++)
 	{
 		delete this->game_rows[i];
 		this->game_rows[i] = nullptr;
@@ -32,7 +32,7 @@ Game_Board::~Game_Board()
 
 void Game_Board::Row::Add_card(Card * my_card)
 {
-	for (int l = 0; l < nbr_cards_in_rows; l++)
+	for (int l = 0; l < Const_var::nmbr_cards_in_Rows; l++)
 	{
 		if (row_card[l] == nullptr)
 		{
@@ -46,14 +46,14 @@ void Game_Board::Row::Add_card(Card * my_card)
 
 Card & Game_Board::Row::Get_card(int index)
 {
-	if (index < nbr_cards_in_rows && nbr_cards_in_rows >= 0) return *row_card[index];
+	if (index < Const_var::nmbr_cards_in_Rows && Const_var::nmbr_cards_in_Rows >= 0) return *row_card[index];
 }
 
 Card & Game_Board::Row::Get_last_card()
 {
-	for (int i = 0; i < nbr_cards_in_rows; i++)
+	for (int i = 0; i < Const_var::nmbr_cards_in_Rows; i++)
 	{
-		if(i == 5) return *this->row_card[5];
+		if(i == 5) return *this->row_card[Const_var::nmbr_cards_in_Rows-1];
 		else if (this->row_card[i + 1] == nullptr)
 		{
 			return *this->row_card[i];
@@ -62,6 +62,6 @@ Card & Game_Board::Row::Get_last_card()
 	}
 }
 
-Game_Board::Row::Row() { for (int i = 0; i < nbr_cards_in_rows; i++) row_card[i] = nullptr; }
+Game_Board::Row::Row() { for (int i = 0; i < Const_var::nmbr_cards_in_Rows; i++) row_card[i] = nullptr; }
 
-Game_Board::Row::~Row() { for (int i = 0; i < nbr_cards_in_rows; i++) row_card[i] = nullptr; }
+Game_Board::Row::~Row() { for (int i = 0; i < Const_var::nmbr_cards_in_Rows; i++) row_card[i] = nullptr; }

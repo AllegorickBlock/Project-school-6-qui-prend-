@@ -5,15 +5,13 @@
 
 class Game_Board
 {
-	const int nbr_row = 4;
 
 public:
 
 	class Row
 	{
-		const int nbr_cards_in_rows = 6;
 
-		Card * row_card[6];
+		Card * row_card[Const_var::nmbr_cards_in_Rows];
 	public:
 
 		void Add_card(Card * my_card);
@@ -23,7 +21,7 @@ public:
 		~Row();
 	};
 
-	Row * game_rows[4];
+	Row * game_rows[Const_var::nmbr_Rows];
 
 
 	Row & Get_row(int index);

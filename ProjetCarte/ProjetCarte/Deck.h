@@ -6,10 +6,7 @@
 #include <cstdlib> //Permet d'utiliser srand()
 class Deck
 {
-	const int nbr_deck_cards = 104;
-	const int nbr_player_cards = 10;
-	const int nbr_cards_in_rows = 6;
-	Card *tab_Cards[104]; // Pointeur renvoyant un tableau de differentes adresses ou l'on souhaitera stocker nos objets Card
+	Card *tab_Cards[Const_var::nmbr_deck_cards]; // Pointeur renvoyant un tableau de differentes adresses ou l'on souhaitera stocker nos objets Card
 	
 public:
 	Deck();

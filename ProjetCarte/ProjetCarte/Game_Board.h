@@ -13,6 +13,8 @@ public:
 	public:
 
 		void Add_card(Card * my_card);
+		void Remove_all();
+		int Get_sum_number_beef();
 		Card& Get_card(int index);
 		Card& Get_last_card();
 		Row();

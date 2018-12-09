@@ -4,7 +4,12 @@
 #pragma region Classe Player
 
 #pragma region Player : Constructeur & Destructeur
-Player::Player() { this->hand = new Player::Hand_Player(); } // On cree dynamiquement notre objet main apparente au joueur
+Player::Player() 
+{ 
+	this->hand = new Player::Hand_Player();
+	this->score = 0;
+
+} // On cree dynamiquement notre objet main apparente au joueur
 
 Player::~Player() // Le destructeur va detruite l'instance dynamique cree par le constructeur
 {
@@ -14,6 +19,16 @@ Player::~Player() // Le destructeur va detruite l'instance dynamique cree par le
 #pragma endregion
 
 Player::Hand_Player& Player::Get_hand_player() { return *this->hand; }
+
+void Player::Add_to_number_score(int beef_score)
+{
+	this->score += beef_score;
+}
+
+int Player::Get_score()
+{
+	return this->score;
+}
 
 
 

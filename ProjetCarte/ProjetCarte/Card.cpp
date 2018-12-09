@@ -42,6 +42,12 @@ bool Card::In_Row()
 	else return false;
 }
 
+bool Card::Out_of_game()
+{
+	if (status == offside_status) return true;
+	else return false;
+}
+
 #pragma endregion
 
 int Card::Get_number() { return this->number; }

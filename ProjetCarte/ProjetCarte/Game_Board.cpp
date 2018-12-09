@@ -44,6 +44,27 @@ void Game_Board::Row::Add_card(Card * my_card)
 	}
 }
 
+void Game_Board::Row::Remove_all()
+{
+	for (int i = 0; i < Const_var::nmbr_cards_in_Rows; i++)
+	{
+		this->row_card[i] = nullptr;
+	}
+}
+
+int Game_Board::Row::Get_sum_number_beef()
+{
+	int sum = 0;
+	for (int i = 0; i < Const_var::nmbr_cards_in_Rows; i++)
+	{
+		if (this->row_card[i] != nullptr)
+		{
+			sum += this->row_card[i]->Get_beef_number();
+		}
+		else return sum;
+	}
+}
+
 Card & Game_Board::Row::Get_card(int index)
 {
 	if (index < Const_var::nmbr_cards_in_Rows && Const_var::nmbr_cards_in_Rows >= 0) return *row_card[index];

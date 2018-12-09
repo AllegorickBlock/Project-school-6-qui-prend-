@@ -1,19 +1,5 @@
-﻿  Card.cpp
+﻿  Game.cpp
 c:\users\martin\desktop\vraiprojetprogra\groupe10\projetcarte\projetcarte\const_var.h(10): warning C4091: 'static ' : ignoré à gauche de 'Const_var' quand aucune variable n'est déclarée
-  Deck.cpp
-c:\users\martin\desktop\vraiprojetprogra\groupe10\projetcarte\projetcarte\const_var.h(10): warning C4091: 'static ' : ignoré à gauche de 'Const_var' quand aucune variable n'est déclarée
-c:\users\martin\desktop\vraiprojetprogra\groupe10\projetcarte\projetcarte\deck.cpp(63): warning C4244: 'argument' : conversion de 'time_t' en 'unsigned int', perte possible de données
-  Game.cpp
-c:\users\martin\desktop\vraiprojetprogra\groupe10\projetcarte\projetcarte\const_var.h(10): warning C4091: 'static ' : ignoré à gauche de 'Const_var' quand aucune variable n'est déclarée
-c:\users\martin\desktop\vraiprojetprogra\groupe10\projetcarte\projetcarte\game.cpp(136): warning C4244: 'argument' : conversion de 'time_t' en 'unsigned int', perte possible de données
-c:\users\martin\desktop\vraiprojetprogra\groupe10\projetcarte\projetcarte\game.cpp(190): warning C4244: 'argument' : conversion de 'time_t' en 'unsigned int', perte possible de données
-  Game_Board.cpp
-c:\users\martin\desktop\vraiprojetprogra\groupe10\projetcarte\projetcarte\const_var.h(10): warning C4091: 'static ' : ignoré à gauche de 'Const_var' quand aucune variable n'est déclarée
-  Player.cpp
-c:\users\martin\desktop\vraiprojetprogra\groupe10\projetcarte\projetcarte\const_var.h(10): warning C4091: 'static ' : ignoré à gauche de 'Const_var' quand aucune variable n'est déclarée
-  Projet_Carte.cpp
-c:\users\martin\desktop\vraiprojetprogra\groupe10\projetcarte\projetcarte\const_var.h(10): warning C4091: 'static ' : ignoré à gauche de 'Const_var' quand aucune variable n'est déclarée
-  Génération de code en cours...
-c:\users\martin\desktop\vraiprojetprogra\groupe10\projetcarte\projetcarte\game_board.cpp(50): warning C4715: 'Game_Board::Row::Get_card' : les chemins de contrôle ne retournent pas tous une valeur
-c:\users\martin\desktop\vraiprojetprogra\groupe10\projetcarte\projetcarte\game_board.cpp(63): warning C4715: 'Game_Board::Row::Get_last_card' : les chemins de contrôle ne retournent pas tous une valeur
+c:\users\martin\desktop\vraiprojetprogra\groupe10\projetcarte\projetcarte\game.cpp(168): warning C4244: 'argument' : conversion de 'time_t' en 'unsigned int', perte possible de données
+c:\users\martin\desktop\vraiprojetprogra\groupe10\projetcarte\projetcarte\game.cpp(214): warning C4244: 'argument' : conversion de 'time_t' en 'unsigned int', perte possible de données
   ProjetCarte.vcxproj -> C:\Users\Martin\Desktop\VraiProjetProgra\groupe10\ProjetCarte\x64\Debug\ProjetCarte.exe

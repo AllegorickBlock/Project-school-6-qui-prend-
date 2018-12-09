@@ -16,7 +16,7 @@ class Game
 	
 	class Turn
 	{
-		Card * cards_selection[4];
+		Card * cards_selection[Const_var::nmbr_Gamer];
 
 	public:
 		static int  Get_gamer();

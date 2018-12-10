@@ -5,7 +5,7 @@
 
 Card::Card(int nmbr) //Constructeur dans lequel on va definir le beef_number de l'objet Card en fonction de son number
 {
-	if (nmbr > 0 && nmbr <= 104) 
+	if (nmbr > 0 && nmbr <= Const_Var::nmbr_deck_cards) 
 	{
 		this->number = nmbr;
 		if (nmbr == 55) this->beef_Number = 7;
@@ -24,23 +24,10 @@ Card::~Card() {}
 
 #pragma region Fonctions etat de status 
 
-void Card::Set_status(int nbr_status) { this->status = nbr_status; } // Si status : 0 = deck, 1 = hand, 2 = row 
-
-bool Card::In_hand()
-{
-	if (status == deck_status) return true;
-	else return false;
-}
-bool Card::In_Deck()
-{
-	if (status == deck_status) return true;
-	else return false;
-}
-bool Card::In_Row()
-{
-	if (status == row_status) return true;
-	else return false;
-}
+void Card::Set_status(int nbr_status) { this->status = nbr_status; } 
+bool Card::In_hand() { return status == deck_status; }
+bool Card::In_Deck() { return status == deck_status; }
+bool Card::In_Row()  { return status == row_status; }
 
 
 #pragma endregion
@@ -54,14 +41,12 @@ int Card::Get_beef_number() { return this->beef_Number; }
 
 Card Card::operator>(const Card & other_card) const
 {
-	if (this->number > other_card.number) return true;
-	else return false;
+	return this->number > other_card.number;
 }
 
 Card Card::operator<(const Card & other_card) const
 {
-	if (this->number < other_card.number) return true;
-	else return false;
+	return this->number < other_card.number;
 }
 
 int Card::operator-(const Card & other_card) const

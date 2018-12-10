@@ -94,10 +94,10 @@ inline void Game::Show_hand(Player les_joueurs[])
 inline void Game::Show_row(Game_Board & plateau)
 {
 	cout << "\n\n\n Carte des rangees : \n";
-	for (int i = 0; i < 4; i++)
+	for (int i = 0; i < Const_Var::nmbr_Rows; i++)
 	{
 		cout << "\n R" << i << ":\t";
-		for (int j = 0; j < 6; j++)
+		for (int j = 0; j < Const_Var::nmbr_cards_in_Rows; j++)
 		{
 			if (&plateau.Get_row(i).Get_card(j) != nullptr)
 			{

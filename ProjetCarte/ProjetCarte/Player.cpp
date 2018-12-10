@@ -58,8 +58,7 @@ void Player::Hand_Player::Remove_card(int & index)
 
 bool Player::Hand_Player::Card_in_hand(int & index)
 {
-	if (this->player_Cards[index] == nullptr) return false;
-	else return true;
+	return this->player_Cards[index] != nullptr;
 }
 
 Card& Player::Hand_Player::Get_card_of_hand(int card) // Gere les exceptions dans lesquelles on veut acceder a des cartes qui ne sont plus/pas dans la main du joueur

@@ -6,26 +6,26 @@
 class Game_Board
 {
 public:
-
 	class Row
 	{
-		Card * row_card[Const_var::nmbr_cards_in_Rows];
+		Card * row_card[Const_Var::nmbr_cards_in_Rows];
 	public:
+		Row();
+		~Row();
 
 		void Add_card(Card * my_card);
 		void Remove_all();
+
 		int Get_sum_number_beef();
 		Card& Get_card(int index);
 		Card& Get_last_card();
-		Row();
-		~Row();
 	};
 
-	Row * game_rows[Const_var::nmbr_Rows];
-	
+	Row * game_rows[Const_Var::nmbr_Rows];
 
-	Row & Get_row(int index);
 	Game_Board();
 	~Game_Board();
+
+	Row & Get_row(int index);
 };
 

@@ -5,7 +5,7 @@
 
 Card::Card(int nmbr) //Constructeur dans lequel on va definir le beef_number de l'objet Card en fonction de son number
 {
-	if (nmbr > 0 && nmbr <= 104) // On mettera en parametre 0 si l'on souhaite creer des cartes "vides", donc des emplacements pour cartes
+	if (nmbr > 0 && nmbr <= 104) 
 	{
 		this->number = nmbr;
 		if (nmbr == 55) this->beef_Number = 7;
@@ -42,11 +42,6 @@ bool Card::In_Row()
 	else return false;
 }
 
-bool Card::Out_of_game()
-{
-	if (status == offside_status) return true;
-	else return false;
-}
 
 #pragma endregion
 

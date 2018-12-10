@@ -7,13 +7,13 @@
 #include <cstdlib> //Permet d'utiliser srand()
 class Deck
 {
-	Card *tab_Cards[Const_var::nmbr_deck_cards]; // Pointeur renvoyant un tableau de differentes adresses ou l'on souhaitera stocker nos objets Card
+	Card *tab_Cards[Const_Var::nmbr_deck_cards]; // Pointeur renvoyant un tableau de differentes adresses ou l'on souhaitera stocker nos objets Card
 	
 public:
 	Deck();
 	~Deck();
 
-	Card& Get_Card(int card_Number);	   // Accesseur à l'objet Card de tab_Cards en fonction du parametre
+	Card& Get_Card(int card_Number);	   
 	void Add_card_to_player(Player & my_player);
 	void Add_card_to_row(Game_Board::Row & my_row);
 	void Mix_card();

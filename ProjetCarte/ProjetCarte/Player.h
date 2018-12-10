@@ -7,7 +7,7 @@ class Player
 	int score;
 	class Hand_Player // Classe interne a Player 
 	{
-		Card * player_Cards[Const_var::nmbr_cards_in_Hand]; // Contient les 10 pointeurs de cartes du joueur
+		Card * player_Cards[Const_Var::nmbr_cards_in_Hand]; // Contient les 10 pointeurs de cartes du joueur
 	public:
 		Hand_Player();
 		~Hand_Player();

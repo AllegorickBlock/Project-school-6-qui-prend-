@@ -64,7 +64,7 @@ bool Player::Hand_Player::Card_in_hand(int & index)
 
 Card& Player::Hand_Player::Get_card_of_hand(int card) // Gere les exceptions dans lesquelles on veut acceder a des cartes qui ne sont plus/pas dans la main du joueur
 {
-	if (this->player_Cards[card]->Get_number() != 0 && card < Const_var::nmbr_cards_in_Hand && card >= 0) return *player_Cards[card];
+	if (this->player_Cards[card]->Get_number() != 0 && card < Const_Var::nmbr_cards_in_Hand && card >= 0) return *player_Cards[card];
 	else throw "On essaye d'acceder a une carte de la main du joueur n'existant pas/plus !";
 }
 

@@ -11,9 +11,7 @@
 int number_turn;
 Game::Game()
 {
-	Card * offside_deck[Const_var::nmbr_deck_cards];
 
-	for (int i = 0; i < Const_var::nmbr_deck_cards; i++) offside_deck[i] = nullptr;
 	Player les_joueurs[Const_var::nmbr_Gamer];
 	Game_Board plateau;
 	Deck my_deck;
@@ -43,7 +41,9 @@ Game::Game()
 	Show_deck(my_deck);
 
 
-	Turn my_Turn(les_joueurs,plateau,my_deck,offside_deck);
+	Turn my_Turn(les_joueurs,plateau,my_deck);
+
+	Show_deck(my_deck);
 
 
 }
@@ -140,21 +140,6 @@ inline void Game::Show_player_scores(Player my_players[])
 
 }
 
-inline void Game::Show_offside_deck(Card * offside_deck[])
-{
-	cout << "\n Cartes hors jeu : \n ";
-	for (int i = 0; i < Const_var::nmbr_deck_cards; i++)
-	{
-		if (offside_deck[i] != nullptr)
-		{
-			cout << "[" << offside_deck[i]->Get_number() << "|" << offside_deck[i]->Get_beef_number();
-			Show_beef_symbol();
-			cout << "]  ";
-			if ((i + 1) % 10 == 0) cout << "\n";
-		}
-	}
-	cout << " \n ";
-}
 
 
 
@@ -177,7 +162,7 @@ inline void Game::Pick_card_random(Card * cards_selec[], Player les_joueurs[], i
 
 }
 
-inline void Game::Look_add_in_row(Game_Board & plateau, Card * cards_selection[], Player my_players[], int index_players[], Card * offside_deck[])
+inline void Game::Look_add_in_row(Game_Board & plateau, Card * cards_selection[], Player my_players[], int index_players[])
 {
 
 	int copy_number_diff[Const_var::nmbr_Gamer];
@@ -221,8 +206,10 @@ inline void Game::Look_add_in_row(Game_Board & plateau, Card * cards_selection[]
 						cards_selection[i];
 						int j = (int)plateau.Get_row(rand_number).Get_sum_number_beef();
 						my_players[k].Add_to_number_score(j);
-						Add_card_in_offside_deck(plateau.Get_row(rand_number),offside_deck);
+
+						plateau.Get_row(rand_number).Remove_all();
 						plateau.Get_row(rand_number).Add_card(cards_selection[i]);
+						
 					}
 				}
 			}
@@ -230,32 +217,10 @@ inline void Game::Look_add_in_row(Game_Board & plateau, Card * cards_selection[]
 	}
 }
 
-inline void Game::Add_card_in_offside_deck(Game_Board::Row & my_row, Card * offside_deck[])
-{
-	bool action_done = false;
-	for (int i = 0; i < Const_var::nmbr_deck_cards; i++)
-	{
-		if (offside_deck[i] == nullptr) // Si l'emplacement dans notre pile de carte hors jeu est vide, on peut le remplir
-		{
-			for (int j = 0; j < Const_var::nmbr_Rows ; j++) // On va voir toute les cartes de la rangée pour les mettre dans la pile de hors jeu
-			{
-				if (&my_row.Get_card(j) != nullptr) // Si la carte que l'on souhaite retirer du jeu est encore dans la rangée
-				{
-					offside_deck[i + j] = &my_row.Get_card(i);
-				}
-				else break;
-			}
-			action_done = true;
-		}
-		if (action_done == true) break;
-	}
-	my_row.Remove_all();
-
-}
 
 #pragma region Turn
 
-Game::Turn::Turn(Player les_joueurs[], Game_Board & plateau, Deck & my_deck, Card * offside_deck[])
+Game::Turn::Turn(Player les_joueurs[], Game_Board & plateau, Deck & my_deck)
 {
 	
 	number_turn++;
@@ -267,15 +232,13 @@ Game::Turn::Turn(Player les_joueurs[], Game_Board & plateau, Deck & my_deck, Car
 
 	Show_cards_selection(cards_selection);
 
-	Look_add_in_row(plateau, cards_selection, les_joueurs, this->index_player_selection, offside_deck);
+	Look_add_in_row(plateau, cards_selection, les_joueurs, this->index_player_selection);
 
 	Show_hand(les_joueurs);
 	Show_row(plateau);
 	Show_player_scores(les_joueurs);
-	Show_offside_deck(offside_deck);
 
 	for (int i = 0; i < Const_var::nmbr_Gamer; i++) cards_selection[i] = nullptr;
-
 
 
 }

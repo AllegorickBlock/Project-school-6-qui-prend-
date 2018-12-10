@@ -48,6 +48,7 @@ void Game_Board::Row::Remove_all()
 {
 	for (int i = 0; i < Const_var::nmbr_cards_in_Rows; i++)
 	{
+		if(this->row_card[i] != nullptr) this->row_card[i]->Set_status(0); // Si on retire la carte c'est pour la remettre dans le deck
 		this->row_card[i] = nullptr;
 	}
 }

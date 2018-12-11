@@ -17,6 +17,7 @@ public:
 		void Remove_all();
 
 		int Get_sum_number_beef();
+		int Get_nbr_cards_in();
 		Card& Get_card(int index);
 		Card& Get_last_card();
 	};

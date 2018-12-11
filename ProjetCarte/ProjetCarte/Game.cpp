@@ -17,12 +17,12 @@ Game::Game()
 
 	number_turn = 0;
 
-	cout << " \n\n\n\n Deck non melangé : \n\n";
+	cout << " \n\n\t----Deck non melange ---- \n\n";
 	Show_deck(my_deck);
 
 	my_deck.Mix_card();
 
-	cout << " \n\n\n\n Deck melangé : \n\n";
+	cout << " \n\n\t---- Deck melange ---- \n\n";
 	Show_deck(my_deck);
 
 	for (int i = 0; i < Const_Var::nmbr_Gamer; i++) // ajout des cartes dans les mains des joueurs et des rangées
@@ -40,6 +40,24 @@ Game::Game()
 	Show_deck(my_deck);
 
 	Turn my_Turn(les_joueurs,plateau,my_deck);
+
+	Turn my_Turn2(les_joueurs, plateau, my_deck);
+
+	Turn my_Turn3(les_joueurs, plateau, my_deck);
+
+	Turn my_Turn4(les_joueurs, plateau, my_deck);
+
+	Turn my_Turn5(les_joueurs, plateau, my_deck);
+
+	Turn my_Turn6(les_joueurs, plateau, my_deck);
+
+	Turn my_Turn7(les_joueurs, plateau, my_deck);
+
+	Turn my_Turn8(les_joueurs, plateau, my_deck);
+
+	Turn my_Turn9(les_joueurs, plateau, my_deck);
+
+	Turn my_Turn10(les_joueurs, plateau, my_deck);
 
 	Show_deck(my_deck);
 }
@@ -59,33 +77,40 @@ inline void Game::Show_beef_symbol()
 	_setmode(_fileno(stdout), _O_TEXT);    // Necessaire pour eviter un plantage lors de la compilation : on reviens a l'etat normal de mode de translation de texte
 }
 
+inline void Game::Show_card(Card my_card)
+{
+	if (my_card.Get_number() < 10) cout << "[  " << my_card.Get_number() << "|" << my_card.Get_beef_number();
+	else if (my_card.Get_number() < 100) cout << "[ " << my_card.Get_number() << "|" << my_card.Get_beef_number();
+	else cout << "[" << my_card.Get_number() << "|" << my_card.Get_beef_number();
+	Show_beef_symbol();
+	cout << "]  ";
+}
+
 inline void Game::Show_deck(Deck &my_deck)
 {
+	cout << "\n\n---- Carte dand deck ---- \n";
 	for (int j = 0; j < Const_Var::nmbr_deck_cards; j++)
 	{
 		if (my_deck.Get_Card(j).In_Deck())
 		{
-			cout << "[" << my_deck.Get_Card(j).Get_number() << "|" << my_deck.Get_Card(j).Get_beef_number();
-			Show_beef_symbol();
-			cout << "]  ";
-			if ((j + 1) % 10 == 0) cout << "\n";
+			Show_card(my_deck.Get_Card(j));
+			
 		}
+		if ((j + 1) % 10 == 0) cout << "\n";
 	}
 }
 
 inline void Game::Show_hand(Player les_joueurs[])
 {
-	cout << "\n\n\n Carte des joueurs : \n";
+	cout << "\n\n---- Carte des joueurs ---- ";
 	for (int i = 0; i < Const_Var::nmbr_Gamer ; i++)
 	{
-		cout << "\n\n Joueur " << i << endl;
+		cout << "\n Joueur " << i << " : ";
 		for (int j = 0; j < Const_Var::nmbr_cards_in_Hand; j++)
 		{
-			if (les_joueurs[i].Get_hand_player().Card_in_hand(j) == true)
+			if (&les_joueurs[i].Get_hand_player().Get_card_of_hand(j) != nullptr)
 			{
-				cout << "[" << les_joueurs[i].Get_hand_player().Get_card_of_hand(j).Get_number() << "|" << les_joueurs[i].Get_hand_player().Get_card_of_hand(j).Get_beef_number();
-				Show_beef_symbol();
-				cout << "]  ";
+				Show_card(les_joueurs[i].Get_hand_player().Get_card_of_hand(j));
 			}
 		}
 	}
@@ -93,7 +118,7 @@ inline void Game::Show_hand(Player les_joueurs[])
 
 inline void Game::Show_row(Game_Board & plateau)
 {
-	cout << "\n\n\n Carte des rangees : \n";
+	cout << "\n\n---- Carte des rangees ---- ";
 	for (int i = 0; i < Const_Var::nmbr_Rows; i++)
 	{
 		cout << "\n R" << i << ":\t";
@@ -101,35 +126,32 @@ inline void Game::Show_row(Game_Board & plateau)
 		{
 			if (&plateau.Get_row(i).Get_card(j) != nullptr)
 			{
-				cout << "[" << plateau.Get_row(i).Get_card(j).Get_number() << "|" << plateau.Get_row(i).Get_card(j).Get_beef_number();
-				Show_beef_symbol();
-				cout << "]  ";
+				Show_card(plateau.Get_row(i).Get_card(j));
 			}
 			else break;
 		}
 	}
 }
 
-inline void Game::Show_cards_selection(Card * cards_selection[])
+inline void Game::Show_cards_selection(Card * cards_selection[], int index_players[])
 {
-	cout << "\n\t Cartes selectionnes :  ";
+	cout << "\n\n---- Cartes selectionnes ---- \n";
 	for (int i = 0; i < Const_Var::nmbr_Gamer; i++)
 	{
-		cout << "[" << cards_selection[i]->Get_number() << "|" << cards_selection[i]->Get_beef_number();
-		Show_beef_symbol();
-		cout << "]  ";
+
+		cout << "   " ;
+		Show_card(*cards_selection[i]);
+		cout << ": J" << index_players[i] << "   ";
 	}
-	cout << "\n" ;
 }
 
 inline void Game::Show_player_scores(Player my_players[])
 {
-	cout << "\n\t-- Scores des joueurs --";
+	cout << "\n\n------> Scores des joueurs <------";
 	for (int i = 0; i < Const_Var::nmbr_Gamer; i++)
 	{
 		cout << "\nJoueur " << i << " : " << my_players[i].Get_score();
 	}
-	cout << "\n\n";
 }
 
 #pragma endregion
@@ -178,9 +200,13 @@ inline void Game::Pick_card_random(Card * cards_selec[], Player les_joueurs[], i
 	for (int i = 0; i < Const_Var::nmbr_Gamer; i++)
 	{
 		random_number = ((rand() % Const_Var::nmbr_cards_in_Hand));
-		index_players[i] = i;
-		cards_selec[i] = &les_joueurs[i].Get_hand_player().Get_card_of_hand(random_number); // On prend toutes les cartes selectionné au hasard par notre joueurs lors de ce tour
-		les_joueurs[i].Get_hand_player().Remove_card(random_number);
+		if (&les_joueurs[i].Get_hand_player().Get_card_of_hand(random_number) != nullptr)
+		{
+			index_players[i] = i;
+			cards_selec[i] = &les_joueurs[i].Get_hand_player().Get_card_of_hand(random_number); // On prend toutes les cartes selectionné au hasard par notre joueurs lors de ce tour
+			les_joueurs[i].Get_hand_player().Remove_card(random_number);
+		}
+		else i--;
 	}
 }
 
@@ -204,7 +230,12 @@ inline void Game::Look_add_in_row(Game_Board & plateau, Card * cards_selection[]
 				{
 					if (lower_diff == (*cards_selection[i] - plateau.Get_row(k).Get_last_card())) // Si nous recuperons la difference aparenté à la bonne rangé, on va ajouter notre carte selectionnée dans la rangée
 					{
-						plateau.Get_row(k).Add_card(cards_selection[i]); // Si il existe encore un emplacement de la rangée choisie
+						if (plateau.Get_row(k).Get_nbr_cards_in() == 5) // si le nombre carte dans une rangéeavant d'ajouter un carte est de 5
+						{
+							my_players[index_players[i]].Add_to_number_score(plateau.Get_row(k).Get_sum_number_beef());
+							plateau.Get_row(k).Remove_all();
+						}
+						plateau.Get_row(k).Add_card(cards_selection[i]);
 						j = Const_Var::nmbr_Rows;
 						card_added_in_ronw = true;
 						break;
@@ -217,16 +248,11 @@ inline void Game::Look_add_in_row(Game_Board & plateau, Card * cards_selection[]
 				srand(time(0));
 				int rand_number = ((rand() % Const_Var::nmbr_Rows));
 				int index_player = 0;
-				for (int k = 0; k < Const_Var::nmbr_Gamer; k++) // On regarde chaque joueurs
-				{
-					if (k == index_players[i]) // Lorsqu'on recupere l'index du joueur auquel apartient la carte de cards_selection[] en jeu
-					{
-						cards_selection[i];
-						my_players[k].Add_to_number_score(plateau.Get_row(rand_number).Get_sum_number_beef());
-						plateau.Get_row(rand_number).Remove_all();
-						plateau.Get_row(rand_number).Add_card(cards_selection[i]);
-					}
-				}
+				cards_selection[i];
+				my_players[index_players[i]].Add_to_number_score(plateau.Get_row(rand_number).Get_sum_number_beef());
+				plateau.Get_row(rand_number).Remove_all();
+				plateau.Get_row(rand_number).Add_card(cards_selection[i]);
+				
 			}
 		}
 	}
@@ -243,17 +269,20 @@ inline void Game::Look_add_in_row(Game_Board & plateau, Card * cards_selection[]
 Game::Turn::Turn(Player les_joueurs[], Game_Board & plateau, Deck & my_deck)
 {
 	number_turn++;
-	cout << "\n\n\n\n\t----|Tour " << number_turn << "|----";
+	cout << "\n\n--------------------------------------------{Tour " << number_turn << "}--------------------------------------------";
 
+	Show_row(plateau);
+
+	Show_hand(les_joueurs);
 	Pick_card_random(cards_selection, les_joueurs,this->index_player_selection);
 
 	Sort_asc(cards_selection, this->index_player_selection); // L'index de cartes dans cards_selection ne va plus corespondre a l'index du joueur
 
-	Show_cards_selection(cards_selection);
+	
+	Show_cards_selection(cards_selection, this->index_player_selection);
 
 	Look_add_in_row(plateau, cards_selection, les_joueurs, this->index_player_selection);
 
-	Show_hand(les_joueurs);
 	Show_row(plateau);
 	Show_player_scores(les_joueurs);
 

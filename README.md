@@ -10,7 +10,8 @@ LA170005 : Bourlet Jason
 -[X] Etape 2  
 -[X] Etape 3  
 -[X] Etape 4
--[X] Etape 5  
+-[X] Etape 5 
+Il reste le fichier UML à mettre à jour et de revoir le code avant de passer à l'etape 7
 -[ ] Etape 6  
 -[ ] Etape 7  
 -[ ] Etape 8  

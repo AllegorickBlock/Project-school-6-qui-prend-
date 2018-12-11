@@ -9,9 +9,8 @@ LA170005 : Bourlet Jason
 -[X] Etape 1  
 -[X] Etape 2  
 -[X] Etape 3  
--[x] Etape 4  
-Code de l'Etape 5 Fonctionnel et paré à l'emploi, il reste plus qu'a adapter l'UML au code et nous pouvons passer à la suite !
--[ ] Etape 5  
+-[X] Etape 4
+-[X] Etape 5  
 -[ ] Etape 6  
 -[ ] Etape 7  
 -[ ] Etape 8  

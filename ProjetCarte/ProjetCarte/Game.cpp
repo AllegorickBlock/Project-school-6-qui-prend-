@@ -28,6 +28,9 @@ Game::Game()
 	for (int i = 0; i < Const_Var::nmbr_Gamer; i++) // ajout des cartes dans les mains des joueurs et des rangées
 	{
 		my_deck.Add_card_to_player(les_joueurs[i]);
+	}
+	for (int i = 0; i < Const_Var::nmbr_Rows; i++) 
+	{
 		my_deck.Add_card_to_row(plateau.Get_row(i));
 	}
 
@@ -39,25 +42,30 @@ Game::Game()
 
 	Show_deck(my_deck);
 
-	Turn my_Turn(les_joueurs,plateau,my_deck);
+	for (int i = 0; i < 10; i++) 
+	{
+		Turn my_Turn(les_joueurs, plateau, my_deck);
+		Show_deck(my_deck);
+	}
+	//Turn my_Turn(les_joueurs,plateau,my_deck);
 
-	Turn my_Turn2(les_joueurs, plateau, my_deck);
+	//Turn my_Turn2(les_joueurs, plateau, my_deck);
 
-	Turn my_Turn3(les_joueurs, plateau, my_deck);
+	//Turn my_Turn3(les_joueurs, plateau, my_deck);
 
-	Turn my_Turn4(les_joueurs, plateau, my_deck);
+	//Turn my_Turn4(les_joueurs, plateau, my_deck);
 
-	Turn my_Turn5(les_joueurs, plateau, my_deck);
+	//Turn my_Turn5(les_joueurs, plateau, my_deck);
 
-	Turn my_Turn6(les_joueurs, plateau, my_deck);
+	//Turn my_Turn6(les_joueurs, plateau, my_deck);
 
-	Turn my_Turn7(les_joueurs, plateau, my_deck);
+	//Turn my_Turn7(les_joueurs, plateau, my_deck);
 
-	Turn my_Turn8(les_joueurs, plateau, my_deck);
+	//Turn my_Turn8(les_joueurs, plateau, my_deck);
 
-	Turn my_Turn9(les_joueurs, plateau, my_deck);
+	//Turn my_Turn9(les_joueurs, plateau, my_deck);
 
-	Turn my_Turn10(les_joueurs, plateau, my_deck);
+	//Turn my_Turn10(les_joueurs, plateau, my_deck);
 
 	Show_deck(my_deck);
 }
@@ -88,7 +96,7 @@ inline void Game::Show_card(Card my_card)
 
 inline void Game::Show_deck(Deck &my_deck)
 {
-	cout << "\n\n---- Carte dand deck ---- \n";
+	cout << "\n\n---- Carte dans deck ---- \n";
 	for (int j = 0; j < Const_Var::nmbr_deck_cards; j++)
 	{
 		if (my_deck.Get_Card(j).In_Deck())
@@ -121,7 +129,7 @@ inline void Game::Show_row(Game_Board & plateau)
 	cout << "\n\n---- Carte des rangees ---- ";
 	for (int i = 0; i < Const_Var::nmbr_Rows; i++)
 	{
-		cout << "\n R" << i << ":\t";
+		cout << "\n R" << (i+1) << ":\t";
 		for (int j = 0; j < Const_Var::nmbr_cards_in_Rows; j++)
 		{
 			if (&plateau.Get_row(i).Get_card(j) != nullptr)
@@ -150,7 +158,7 @@ inline void Game::Show_player_scores(Player my_players[])
 	cout << "\n\n------> Scores des joueurs <------";
 	for (int i = 0; i < Const_Var::nmbr_Gamer; i++)
 	{
-		cout << "\nJoueur " << i << " : " << my_players[i].Get_score();
+		cout << "\nJoueur " << (i+1) << " : " << my_players[i].Get_score();
 	}
 }
 
@@ -219,7 +227,7 @@ inline void Game::Look_add_in_row(Game_Board & plateau, Card * cards_selection[]
 		for (int j = 0; j < Const_Var::nmbr_Gamer; j++)copy_number_diff[j] = (*cards_selection[i] - plateau.Get_row(j).Get_last_card());
 		// On stoque toute les differences de notre cards_selection[i] avec toute les cartes des rangées
 		int lower_diff = 0;
-		bool card_added_in_ronw = false;
+		bool card_added_in_row = false;
 		Sort_asc(copy_number_diff); // On met dans l'ordre du plus petit au plus grand notre liste des differences mathématiques obtenues
 		for (int j = 0; j < Const_Var::nmbr_Rows; j++)
 		{
@@ -230,17 +238,18 @@ inline void Game::Look_add_in_row(Game_Board & plateau, Card * cards_selection[]
 				{
 					if (lower_diff == (*cards_selection[i] - plateau.Get_row(k).Get_last_card())) // Si nous recuperons la difference aparenté à la bonne rangé, on va ajouter notre carte selectionnée dans la rangée
 					{
-						if (plateau.Get_row(k).Get_nbr_cards_in() == 5) // si le nombre carte dans une rangéeavant d'ajouter un carte est de 5
+						if (plateau.Get_row(k).Get_nbr_cards_in() == Const_Var::nmbr_cards_in_Rows - 1) // si le nombre carte dans une rangée avant d'ajouter un carte est de 5
 						{
 							my_players[index_players[i]].Add_to_number_score(plateau.Get_row(k).Get_sum_number_beef());
 							plateau.Get_row(k).Remove_all();
+
 						}
 						plateau.Get_row(k).Add_card(cards_selection[i]);
 						j = Const_Var::nmbr_Rows;
-						card_added_in_ronw = true;
+						card_added_in_row = true;
 						break;
 					}
-					if (card_added_in_ronw == true) break;
+					if (card_added_in_row == true) break;
 				}
 			}
 			else if( j == (Const_Var::nmbr_Rows - 1) ) // Si la carte a un nombre trop petit et ne peut être ajouté a aucune rangée

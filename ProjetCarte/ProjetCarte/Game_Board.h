@@ -20,6 +20,7 @@ public:
 		int Get_nbr_cards_in();
 		Card& Get_card(int index);
 		Card& Get_last_card();
+		void Remove_card(int & index);
 	};
 
 	Row * game_rows[Const_Var::nmbr_Rows];

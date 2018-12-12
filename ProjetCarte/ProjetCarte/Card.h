@@ -12,7 +12,7 @@ class Card
 
 	int number;
 	int beef_Number;
-	int status; // Si status : 0 = deck, 1 = hand, 2 = row 
+	int status;
 				
 public:
 	Card(int nmbr);
@@ -21,7 +21,7 @@ public:
 	bool In_hand();
 	bool In_Deck();
 	bool In_Row();
-	void Set_status(int nbr_status);
+	void Set_status(int nbr_status);// Si status : 0 = deck, 1 = hand, 2 = row 
 
 	int  Get_number();		     
 	void Set_number(int nmbr);	

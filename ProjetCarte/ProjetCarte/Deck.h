@@ -17,6 +17,7 @@ public:
 	void Add_card_to_player(Player & my_player);
 	void Add_card_to_row(Game_Board::Row & my_row);
 	void Mix_card();
+	void Recover_cards_and_mix(Player my_player[] ,Game_Board & the_board);
 	
 
 };

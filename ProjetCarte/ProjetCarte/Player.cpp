@@ -51,18 +51,9 @@ void Player::Hand_Player::Add_card(Card * my_card, int index) // ON DOIT FAIRE U
 }
 
 
-void Player::Hand_Player::Remove_card(int & index)
-{
-	this->player_Cards[index] = nullptr;
-	// Il faudra remplir les cartes automatiquement 
+void Player::Hand_Player::Remove_card(int & index)	{	this->player_Cards[index] = nullptr;	}
 
-
-}
-
-bool Player::Hand_Player::Card_in_hand(int & index)
-{
-	return this->player_Cards[index] != nullptr;
-}
+bool Player::Hand_Player::Card_in_hand(int & index)	{	return this->player_Cards[index] != nullptr;	}
 
 Card& Player::Hand_Player::Get_card_of_hand(int card) // Gere les exceptions dans lesquelles on veut acceder a des cartes qui ne sont plus/pas dans la main du joueur
 {

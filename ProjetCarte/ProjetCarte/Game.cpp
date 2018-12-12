@@ -41,33 +41,32 @@ Game::Game()
 	cout << "\n\n\n\n Carte restante dans le Paquets \n\n";
 
 	Show_deck(my_deck);
-
-	for (int i = 0; i < 10; i++) 
+	for( this->end = false; end != true; )
 	{
-		Turn my_Turn(les_joueurs, plateau, my_deck);
-		Show_deck(my_deck);
+
+		for (int i = 0; i < Const_Var::nmbr_cards_in_Hand && (end == false); i++)
+		{
+			Turn my_Turn(les_joueurs, plateau, my_deck);
+			for (int j = 0; j < Const_Var::nmbr_Gamer; j++)
+			{
+				if (les_joueurs[j].Get_score() >= 66)
+				{
+					this->end = true;
+					my_deck.Recover_cards_and_mix(les_joueurs, plateau);
+					break;
+				}
+			}
+		}
+		my_deck.Recover_cards_and_mix(les_joueurs, plateau);
+		for (int i = 0; i < Const_Var::nmbr_Gamer; i++) // ajout des cartes dans les mains des joueurs et des rangées
+		{
+			my_deck.Add_card_to_player(les_joueurs[i]);
+		}
+		for (int i = 0; i < Const_Var::nmbr_Rows; i++)
+		{
+			my_deck.Add_card_to_row(plateau.Get_row(i));
+		}
 	}
-	//Turn my_Turn(les_joueurs,plateau,my_deck);
-
-	//Turn my_Turn2(les_joueurs, plateau, my_deck);
-
-	//Turn my_Turn3(les_joueurs, plateau, my_deck);
-
-	//Turn my_Turn4(les_joueurs, plateau, my_deck);
-
-	//Turn my_Turn5(les_joueurs, plateau, my_deck);
-
-	//Turn my_Turn6(les_joueurs, plateau, my_deck);
-
-	//Turn my_Turn7(les_joueurs, plateau, my_deck);
-
-	//Turn my_Turn8(les_joueurs, plateau, my_deck);
-
-	//Turn my_Turn9(les_joueurs, plateau, my_deck);
-
-	//Turn my_Turn10(les_joueurs, plateau, my_deck);
-
-	Show_deck(my_deck);
 }
 
 Game::~Game()

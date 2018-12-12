@@ -4,11 +4,10 @@
 
 class Player
 {
-public:
+	int score;
 	class Hand_Player // Classe interne a Player 
 	{
-		
-		Card * player_Cards[Const_var::nmbr_cards_in_Hand]; // Contient les 10 pointeurs de cartes du joueur
+		Card * player_Cards[Const_Var::nmbr_cards_in_Hand]; // Contient les 10 pointeurs de cartes du joueur
 	public:
 		Hand_Player();
 		~Hand_Player();
@@ -25,6 +24,8 @@ public:
 	Player();
 	~Player();
 	Hand_Player& Get_hand_player(); // Accesseur pour le membre hand dans la classe Player
+	void Add_to_number_score(int beef_score);
+	int Get_score();
 
 };
 

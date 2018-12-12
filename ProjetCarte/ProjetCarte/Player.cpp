@@ -4,7 +4,12 @@
 #pragma region Classe Player
 
 #pragma region Player : Constructeur & Destructeur
-Player::Player() { this->hand = new Player::Hand_Player(); } // On cree dynamiquement notre objet main apparente au joueur
+Player::Player() 
+{ 
+	this->hand = new Player::Hand_Player();
+	this->score = 0;
+
+} // On cree dynamiquement notre objet main apparente au joueur
 
 Player::~Player() // Le destructeur va detruite l'instance dynamique cree par le constructeur
 {
@@ -14,6 +19,16 @@ Player::~Player() // Le destructeur va detruite l'instance dynamique cree par le
 #pragma endregion
 
 Player::Hand_Player& Player::Get_hand_player() { return *this->hand; }
+
+void Player::Add_to_number_score(int beef_score)
+{
+	this->score += beef_score;
+}
+
+int Player::Get_score()
+{
+	return this->score;
+}
 
 
 
@@ -36,21 +51,13 @@ void Player::Hand_Player::Add_card(Card * my_card, int index) // ON DOIT FAIRE U
 }
 
 
-void Player::Hand_Player::Remove_card(int & index)
-{
-	this->player_Cards[index] = nullptr;
-}
+void Player::Hand_Player::Remove_card(int & index)	{	this->player_Cards[index] = nullptr;	}
 
-bool Player::Hand_Player::Card_in_hand(int & index)
-{
-	if (this->player_Cards[index] == nullptr) return false;
-	else return true;
-}
+bool Player::Hand_Player::Card_in_hand(int & index)	{	return this->player_Cards[index] != nullptr;	}
 
 Card& Player::Hand_Player::Get_card_of_hand(int card) // Gere les exceptions dans lesquelles on veut acceder a des cartes qui ne sont plus/pas dans la main du joueur
 {
-	if (this->player_Cards[card]->Get_number() != 0 && card < Const_var::nmbr_cards_in_Hand && card >= 0) return *player_Cards[card];
-	else throw "On essaye d'acceder a une carte de la main du joueur n'existant pas/plus !";
+	if (card < Const_Var::nmbr_cards_in_Hand && card >= 0) return *player_Cards[card];
 }
 
 #pragma endregion

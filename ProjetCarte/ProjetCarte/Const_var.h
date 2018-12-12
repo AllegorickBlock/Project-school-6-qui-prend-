@@ -1,6 +1,6 @@
 #pragma once
 
-static struct Const_var
+static struct Const_Var // Classe qui contient les variables constente clés du jeu qui sont utilsé beaucoup de fois
 {
 	static const int nmbr_cards_in_Hand = 10;
 	static const int nmbr_Gamer = 4;

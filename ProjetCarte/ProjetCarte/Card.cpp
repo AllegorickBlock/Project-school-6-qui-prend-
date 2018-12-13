@@ -29,7 +29,6 @@ bool Card::In_hand() { return status == deck_status; }
 bool Card::In_Deck() { return status == deck_status; }
 bool Card::In_Row()  { return status == row_status; }
 
-
 #pragma endregion
 
 int Card::Get_number() { return this->number; }
@@ -39,20 +38,11 @@ int Card::Get_beef_number() { return this->beef_Number; }
 
 #pragma region surcharges operateurs
 
-Card Card::operator>(const Card & other_card) const
-{
-	return this->number > other_card.number;
-}
+Card Card::operator>(const Card & other_card) const	{	return this->number > other_card.number;	}
 
-Card Card::operator<(const Card & other_card) const
-{
-	return this->number < other_card.number;
-}
+Card Card::operator<(const Card & other_card) const	{	return this->number < other_card.number;	}
 
-int Card::operator-(const Card & other_card) const
-{
-	return (this->number - other_card.number);
-}
+int Card::operator-(const Card & other_card) const	{	return (this->number - other_card.number);	}
 
 #pragma endregion
 

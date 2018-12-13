@@ -16,10 +16,8 @@ class Game
 	bool end;
 	class Turn
 	{
-
 		Card * cards_selection[Const_Var::nmbr_Gamer]; // cartes selectionné des joueurs pour 1ce tour
 		int index_player_selection[Const_Var::nmbr_Gamer]; // Index des joueurs liés aux cartes qu'ils selectionnés
-
 
 	public:
 		Turn(Player les_joueurs[], Game_Board& plateau, Deck& my_deck);
@@ -40,11 +38,10 @@ public:
 
 	static inline void Sort_asc(Card * my_tab[] , int index_players[]); // Trie dans l'ordre croissant un tableau de pointeurd de Card
 	static inline void Sort_asc(int my_tab[]);	// Trie dans l'ordre croissant le contenu d'un tableau d'entier
-
+	
 
 	static inline void Pick_card_random(Card * cards_selec[], Player les_joueurs[], int index_players[]); // Fait choisir au joueurs aléatoirement leurs cartes
-
 	static inline void Look_add_in_row(Game_Board & plateau, Card * cards_selection[], Player my_players[], int index_players[]);
 						// Ajoute dans les rangées la selections de carte du tour en respectant les regles du jeu
-						
+	inline void Start(Player les_joueurs[], Game_Board& plateau, Deck& my_deck);
 };

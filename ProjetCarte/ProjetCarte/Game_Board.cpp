@@ -83,14 +83,8 @@ int Game_Board::Row::Get_sum_number_beef()
 
 int Game_Board::Row::Get_nbr_cards_in()
 {
-	int index = 0;
-	for (int i = 0; i < Const_Var::nmbr_cards_in_Rows; i++) // On fait la sommes des numéros têtes de boeufs de toute les carte de la rangée
-	{
-		if (this->row_card[i] != nullptr)
-		{
-			index++;
-		}
-	}
+	int index = 0;						// On fait la sommes des numéros têtes de boeufs de toute les carte de la rangée
+	for (int i = 0; i < Const_Var::nmbr_cards_in_Rows; i++) if (this->row_card[i] != nullptr)index++;						
 	return index;
 }
 

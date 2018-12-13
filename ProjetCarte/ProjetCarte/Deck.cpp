@@ -82,22 +82,13 @@ void Deck::Mix_card()// Reprend les 104 cartes du jeux et les mellange
 void Deck::Recover_cards_and_mix(Player my_player[], Game_Board & the_board)
 {
 	for (int i = 0; i < Const_Var::nmbr_Gamer; i++) // on regarde pour chaque joueur
-	{
-		for (int j = 0; j < Const_Var::nmbr_cards_in_Hand; j++) // on efface toute les cartes dans la main du joueur
-		{
-			my_player[i].Get_hand_player().Remove_card(j);
-		}
+	{															// on efface toute les cartes dans la main du joueur
+		for (int j = 0; j < Const_Var::nmbr_cards_in_Hand; j++) my_player[i].Get_hand_player().Remove_card(j);
 	}
+												// on efface toute les cartes de chaque rangée
+	for (int i = 0; i < Const_Var::nmbr_Rows; i++) the_board.game_rows[i]->Remove_all(); 
 
-	for (int i = 0; i < Const_Var::nmbr_Rows; i++) // on efface toute les cartes de chaque rangée
-	{
-		the_board.game_rows[i]->Remove_all(); 
-	}
-
-	for (int i = 0; i < Const_Var::nmbr_deck_cards; i++)
-	{
-		this->tab_Cards[i]->Set_status(0);
-	}
+	for (int i = 0; i < Const_Var::nmbr_deck_cards; i++)this->tab_Cards[i]->Set_status(0);
 
 	this->Mix_card();
 }

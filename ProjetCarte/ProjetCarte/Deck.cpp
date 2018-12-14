@@ -63,7 +63,7 @@ void Deck::Mix_card()// Reprend les 104 cartes du jeux et les mellange
 	int random_number;
 	Card * tampon_deck_cards[Const_Var::nmbr_deck_cards]; 
 	for (int i = 0; i < Const_Var::nmbr_deck_cards; i++) tampon_deck_cards[i] = nullptr;	// On met toute les valeurs des pointeurs à nullptr car par defaut les
-	for (int i = 0; i < Const_Var::nmbr_deck_cards; i++)									// valeurs d'un tableau créé statiquement en C++ sont inconnue
+	for (int i = 0; i < Const_Var::nmbr_deck_cards; i++)									// valeurs d'un tableau créé statiquement en C++ sont inconnues
 	{ 
 		random_number = ((rand() % Const_Var::nmbr_deck_cards) + 1);
 		tampon_deck_cards[i] = tab_Cards[random_number - 1];

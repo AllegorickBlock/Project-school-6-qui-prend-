@@ -19,8 +19,8 @@ public:
 	~Card();
 	
 	bool In_hand();
-	bool In_Deck();
-	bool In_Row();
+	bool In_deck();
+	bool In_row();
 	void Set_status(int nbr_status);// Si status : 0 = deck, 1 = hand, 2 = row 
 
 	int  Get_number();		     

@@ -31,7 +31,6 @@ public:
 	static inline void Show_beef_symbol();
 	static inline void Show_card(Card my_card);
 	static inline void Show_deck(Deck &my_deck);
-	static inline void Show_hand(Player les_joueurs[]);
 	static inline void Show_row(Game_Board & my_game_board);
 	static inline void Show_cards_selection(Card * cards_selection[], int index_players[]); // Montre les cartes selectionné des joueurs pour 1 tour
 	static inline void Show_player_scores(Player my_players[]);

@@ -28,7 +28,7 @@ Game::Game()
 	for (int i = 0; i < Const_Var::nmbr_Gamer; i++) my_deck.Add_card_to_player(les_joueurs[i]);
 	for (int i = 0; i < Const_Var::nmbr_Rows; i++) my_deck.Add_card_to_row(plateau.Get_row(i));
 	
-	Show_hand(les_joueurs);
+	Player::Show_hand;
 
 	Show_row(plateau);
 
@@ -68,23 +68,23 @@ inline void Game::Show_deck(Deck &my_deck)
 	cout << "\n\n---- Carte dans deck ---- \n";
 	for (int j = 0; j < Const_Var::nmbr_deck_cards; j++)
 	{
-		if (my_deck.Get_Card(j).In_deck()) Show_card(my_deck.Get_Card(j));
+		if (my_deck.Get_Card(j).In_deck()) Show_card(my_deck.Get_Card(j),j);
 		if ((j + 1) % 10 == 0) cout << "\n";
 	}
 }
 
-inline void Game::Show_hand(Player les_joueurs[])
-{
-	cout << "\n\n---- Carte des joueurs ---- ";
-	for (int i = 0; i < Const_Var::nmbr_Gamer ; i++)
-	{
-		cout << "\n Joueur " << i << " : ";
-		for (int j = 0; j < Const_Var::nmbr_cards_in_Hand; j++)
-		{
-			if (&les_joueurs[i].Get_hand_player().Get_card_of_hand(j) != nullptr)	Show_card(les_joueurs[i].Get_hand_player().Get_card_of_hand(j));
-		}
-	}
-}
+//inline void Game::Show_hand(Player les_joueurs[])
+//{
+//	cout << "\n\n---- Carte des joueurs ---- ";
+//	for (int i = 0; i < Const_Var::nmbr_Gamer ; i++)
+//	{
+//		cout << "\n Joueur " << i << " : ";
+//		for (int j = 0; j < Const_Var::nmbr_cards_in_Hand; j++)
+//		{
+//			if (&les_joueurs[i].Get_hand_player().Get_card_of_hand(j) != nullptr)	Show_card(les_joueurs[i].Get_hand_player().Get_card_of_hand(j));
+//		}
+//	}
+//}
 
 inline void Game::Show_row(Game_Board & plateau)
 {
@@ -94,7 +94,7 @@ inline void Game::Show_row(Game_Board & plateau)
 		cout << "\n R" << (i+1) << ":\t";
 		for (int j = 0; j < Const_Var::nmbr_cards_in_Rows; j++)
 		{
-			if (&plateau.Get_row(i).Get_card(j) != nullptr)	Show_card(plateau.Get_row(i).Get_card(j));
+			if (&plateau.Get_row(i).Get_card(j) != nullptr)	Show_card(plateau.Get_row(i).Get_card(j),j);
 			else break;
 		}
 	}
@@ -106,7 +106,7 @@ inline void Game::Show_cards_selection(Card * cards_selection[], int index_playe
 	for (int i = 0; i < Const_Var::nmbr_Gamer; i++)
 	{
 		cout << "   " ;
-		Show_card(*cards_selection[i]);
+		Show_card(*cards_selection[i],i);
 		cout << ": J" << index_players[i] << "   ";
 	}
 }
@@ -259,7 +259,7 @@ Game::Turn::Turn(Player les_joueurs[], Game_Board & plateau, Deck & my_deck)
 	cout << "\n\n---- Carte des joueurs ---- ";
 	Show_row(plateau);
 
-	Show_hand(les_joueurs);
+	Player::Show_hand;
 	Pick_card_random(cards_selection, les_joueurs,this->index_player_selection);
 
 	Sort_asc(cards_selection, this->index_player_selection); // L'index de cartes dans cards_selection ne va plus corespondre a l'index du joueur

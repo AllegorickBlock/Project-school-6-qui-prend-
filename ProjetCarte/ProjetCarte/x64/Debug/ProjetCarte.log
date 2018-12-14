@@ -1,6 +1,4 @@
-﻿  Card.cpp
-c:\users\jason\onedrive - haute ecole louvain en hainaut\projet carte\projet\groupe10\projetcarte\projetcarte\const_var.h(10): warning C4091: 'static ' : ignoré à gauche de 'Const_Var' quand aucune variable n'est déclarée
-  Deck.cpp
+﻿  Deck.cpp
 c:\users\jason\onedrive - haute ecole louvain en hainaut\projet carte\projet\groupe10\projetcarte\projetcarte\const_var.h(10): warning C4091: 'static ' : ignoré à gauche de 'Const_Var' quand aucune variable n'est déclarée
 c:\users\jason\onedrive - haute ecole louvain en hainaut\projet carte\projet\groupe10\projetcarte\projetcarte\game.h(23): error C2061: erreur de syntaxe : identificateur 'Player'
 c:\users\jason\onedrive - haute ecole louvain en hainaut\projet carte\projet\groupe10\projetcarte\projetcarte\game.h(33): error C2061: erreur de syntaxe : identificateur 'Deck'
@@ -11,31 +9,10 @@ c:\users\jason\onedrive - haute ecole louvain en hainaut\projet carte\projet\gro
 c:\users\jason\onedrive - haute ecole louvain en hainaut\projet carte\projet\groupe10\projetcarte\projetcarte\deck.cpp(62): warning C4244: 'argument' : conversion de 'time_t' en 'unsigned int', perte possible de données
   Game.cpp
 c:\users\jason\onedrive - haute ecole louvain en hainaut\projet carte\projet\groupe10\projetcarte\projetcarte\const_var.h(10): warning C4091: 'static ' : ignoré à gauche de 'Const_Var' quand aucune variable n'est déclarée
-c:\users\jason\onedrive - haute ecole louvain en hainaut\projet carte\projet\groupe10\projetcarte\projetcarte\game.cpp(31): error C3861: 'Show_hand' : identificateur introuvable
-c:\users\jason\onedrive - haute ecole louvain en hainaut\projet carte\projet\groupe10\projetcarte\projetcarte\game.cpp(71): error C2660: 'Game::Show_card' : la fonction ne prend pas 1 arguments
-  c:\users\jason\onedrive - haute ecole louvain en hainaut\projet carte\projet\groupe10\projetcarte\projetcarte\game.cpp(57): note: voir la déclaration de 'Game::Show_card'
-c:\users\jason\onedrive - haute ecole louvain en hainaut\projet carte\projet\groupe10\projetcarte\projetcarte\game.cpp(76): error C2039: 'Show_hand' : n'est pas membre de 'Game'
-  c:\users\jason\onedrive - haute ecole louvain en hainaut\projet carte\projet\groupe10\projetcarte\projetcarte\game.h(14): note: voir la déclaration de 'Game'
-c:\users\jason\onedrive - haute ecole louvain en hainaut\projet carte\projet\groupe10\projetcarte\projetcarte\game.cpp(84): error C3861: 'Show_card' : identificateur introuvable
-c:\users\jason\onedrive - haute ecole louvain en hainaut\projet carte\projet\groupe10\projetcarte\projetcarte\game.cpp(97): error C2660: 'Game::Show_card' : la fonction ne prend pas 1 arguments
-  c:\users\jason\onedrive - haute ecole louvain en hainaut\projet carte\projet\groupe10\projetcarte\projetcarte\game.cpp(57): note: voir la déclaration de 'Game::Show_card'
-c:\users\jason\onedrive - haute ecole louvain en hainaut\projet carte\projet\groupe10\projetcarte\projetcarte\game.cpp(109): error C2660: 'Game::Show_card' : la fonction ne prend pas 1 arguments
-  c:\users\jason\onedrive - haute ecole louvain en hainaut\projet carte\projet\groupe10\projetcarte\projetcarte\game.cpp(57): note: voir la déclaration de 'Game::Show_card'
+c:\users\jason\onedrive - haute ecole louvain en hainaut\projet carte\projet\groupe10\projetcarte\projetcarte\game.cpp(31): error C3867: 'Player::Show_hand' : syntaxe non-standard ; utilisez '&' pour créer un pointeur vers un membre
 c:\users\jason\onedrive - haute ecole louvain en hainaut\projet carte\projet\groupe10\projetcarte\projetcarte\game.cpp(158): warning C4244: 'argument' : conversion de 'time_t' en 'unsigned int', perte possible de données
 c:\users\jason\onedrive - haute ecole louvain en hainaut\projet carte\projet\groupe10\projetcarte\projetcarte\game.cpp(208): warning C4244: 'argument' : conversion de 'time_t' en 'unsigned int', perte possible de données
-  Game_Board.cpp
-c:\users\jason\onedrive - haute ecole louvain en hainaut\projet carte\projet\groupe10\projetcarte\projetcarte\const_var.h(10): warning C4091: 'static ' : ignoré à gauche de 'Const_Var' quand aucune variable n'est déclarée
-c:\users\jason\onedrive - haute ecole louvain en hainaut\projet carte\projet\groupe10\projetcarte\projetcarte\deck.h(17): error C2061: erreur de syntaxe : identificateur 'Player'
-c:\users\jason\onedrive - haute ecole louvain en hainaut\projet carte\projet\groupe10\projetcarte\projetcarte\deck.h(18): error C2653: 'Game_Board' : n'est pas un nom de classe ni d'espace de noms
-c:\users\jason\onedrive - haute ecole louvain en hainaut\projet carte\projet\groupe10\projetcarte\projetcarte\deck.h(18): error C2061: erreur de syntaxe : identificateur 'Row'
-c:\users\jason\onedrive - haute ecole louvain en hainaut\projet carte\projet\groupe10\projetcarte\projetcarte\deck.h(20): error C2061: erreur de syntaxe : identificateur 'Player'
-c:\users\jason\onedrive - haute ecole louvain en hainaut\projet carte\projet\groupe10\projetcarte\projetcarte\game.h(23): error C2061: erreur de syntaxe : identificateur 'Player'
-c:\users\jason\onedrive - haute ecole louvain en hainaut\projet carte\projet\groupe10\projetcarte\projetcarte\game.h(34): error C2061: erreur de syntaxe : identificateur 'Game_Board'
-c:\users\jason\onedrive - haute ecole louvain en hainaut\projet carte\projet\groupe10\projetcarte\projetcarte\game.h(36): error C2061: erreur de syntaxe : identificateur 'Player'
-c:\users\jason\onedrive - haute ecole louvain en hainaut\projet carte\projet\groupe10\projetcarte\projetcarte\game.h(42): error C2061: erreur de syntaxe : identificateur 'Player'
-c:\users\jason\onedrive - haute ecole louvain en hainaut\projet carte\projet\groupe10\projetcarte\projetcarte\game.h(43): error C2061: erreur de syntaxe : identificateur 'Game_Board'
-c:\users\jason\onedrive - haute ecole louvain en hainaut\projet carte\projet\groupe10\projetcarte\projetcarte\game.h(45): error C2061: erreur de syntaxe : identificateur 'Player'
-c:\users\jason\onedrive - haute ecole louvain en hainaut\projet carte\projet\groupe10\projetcarte\projetcarte\game_board.cpp(111): warning C4553: '==' : résultat de l'expression non utilisé ; souhaitiez-vous utiliser '=' ?
+c:\users\jason\onedrive - haute ecole louvain en hainaut\projet carte\projet\groupe10\projetcarte\projetcarte\game.cpp(262): error C3867: 'Player::Show_hand' : syntaxe non-standard ; utilisez '&' pour créer un pointeur vers un membre
   Player.cpp
 c:\users\jason\onedrive - haute ecole louvain en hainaut\projet carte\projet\groupe10\projetcarte\projetcarte\const_var.h(10): warning C4091: 'static ' : ignoré à gauche de 'Const_Var' quand aucune variable n'est déclarée
 c:\users\jason\onedrive - haute ecole louvain en hainaut\projet carte\projet\groupe10\projetcarte\projetcarte\deck.h(17): error C2061: erreur de syntaxe : identificateur 'Player'
@@ -45,6 +22,4 @@ c:\users\jason\onedrive - haute ecole louvain en hainaut\projet carte\projet\gro
 c:\users\jason\onedrive - haute ecole louvain en hainaut\projet carte\projet\groupe10\projetcarte\projetcarte\game.h(42): error C2061: erreur de syntaxe : identificateur 'Player'
 c:\users\jason\onedrive - haute ecole louvain en hainaut\projet carte\projet\groupe10\projetcarte\projetcarte\game.h(43): error C2061: erreur de syntaxe : identificateur 'Player'
 c:\users\jason\onedrive - haute ecole louvain en hainaut\projet carte\projet\groupe10\projetcarte\projetcarte\game.h(45): error C2061: erreur de syntaxe : identificateur 'Player'
-  Projet_Carte.cpp
-c:\users\jason\onedrive - haute ecole louvain en hainaut\projet carte\projet\groupe10\projetcarte\projetcarte\const_var.h(10): warning C4091: 'static ' : ignoré à gauche de 'Const_Var' quand aucune variable n'est déclarée
   Génération de code en cours...

@@ -54,11 +54,11 @@ inline void Game::Show_beef_symbol()
 	_setmode(_fileno(stdout), _O_TEXT);    // Necessaire pour eviter un plantage lors de la compilation : on reviens a l'etat normal de mode de translation de texte
 }
 
-inline void Game::Show_card(Card my_card)
+inline void Game::Show_card(Card my_card,int index)
 {
-	if (my_card.Get_number() < 10) cout << "[  " << my_card.Get_number() << "|" << my_card.Get_beef_number();
-	else if (my_card.Get_number() < 100) cout << "[ " << my_card.Get_number() << "|" << my_card.Get_beef_number();
-	else cout << "[" << my_card.Get_number() << "|" << my_card.Get_beef_number();
+	if (my_card.Get_number() < 10) cout << index <<"[  " << my_card.Get_number() << "|" << my_card.Get_beef_number();
+	else if (my_card.Get_number() < 100) cout << index << "[ " << my_card.Get_number() << "|" << my_card.Get_beef_number();
+	else cout << index << "[" << my_card.Get_number() << "|" << my_card.Get_beef_number();
 	Show_beef_symbol();
 	cout << "]  ";
 }

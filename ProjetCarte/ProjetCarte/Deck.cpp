@@ -36,7 +36,7 @@ void Deck::Add_card_to_player(Player & my_player)
 	int hand_counter = 0;
 	for (int i = (Const_Var::nmbr_deck_cards -1) ; i > 0; --i)	// On regarde toute les cartes du paquet deck de cartes et on va en soustraire jusqu'a 10 
 	{															// pour les ajouter dans la main du joueur
-		if ( (this->tab_Cards[i]->In_Deck() == true) && hand_counter < Const_Var::nmbr_cards_in_Hand)// On verifie bien que notre carte proviens du paquet
+		if ( (this->tab_Cards[i]->In_deck() == true) && hand_counter < Const_Var::nmbr_cards_in_Hand)// On verifie bien que notre carte proviens du paquet
 		{																							// On regarde di notre main est totallement remplie (hand_counter)
 			my_player.Get_hand_player().Add_card(this->tab_Cards[i], hand_counter);
 			hand_counter++;
@@ -49,7 +49,7 @@ void Deck::Add_card_to_row(Game_Board::Row & my_row)
 {
 	for (int i = (Const_Var::nmbr_deck_cards - 1); i > 0; --i) // On regarde toute les cartes du paquet 
 	{
-		if ((this->tab_Cards[i]->In_Deck() == true) ) // On regarde celles qui restents dans le paquet
+		if ((this->tab_Cards[i]->In_deck() == true) ) // On regarde celles qui restents dans le paquet
 		{
 			my_row.Add_card(this->tab_Cards[i]); // Et hop, on ajoute notre carte de notre deck a notre rangée
 			break;

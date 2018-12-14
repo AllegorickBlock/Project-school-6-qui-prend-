@@ -30,7 +30,7 @@ public:
 	Hand_Player& Get_hand_player(); // Accesseur pour le membre hand dans la classe Player
 	void Add_to_number_score(int beef_score);
 	void Show_hand();
-	virtual void Choose_card_for_turn(Card * cards_selec[], int index_players[]);
+	virtual Card Choose_card_for_turn(Card  cards_selec[], int index_players[]);
 	virtual void Choose_row_to_add_card();
 
 	int Get_score();
@@ -41,10 +41,10 @@ public:
 
 class Human_Player : public Player
 {
-	void Choose_card_for_turn(Card * cards_selec[]);
+	Card Choose_card_for_turn(Card * cards_selec[], int index_players[]);
 };
-
-class Bot_Player : public Player
-{
-	void Choose_card_for_turn(Card * cards_selec[]);
-};
+//
+//class Bot_Player : public Player
+//{
+//	void Choose_card_for_turn(Card *cards_selec[], int index_players[]);
+//};

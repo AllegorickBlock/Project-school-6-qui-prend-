@@ -230,13 +230,16 @@ inline void Game::Start(Player les_joueurs[], Game_Board & plateau, Deck & my_de
 				{
 					this->end = true;
 					my_deck.Recover_cards_and_mix(les_joueurs, plateau);
+					
 					break;
+					
 				}
 			}
 		}
 		my_deck.Recover_cards_and_mix(les_joueurs, plateau);
 		for (int i = 0; i < Const_Var::nmbr_Gamer; i++)		my_deck.Add_card_to_player(les_joueurs[i]);
 		for (int i = 0; i < Const_Var::nmbr_Rows; i++)	my_deck.Add_card_to_row(plateau.Get_row(i));
+		cout << "\n\n\ndTest" << endl;
 	}
 }
 

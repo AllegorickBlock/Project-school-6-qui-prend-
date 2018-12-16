@@ -1,8 +1,6 @@
-﻿  Game.cpp
-c:\users\martin\desktop\vraiprojetprogra\test\groupe10\groupe10-4471be27d1d2f3907db5f8da7931d491d95f7813\projetcarte\projetcarte\const_var.h(10): warning C4091: 'static ' : ignoré à gauche de 'Const_Var' quand aucune variable n'est déclarée
-c:\users\martin\desktop\vraiprojetprogra\test\groupe10\groupe10-4471be27d1d2f3907db5f8da7931d491d95f7813\projetcarte\projetcarte\game.cpp(178): warning C4244: 'argument' : conversion de 'time_t' en 'unsigned int', perte possible de données
-c:\users\martin\desktop\vraiprojetprogra\test\groupe10\groupe10-4471be27d1d2f3907db5f8da7931d491d95f7813\projetcarte\projetcarte\game.cpp(234): warning C4244: 'argument' : conversion de 'time_t' en 'unsigned int', perte possible de données
-  Projet_Carte.cpp
-c:\users\martin\desktop\vraiprojetprogra\test\groupe10\groupe10-4471be27d1d2f3907db5f8da7931d491d95f7813\projetcarte\projetcarte\const_var.h(10): warning C4091: 'static ' : ignoré à gauche de 'Const_Var' quand aucune variable n'est déclarée
-  Génération de code en cours...
-  ProjetCarte.vcxproj -> C:\Users\Martin\Desktop\VraiProjetProgra\Test\groupe10\groupe10-4471be27d1d2f3907db5f8da7931d491d95f7813\ProjetCarte\x64\Debug\ProjetCarte.exe
+﻿  Player.cpp
+c:\users\martin\desktop\vraiprojetprogra\groupe10\projetcarte\projetcarte\const_var.h(10): warning C4091: 'static ' : ignoré à gauche de 'Const_Var' quand aucune variable n'est déclarée
+c:\users\martin\desktop\vraiprojetprogra\groupe10\projetcarte\projetcarte\player.cpp(112): warning C4244: 'argument' : conversion de 'time_t' en 'unsigned int', perte possible de données
+c:\users\martin\desktop\vraiprojetprogra\groupe10\projetcarte\projetcarte\player.cpp(164): warning C4244: 'argument' : conversion de 'time_t' en 'unsigned int', perte possible de données
+c:\users\martin\desktop\vraiprojetprogra\groupe10\projetcarte\projetcarte\player.cpp(106): warning C4715: 'Player::Hand_Player::Get_card_of_hand' : les chemins de contrôle ne retournent pas tous une valeur
+  ProjetCarte.vcxproj -> C:\Users\Martin\Desktop\VraiProjetProgra\groupe10\ProjetCarte\x64\Debug\ProjetCarte.exe

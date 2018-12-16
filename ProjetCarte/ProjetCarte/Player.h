@@ -1,6 +1,7 @@
 #pragma once
 #include "Card.h"
 #include "Const_var.h"
+#include "Game_Board.h"
 #include <io.h>	
 #include <ctime>   //Permet d'utiliser time()
 #include <cstdlib> //Permet d'utiliser srand()
@@ -32,23 +33,41 @@ public:
 	int Get_score();
 
 	virtual void Pick_selection_card(Card * selection_cards[]);
+	virtual void Add_in_row(Game_Board & my_board, Card * card_selection[]);
 
 	void Set_card_selection(Card * my_card);
 	void Remove_card_selection(Card * my_card);
 	Card * Get_card_selection();
 	int Get_number();
 
+
+	inline void Sort_asc(int my_tab[]);
+
 };
+
+
+
 
 class Bot_Player : public Player
 {
 public:
 	void Pick_selection_card(Card * selection_cards[]);
+	void Add_in_row(Game_Board & my_board, Card * card_selection[]);
 };
+
+
+
 
 class Human_Player : public Player
 {
 public:
 	void Pick_selection_card(Card * selection_cards[]);
+	void Add_in_row(Game_Board & my_board, Card * card_selection[]);
 };
+
+
+
+
+
+
 

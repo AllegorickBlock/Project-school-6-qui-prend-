@@ -114,21 +114,14 @@ inline void Game::Show_row(Game_Board & plateau)
 	}
 }
 
-inline void Game::Show_cards_selection(Card * cards_selection[], Player * my_players[])
+inline void Game::Show_cards_selection( Player * my_players[])
 {
 	cout << "\n\n---- Cartes selectionnes ---- \n";
 	for (int i = 0; i < Const_Var::nmbr_Gamer; i++)
 	{
 		cout << "   " ;
-		Show_card(*cards_selection[i]);
-		for (int m = 0; m < Const_Var::nmbr_Gamer; m++)
-		{
-			if (my_players[m]->Get_card_selection() == cards_selection[i])
-			{
-				cout << ": J" << (my_players[m]->Get_number() + 1) << "   ";
-			}
-		}
-		
+		Show_card(*my_players[i]->Get_card_selection());
+		cout << ": J" << (my_players[i]->Get_number() + 1) << "   ";
 	}
 }
 
@@ -172,23 +165,6 @@ inline void Game::Sort_asc(int my_tab[])
 #pragma endregion
 
 #pragma region Game : Usefull Fonctions
-
-inline void Game::Pick_card_random(Card * cards_selec[], Player les_joueurs[])
-{
-	srand(time(0)); // Prend un temps random comme valeur, permet de s'assurer d'avoir des chifres differents
-	int random_number = 0;
-	for (int i = 0; i < Const_Var::nmbr_Gamer; i++)
-	{
-		random_number = ((rand() % Const_Var::nmbr_cards_in_Hand));
-		if (&les_joueurs[i].Get_hand_player().Get_card_of_hand(random_number) != nullptr)
-		{
-			cards_selec[i] = &les_joueurs[i].Get_hand_player().Get_card_of_hand(random_number); // On prend toutes les cartes selectionné au hasard par notre joueurs lors de ce tour
-			les_joueurs[i].Get_hand_player().Remove_card(random_number);
-			les_joueurs[i].Set_card_selection(cards_selec[i]);
-		}
-		else i--;
-	}
-}
 
 inline void Game::Look_add_in_row(Game_Board & plateau, Card * cards_selection[], Player * my_players[])
 {
@@ -296,7 +272,7 @@ Game::Turn::Turn(Player * les_joueurs[], Game_Board & plateau, Deck & my_deck)
 
 	Sort_asc(cards_selection); // L'index de cartes dans cards_selection ne va plus corespondre a l'index du joueur
 
-	Show_cards_selection(cards_selection, les_joueurs);
+	Show_cards_selection(les_joueurs);
 
 	Look_add_in_row(plateau, cards_selection, les_joueurs);
 

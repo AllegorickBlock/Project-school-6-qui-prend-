@@ -11,7 +11,17 @@
 int number_turn;
 Game::Game()
 {
-	Player les_joueurs[Const_Var::nmbr_Gamer];
+	Bot_Player bot_1;
+	Bot_Player bot_2;
+	Bot_Player bot_3;
+	Human_Player human_4;
+
+	Player * les_joueurs[Const_Var::nmbr_Gamer];
+
+	les_joueurs[0] = &bot_1;
+	les_joueurs[1] = &bot_2;
+	les_joueurs[2] = &bot_3;
+	les_joueurs[3] = &human_4;
 	Game_Board plateau;
 	Deck my_deck;
 	number_turn = 0;
@@ -28,7 +38,7 @@ Game::Game()
 	for (int i = 0; i < Const_Var::nmbr_Gamer; i++) my_deck.Add_card_to_player(les_joueurs[i]);
 	for (int i = 0; i < Const_Var::nmbr_Rows; i++) my_deck.Add_card_to_row(plateau.Get_row(i));
 	
-	Player::Show_hand;
+	Show_hand(les_joueurs);
 
 	Show_row(plateau);
 
@@ -54,11 +64,11 @@ inline void Game::Show_beef_symbol()
 	_setmode(_fileno(stdout), _O_TEXT);    // Necessaire pour eviter un plantage lors de la compilation : on reviens a l'etat normal de mode de translation de texte
 }
 
-inline void Game::Show_card(Card my_card,int index)
+inline void Game::Show_card(Card my_card)
 {
-	if (my_card.Get_number() < 10) cout << index <<"[  " << my_card.Get_number() << "|" << my_card.Get_beef_number();
-	else if (my_card.Get_number() < 100) cout << index << "[ " << my_card.Get_number() << "|" << my_card.Get_beef_number();
-	else cout << index << "[" << my_card.Get_number() << "|" << my_card.Get_beef_number();
+	if (my_card.Get_number() < 10) cout << "[  " << my_card.Get_number() << "|" << my_card.Get_beef_number();
+	else if (my_card.Get_number() < 100) cout << "[ " << my_card.Get_number() << "|" << my_card.Get_beef_number();
+	else cout << "[" << my_card.Get_number() << "|" << my_card.Get_beef_number();
 	Show_beef_symbol();
 	cout << "]  ";
 }
@@ -68,23 +78,27 @@ inline void Game::Show_deck(Deck &my_deck)
 	cout << "\n\n---- Carte dans deck ---- \n";
 	for (int j = 0; j < Const_Var::nmbr_deck_cards; j++)
 	{
-		if (my_deck.Get_Card(j).In_deck()) Show_card(my_deck.Get_Card(j),j);
+		if (my_deck.Get_Card(j).In_Deck()) Show_card(my_deck.Get_Card(j));
 		if ((j + 1) % 10 == 0) cout << "\n";
 	}
 }
 
-//inline void Game::Show_hand(Player les_joueurs[])
-//{
-//	cout << "\n\n---- Carte des joueurs ---- ";
-//	for (int i = 0; i < Const_Var::nmbr_Gamer ; i++)
-//	{
-//		cout << "\n Joueur " << i << " : ";
-//		for (int j = 0; j < Const_Var::nmbr_cards_in_Hand; j++)
-//		{
-//			if (&les_joueurs[i].Get_hand_player().Get_card_of_hand(j) != nullptr)	Show_card(les_joueurs[i].Get_hand_player().Get_card_of_hand(j));
-//		}
-//	}
-//}
+inline void Game::Show_hand(Player * les_joueurs[])
+{
+	cout << "\n\n---- Carte des joueurs ---- ";
+	for (int i = 0; i < Const_Var::nmbr_Gamer ; i++)
+	{
+		cout << "\n Joueur " << (i+1) << " : ";
+		for (int j = 0; j < Const_Var::nmbr_cards_in_Hand; j++)
+		{
+			if (&les_joueurs[i]->Get_hand_player().Get_card_of_hand(j) != nullptr)
+			{
+				cout << (j + 1) << ".";
+				Show_card(les_joueurs[i]->Get_hand_player().Get_card_of_hand(j));
+			}
+		}
+	}
+}
 
 inline void Game::Show_row(Game_Board & plateau)
 {
@@ -94,34 +108,41 @@ inline void Game::Show_row(Game_Board & plateau)
 		cout << "\n R" << (i+1) << ":\t";
 		for (int j = 0; j < Const_Var::nmbr_cards_in_Rows; j++)
 		{
-			if (&plateau.Get_row(i).Get_card(j) != nullptr)	Show_card(plateau.Get_row(i).Get_card(j),j);
+			if (&plateau.Get_row(i).Get_card(j) != nullptr)	Show_card(plateau.Get_row(i).Get_card(j));
 			else break;
 		}
 	}
 }
 
-inline void Game::Show_cards_selection(Card * cards_selection[], int index_players[])
+inline void Game::Show_cards_selection(Card * cards_selection[], Player * my_players[])
 {
 	cout << "\n\n---- Cartes selectionnes ---- \n";
 	for (int i = 0; i < Const_Var::nmbr_Gamer; i++)
 	{
 		cout << "   " ;
-		Show_card(*cards_selection[i],i);
-		cout << ": J" << index_players[i] << "   ";
+		Show_card(*cards_selection[i]);
+		for (int m = 0; m < Const_Var::nmbr_Gamer; m++)
+		{
+			if (my_players[m]->Get_card_selection() == cards_selection[i])
+			{
+				cout << ": J" << (my_players[m]->Get_number() + 1) << "   ";
+			}
+		}
+		
 	}
 }
 
-inline void Game::Show_player_scores(Player my_players[])
+inline void Game::Show_player_scores(Player * my_players[])
 {
 	cout << "\n\n------> Scores des joueurs <------";
-	for (int i = 0; i < Const_Var::nmbr_Gamer; i++)		cout << "\nJoueur " << (i+1) << " : " << my_players[i].Get_score();
+	for (int i = 0; i < Const_Var::nmbr_Gamer; i++)		cout << "\nJoueur " << (i+1) << " : " << my_players[i]->Get_score();
 }
 
 #pragma endregion
 
 #pragma region Game : Fonctions Sort_asc
 
-inline void Game::Sort_asc(Card * my_tab[], int index_players[]) // tri dans l'ordre croissant
+inline void Game::Sort_asc(Card * my_tab[]) // tri dans l'ordre croissant
 {
 	Card * my_copy_tab[Const_Var::nmbr_Gamer];
 	for (int i = 0; i < Const_Var::nmbr_Gamer; i++) // on regarde le tableau de carte pris en parametere
@@ -132,7 +153,6 @@ inline void Game::Sort_asc(Card * my_tab[], int index_players[]) // tri dans l'o
 			if (my_tab[i]->Get_number() > my_tab[j]->Get_number()) index++; // on regarde les difference de notre carte[i] avec les tout les autres cartes[j]
 		}
 		my_copy_tab[index] = my_tab[i]; // ON assigne dans l'ordre les ellements de my_tab dans my_copy_tab
-		index_players[index] = i; // on stoque l'index du player en rapport avec l'index de sa carte mise dans selection_cards, on ne pers pas le lien ainsi
 	}
 	for (int i = 0; i < Const_Var::nmbr_Gamer; i++) my_tab[i] = my_copy_tab[i];
 }
@@ -153,7 +173,7 @@ inline void Game::Sort_asc(int my_tab[])
 
 #pragma region Game : Usefull Fonctions
 
-inline void Game::Pick_card_random(Card * cards_selec[], Player les_joueurs[], int index_players[])
+inline void Game::Pick_card_random(Card * cards_selec[], Player les_joueurs[])
 {
 	srand(time(0)); // Prend un temps random comme valeur, permet de s'assurer d'avoir des chifres differents
 	int random_number = 0;
@@ -162,15 +182,15 @@ inline void Game::Pick_card_random(Card * cards_selec[], Player les_joueurs[], i
 		random_number = ((rand() % Const_Var::nmbr_cards_in_Hand));
 		if (&les_joueurs[i].Get_hand_player().Get_card_of_hand(random_number) != nullptr)
 		{
-			index_players[i] = i;
 			cards_selec[i] = &les_joueurs[i].Get_hand_player().Get_card_of_hand(random_number); // On prend toutes les cartes selectionné au hasard par notre joueurs lors de ce tour
 			les_joueurs[i].Get_hand_player().Remove_card(random_number);
+			les_joueurs[i].Set_card_selection(cards_selec[i]);
 		}
 		else i--;
 	}
 }
 
-inline void Game::Look_add_in_row(Game_Board & plateau, Card * cards_selection[], Player my_players[], int index_players[])
+inline void Game::Look_add_in_row(Game_Board & plateau, Card * cards_selection[], Player * my_players[])
 {
 	int copy_number_diff[Const_Var::nmbr_Gamer];
 
@@ -192,7 +212,13 @@ inline void Game::Look_add_in_row(Game_Board & plateau, Card * cards_selection[]
 					{
 						if (plateau.Get_row(k).Get_nbr_cards_in() == Const_Var::nmbr_cards_in_Rows - 1) // si le nombre carte dans une rangée avant d'ajouter un carte est de 5
 						{
-							my_players[index_players[i]].Add_to_number_score(plateau.Get_row(k).Get_sum_number_beef());
+							for (int m = 0; m < Const_Var::nmbr_Gamer; m++)
+							{
+								if (my_players[m]->Get_card_selection() == cards_selection[i])
+								{
+									my_players[m]->Add_to_number_score(plateau.Get_row(k).Get_sum_number_beef());
+								}
+							}
 							plateau.Get_row(k).Remove_all();
 						}
 						plateau.Get_row(k).Add_card(cards_selection[i]);
@@ -209,7 +235,13 @@ inline void Game::Look_add_in_row(Game_Board & plateau, Card * cards_selection[]
 				int rand_number = ((rand() % Const_Var::nmbr_Rows));
 				int index_player = 0;
 				cards_selection[i];
-				my_players[index_players[i]].Add_to_number_score(plateau.Get_row(rand_number).Get_sum_number_beef());
+				for (int m = 0; m < Const_Var::nmbr_Gamer; m++)
+				{
+					if (my_players[m]->Get_card_selection() == cards_selection[i])
+					{
+						my_players[m]->Add_to_number_score(plateau.Get_row(rand_number).Get_sum_number_beef());
+					}
+				}
 				plateau.Get_row(rand_number).Remove_all();
 				plateau.Get_row(rand_number).Add_card(cards_selection[i]);
 			}
@@ -217,7 +249,7 @@ inline void Game::Look_add_in_row(Game_Board & plateau, Card * cards_selection[]
 	}
 }
 
-inline void Game::Start(Player les_joueurs[], Game_Board & plateau, Deck & my_deck)
+inline void Game::Start(Player * les_joueurs[], Game_Board & plateau, Deck & my_deck)
 {
 	for (this->end = false; end != true; )
 	{
@@ -226,17 +258,17 @@ inline void Game::Start(Player les_joueurs[], Game_Board & plateau, Deck & my_de
 			Turn my_Turn(les_joueurs, plateau, my_deck);
 			for (int j = 0; j < Const_Var::nmbr_Gamer; j++)
 			{
-				if (les_joueurs[j].Get_score() >= 66)
+				if (les_joueurs[j]->Get_score() >= 66)
 				{
 					this->end = true;
-					my_deck.Recover_cards_and_mix(les_joueurs, plateau);
+					my_deck.Recover_cards_and_mix(les_joueurs, &plateau);
 					
 					break;
 					
 				}
 			}
 		}
-		my_deck.Recover_cards_and_mix(les_joueurs, plateau);
+		my_deck.Recover_cards_and_mix(les_joueurs, &plateau);
 		for (int i = 0; i < Const_Var::nmbr_Gamer; i++)		my_deck.Add_card_to_player(les_joueurs[i]);
 		for (int i = 0; i < Const_Var::nmbr_Rows; i++)	my_deck.Add_card_to_row(plateau.Get_row(i));
 		cout << "\n\n\ndTest" << endl;
@@ -251,22 +283,22 @@ inline void Game::Start(Player les_joueurs[], Game_Board & plateau, Deck & my_de
 
 #pragma region Turn : Constructeur & Destructeur
 
-Game::Turn::Turn(Player les_joueurs[], Game_Board & plateau, Deck & my_deck)
+Game::Turn::Turn(Player * les_joueurs[], Game_Board & plateau, Deck & my_deck)
 {
 	number_turn++;
 	cout << "\n\n--------------------------------------------{Tour " << number_turn << "}--------------------------------------------";
-	
-	cout << "\n\n---- Carte des joueurs ---- ";
+
 	Show_row(plateau);
 
-	Player::Show_hand;
-	Pick_card_random(cards_selection, les_joueurs,this->index_player_selection);
+	Show_hand(les_joueurs);
+	for (int i = 0; i < Const_Var::nmbr_Gamer; i++) les_joueurs[i]->Pick_selection_card(this->cards_selection);
+	//Pick_card_random(cards_selection, les_joueurs);
 
-	Sort_asc(cards_selection, this->index_player_selection); // L'index de cartes dans cards_selection ne va plus corespondre a l'index du joueur
+	Sort_asc(cards_selection); // L'index de cartes dans cards_selection ne va plus corespondre a l'index du joueur
 
-	Show_cards_selection(cards_selection, this->index_player_selection);
+	Show_cards_selection(cards_selection, les_joueurs);
 
-	Look_add_in_row(plateau, cards_selection, les_joueurs, this->index_player_selection);
+	Look_add_in_row(plateau, cards_selection, les_joueurs);
 
 	Show_row(plateau);
 	Show_player_scores(les_joueurs);

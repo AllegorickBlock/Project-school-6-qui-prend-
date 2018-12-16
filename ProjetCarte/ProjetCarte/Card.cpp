@@ -25,9 +25,9 @@ Card::~Card() {}
 #pragma region Fonctions etat de status 
 
 void Card::Set_status(int nbr_status) { this->status = nbr_status; } 
-bool Card::In_hand() { return status == hand_status; }
-bool Card::In_deck() { return status == deck_status; }
-bool Card::In_row()  { return status == row_status; }
+bool Card::In_hand() { return status == deck_status; }
+bool Card::In_Deck() { return status == deck_status; }
+bool Card::In_Row()  { return status == row_status; }
 
 #pragma endregion
 

@@ -91,6 +91,7 @@ int Game_Board::Row::Get_nbr_cards_in()
 Card & Game_Board::Row::Get_card(int index) 
 {
 	if (index < Const_Var::nmbr_cards_in_Rows && Const_Var::nmbr_cards_in_Rows >= 0) return *row_card[index];
+
 }
 
 Card & Game_Board::Row::Get_last_card()
@@ -108,7 +109,7 @@ Card & Game_Board::Row::Get_last_card()
 
 void Game_Board::Row::Remove_card(int & index)
 {
-	if (index >= 0 && index < Const_Var::nmbr_cards_in_Rows) this->row_card[index] == nullptr;
+	if (index >= 0 && index < Const_Var::nmbr_cards_in_Rows) this->row_card[index] = nullptr;
 }
 
 #pragma endregion

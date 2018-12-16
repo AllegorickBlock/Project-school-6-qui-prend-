@@ -1,16 +1,17 @@
 #include "stdafx.h"
 #include "Player.h"
 
-int tampon_nb_players = 0;
-
 #pragma region Classe Player
 
 #pragma region Player : Constructeur & Destructeur
+
+int mbr = 0;
+
 Player::Player() 
 { 
-	this->nb_Player = tampon_nb_players++;
 	this->hand = new Player::Hand_Player();
 	this->score = 0;
+	this->number = mbr++;
 
 } // On cree dynamiquement notre objet main apparente au joueur
 
@@ -28,18 +29,34 @@ void Player::Add_to_number_score(int beef_score)
 	this->score += beef_score;
 }
 
-void Player::Show_hand()
-{
-	cout << "\n Joueur " << this->nb_Player << " : ";
-	for (int j = 0; j < Const_Var::nmbr_cards_in_Hand; j++)
-	{
-		if (&this->Get_hand_player().Get_card_of_hand(j) != nullptr)	Game::Show_card(this->Get_hand_player().Get_card_of_hand(j),j);
-	}
-}
-
 int Player::Get_score()
 {
 	return this->score;
+}
+
+void Player::Pick_selection_card(Card * selection_cards[])
+{
+}
+
+
+void Player::Set_card_selection(Card * my_card)
+{
+	this->selection_card = my_card;
+}
+
+void Player::Remove_card_selection(Card * my_card)
+{
+	this->selection_card = nullptr;
+}
+
+Card * Player::Get_card_selection()
+{
+	return this->selection_card;
+}
+
+int Player::Get_number()
+{
+	return this->number;
 }
 
 
@@ -63,174 +80,58 @@ void Player::Hand_Player::Add_card(Card * my_card, int index) // ON DOIT FAIRE U
 }
 
 
-void Player::Hand_Player::Remove_card(int & index)	{	this->player_Cards[index] = nullptr;	}
+void Player::Hand_Player::Remove_card(int index)	{	this->player_Cards[index] = nullptr;	}
 
-bool Player::Hand_Player::Card_in_hand(int & index)	{	return this->player_Cards[index] != nullptr;	}
+bool Player::Hand_Player::Card_in_hand(int index)	{	return this->player_Cards[index] != nullptr;	}
 
 Card& Player::Hand_Player::Get_card_of_hand(int card) // Gere les exceptions dans lesquelles on veut acceder a des cartes qui ne sont plus/pas dans la main du joueur
 {
 	if (card < Const_Var::nmbr_cards_in_Hand && card >= 0) return *player_Cards[card];
 }
 
-
-
 #pragma endregion
 
-
-
-///////////////// METHODES DE CLASSE ENFANT 
-
-
-Card Human_Player::Choose_card_for_turn(Card  *cards_selec[],int index_players[])
+void Bot_Player::Pick_selection_card(Card * selection_cards[])
 {
-	cout << "\n ~~~~~~  ~~~~~~ Choisissez une carte Joueur " << this->nb_Player << " ~~~~~~  ~~~~~~ \n";
-	for (int j = 0; j < Const_Var::nmbr_cards_in_Hand; j++)
+	srand(time(0)); // Prend un temps random comme valeur, permet de s'assurer d'avoir des chifres differents
+	int random_number = 0;
+	bool choice_is_correct = false;
+	while (choice_is_correct == false) // On fait une boucle pour arriver a choisir aleatoirement une carte qui existe
 	{
-		if (&this->Get_hand_player().Get_card_of_hand(j) != nullptr)
+		random_number = ((rand() % Const_Var::nmbr_cards_in_Hand));
+		if (&this->Get_hand_player().Get_card_of_hand(random_number) != nullptr) // Si l'objet Card que l'on recupereexiste bien 
 		{
-
-			cout << (j + 1) << ".";
-			Game::Show_card(this->Get_hand_player().Get_card_of_hand(j),j);
+			selection_cards[this->Get_number()] = &this->Get_hand_player().Get_card_of_hand(random_number); // On choisi cette carte pour jouer
+			this->Get_hand_player().Remove_card(random_number);
+			this->Set_card_selection(selection_cards[this->Get_number()]);
+			choice_is_correct = true;
+			break;
 		}
 	}
-	int choix;
-	cout << "\n ~~~~~~  ~~~~~~ Choisissez botre carte : " << this->nb_Player << " ~~~~~~  ~~~~~~ \n";
-	cin >> choix;
-
-	switch (choix)
-	{
-	case 1: 
-		for (int i = 0 ; i < Const_Var::nmbr_cards_in_Hand; i++)
-		{
-			if(&this->Get_hand_player().Get_card_of_hand(i) != nullptr)
-			{
-				return Get_hand_player().Get_card_of_hand(0);
-			}
-
-		}
-
-		break;
-	case 2: 
-		for (int i = 0; i < Const_Var::nmbr_cards_in_Hand; i++)
-		{
-			if (&this->Get_hand_player().Get_card_of_hand(i) != nullptr)
-			{
-				return Get_hand_player().Get_card_of_hand(1);
-			}
-
-		}
-		break;
-	case 3:
-		for (int i = 0; i < Const_Var::nmbr_cards_in_Hand; i++)
-		{
-			if (&this->Get_hand_player().Get_card_of_hand(i) != nullptr)
-			{
-				return Get_hand_player().Get_card_of_hand(2);
-			}
-
-		}
-		break;
-	case 4:
-		for (int i = 0; i < Const_Var::nmbr_cards_in_Hand; i++)
-		{
-			if (&this->Get_hand_player().Get_card_of_hand(i) != nullptr)
-			{
-				return Get_hand_player().Get_card_of_hand(3);
-			}
-
-		}
-		break;
-	case 5: 
-		for (int i = 0; i < Const_Var::nmbr_cards_in_Hand; i++)
-		{
-			if (&this->Get_hand_player().Get_card_of_hand(i) != nullptr)
-			{
-				return Get_hand_player().Get_card_of_hand(4);
-			}
-
-		}
-		break;
-	case 6: 
-		for (int i = 0; i < Const_Var::nmbr_cards_in_Hand; i++)
-		{
-			if (&this->Get_hand_player().Get_card_of_hand(i) != nullptr)
-			{
-				return Get_hand_player().Get_card_of_hand(5);
-			}
-
-		}
-		break;
-	case 7: 
-		for (int i = 0; i < Const_Var::nmbr_cards_in_Hand; i++)
-		{
-			if (&this->Get_hand_player().Get_card_of_hand(i) != nullptr)
-			{
-				return Get_hand_player().Get_card_of_hand(6);
-			}
-
-		}
-		break;
-	case 8: 
-		for (int i = 0; i < Const_Var::nmbr_cards_in_Hand; i++)
-		{
-			if (&this->Get_hand_player().Get_card_of_hand(i) != nullptr)
-			{
-				return Get_hand_player().Get_card_of_hand(7);
-			}
-
-		}
-		break;
-	case 9: 
-		for (int i = 0; i < Const_Var::nmbr_cards_in_Hand; i++)
-		{
-			if (&this->Get_hand_player().Get_card_of_hand(i) != nullptr)
-			{
-				return Get_hand_player().Get_card_of_hand(8);
-			}
-
-		}
-		break;
-
-	case 10: 	for (int i = 0; i < Const_Var::nmbr_cards_in_Hand; i++)
-		{
-			if (&this->Get_hand_player().Get_card_of_hand(i) != nullptr)
-			{
-				return Get_hand_player().Get_card_of_hand(9);
-			}
-
-		}
-		break;
-
-	default:
-		cout << "Insérez un numéro valide" << endl;
-		break;
-	}
-
-
 }
 
-//void Bot_Player::Choose_card_for_turn(Card * cards_selec[])
-//{
-//	srand(time(0)); // Prend un temps random comme valeur, permet de s'assurer d'avoir des chifres differents
-//	int random_number = 0;
-//	int random_number_card_selec = 0;
-//
-//	random_number = ((rand() % Const_Var::nmbr_cards_in_Hand));
-//
-//	for (bool card_choosed = false; card_choosed != true;)	 // On cherche apres une carte de notre main à poser
-//	{								 
-//		if ( (&this->Get_hand_player().Get_card_of_hand(random_number)) != nullptr ) // Si on recupere une carte de la main qui existe 
-//		{
-//			for (; card_choosed != true;)	 // On cherche apres un emplacement de la selction de carte du tour, surlequel on peut mettre notre carte
-//			{
-//				random_number_card_selec = ((rand() % Const_Var::nmbr_Gamer));
-//				if(cards_selec[random_number_card_selec] == nullptr) // Si l'emplacement est vide, on va le remplir
-//				{
-//					cards_selec[random_number_card_selec] = &this->Get_hand_player().Get_card_of_hand(random_number); 
-//					this->Get_hand_player().Remove_card(random_number);
-//					card_choosed = true;
-//				}
-//			}
-//		}
-//	}
-//}
+void Human_Player::Pick_selection_card(Card * selection_cards[])
+{
+	int choice = 0;
+	bool choice_is_correct = false;
+	cout << "\n\n ~~~~~~~~~~~ ~~~~~~~~~~~ ~~~~~~~~~~~ Joueur " << (this->Get_number() + 1)<< " , a toi de jouer ! ~~~~~~~~~~~ ~~~~~~~~~~~ ~~~~~~~~~~~";
+
+	while (choice_is_correct == false)
+	{
+		cout << "\n\tChoix : ";
+		cin >> choice;
+		if(choice > 0 && choice <= 10)// Si le joueur a tapé une entrée corecte
+		{
+			if (this->Get_hand_player().Card_in_hand(choice) == true)
+			{
+				choice_is_correct = true;
+				selection_cards[this->Get_number()] = &this->Get_hand_player().Get_card_of_hand((choice-1)); // On choisi cette carte pour jouer
+				this->Get_hand_player().Remove_card((choice - 1));
+				this->Set_card_selection(selection_cards[this->Get_number()]);
+				choice_is_correct = true;
+				break;
+			}
+		}
+		cout << "\nMauvaise entrée, veuillez essayer a nouveau en entrant un chifre valide !\n\n";
+	}
+}

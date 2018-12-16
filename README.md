@@ -13,6 +13,7 @@ LA170005 : Bourlet Jason
 -[X] Etape 5  
 -[X] Etape 6  
 -[X] Etape 7  
+La premiere methode pour le polymorphisme est fonctionelle, il ne reste plus qu'à faire la 2eme
 -[ ] Etape 8  
 -[ ] Etape 9  
 -[ ] Etape 10  

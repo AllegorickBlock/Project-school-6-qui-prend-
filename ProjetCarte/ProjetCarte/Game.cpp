@@ -12,14 +12,14 @@ int number_turn;
 Game::Game()
 {
 	Bot_Player bot_1;
-	Bot_Player bot_2;
+	Human_Player  human_2;
 	Bot_Player bot_3;
 	Human_Player human_4;
 
 	Player * les_joueurs[Const_Var::nmbr_Gamer];
 
 	les_joueurs[0] = &bot_1;
-	les_joueurs[1] = &bot_2;
+	les_joueurs[1] = &human_2;
 	les_joueurs[2] = &bot_3;
 	les_joueurs[3] = &human_4;
 	Game_Board plateau;
@@ -34,11 +34,10 @@ Game::Game()
 	cout << " \n\n\t---- Deck melange ---- \n\n";
 	Show_deck(my_deck);
 
-	// ajout des cartes dans les mains des joueurs et des rangées
 	for (int i = 0; i < Const_Var::nmbr_Gamer; i++) my_deck.Add_card_to_player(les_joueurs[i]);
 	for (int i = 0; i < Const_Var::nmbr_Rows; i++) my_deck.Add_card_to_row(plateau.Get_row(i));
 	
-	Show_hand(les_joueurs);
+	for (int i = 0; i < Const_Var::nmbr_Gamer; i++) Show_hand(les_joueurs[i]);
 
 	Show_row(plateau);
 
@@ -83,19 +82,15 @@ inline void Game::Show_deck(Deck &my_deck)
 	}
 }
 
-inline void Game::Show_hand(Player * les_joueurs[])
+inline void Game::Show_hand(Player * my_player)
 {
-	cout << "\n\n---- Carte des joueurs ---- ";
-	for (int i = 0; i < Const_Var::nmbr_Gamer ; i++)
+	cout << "\n\n ~~~~~~~~~~~{ Carte du joueur " << (my_player->Get_number() + 1) << " : " ;
+	for (int j = 0; j < Const_Var::nmbr_cards_in_Hand; j++)
 	{
-		cout << "\n Joueur " << (i+1) << " : ";
-		for (int j = 0; j < Const_Var::nmbr_cards_in_Hand; j++)
+		if (&my_player->Get_hand_player().Get_card_of_hand(j) != nullptr)
 		{
-			if (&les_joueurs[i]->Get_hand_player().Get_card_of_hand(j) != nullptr)
-			{
-				cout << (j + 1) << ".";
-				Show_card(les_joueurs[i]->Get_hand_player().Get_card_of_hand(j));
-			}
+			cout << (j + 1) << ".";
+			Show_card(my_player->Get_hand_player().Get_card_of_hand(j));
 		}
 	}
 }
@@ -116,13 +111,15 @@ inline void Game::Show_row(Game_Board & plateau)
 
 inline void Game::Show_cards_selection( Player * my_players[], Card * selection_card[])
 {
-	cout << "\n\n---- Cartes selectionnes ---- \n";
+	cout << "\n\n-----------------------------< Cartes selectionnes >---------------------------- \n";
 	for (int i = 0; i < Const_Var::nmbr_Gamer; i++)
 	{
 		cout << "   " ;
 		Show_card(*selection_card[i]);
 		cout << ": J" << (selection_card[i]->Get_nbr_player() + 1) << "   ";
 	}
+
+	cout << "\n-------------------------------------------------------------------------------- \n";
 }
 
 inline void Game::Show_player_scores(Player * my_players[])
@@ -207,11 +204,13 @@ Game::Turn::Turn(Player * les_joueurs[], Game_Board & plateau, Deck & my_deck)
 	number_turn++;
 	cout << "\n\n--------------------------------------------{Tour " << number_turn << "}--------------------------------------------";
 
+	
+	for (int i = 0; i < Const_Var::nmbr_Gamer; i++)
+	{
+		Show_hand(les_joueurs[i]);
+		les_joueurs[i]->Pick_selection_card(this->cards_selection);
+	}
 	Show_row(plateau);
-
-	Show_hand(les_joueurs);
-	for (int i = 0; i < Const_Var::nmbr_Gamer; i++) les_joueurs[i]->Pick_selection_card(this->cards_selection);
-	//Pick_card_random(cards_selection, les_joueurs);
 
 	Sort_asc(cards_selection); // L'index de cartes dans cards_selection ne va plus corespondre a l'index du joueur
 
@@ -219,13 +218,12 @@ Game::Turn::Turn(Player * les_joueurs[], Game_Board & plateau, Deck & my_deck)
 	
 	for (int i = 0; i < Const_Var::nmbr_Gamer; i++)
 	{
-		cout << "\n\n\n|||||||||  |||||||||  ||||||||| Au tour du Joueur " << this->cards_selection[i]->Get_nbr_player() + 1 << " |||||||||  |||||||||  |||||||||";
+		cout << "\n\n\n|||  ||||||||| Au tour du Joueur " << this->cards_selection[i]->Get_nbr_player() + 1 << " |||||||||  |||\n Carte choisie : ";
+		Show_card(*les_joueurs[this->cards_selection[i]->Get_nbr_player()]->Get_card_selection());
 		les_joueurs[this->cards_selection[i]->Get_nbr_player()]->Add_in_row(plateau,this->cards_selection);
 		Show_row(plateau);
-		cout << "\n\n\n|||||||||  |||||||||  |||||||||  |||||||||  |||||||||  ||||||||| |||||||||  |||||||||  ||||||||| ";
 	}
 
-	Show_row(plateau);
 	Show_player_scores(les_joueurs);
 
 	for (int i = 0; i < Const_Var::nmbr_Gamer; i++) cards_selection[i] = nullptr; // A la fin du tour il n'existe plus de carte selectionné par les joueurs

@@ -46,16 +46,12 @@ public:
 };
 
 
-
-
 class Bot_Player : public Player
 {
 public:
 	void Pick_selection_card(Card * selection_cards[]);
 	void Add_in_row(Game_Board & my_board, Card * card_selection[]);
 };
-
-
 
 
 class Human_Player : public Player

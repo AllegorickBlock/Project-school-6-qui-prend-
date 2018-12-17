@@ -13,8 +13,7 @@ LA170005 : Bourlet Jason
 -[X] Etape 5  
 -[X] Etape 6  
 -[X] Etape 7  
-La 2eme fonctions pour le polymorphisme a été créé est travaillé pour les Bot_Players
-il ne reste plus qu'à changer la fonction heritée dans Human_Player, faire des test et à modifier en consequence le code pour avoir le résultat escompté
+Le code réarengé fonctionne, il ne reste plus qu'a optimiser le tout et à lettre à jour l'UML
 -[ ] Etape 8  
 -[ ] Etape 9  
 -[ ] Etape 10  

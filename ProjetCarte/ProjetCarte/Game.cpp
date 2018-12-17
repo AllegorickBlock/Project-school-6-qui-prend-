@@ -114,14 +114,14 @@ inline void Game::Show_row(Game_Board & plateau)
 	}
 }
 
-inline void Game::Show_cards_selection( Player * my_players[])
+inline void Game::Show_cards_selection( Player * my_players[], Card * selection_card[])
 {
 	cout << "\n\n---- Cartes selectionnes ---- \n";
 	for (int i = 0; i < Const_Var::nmbr_Gamer; i++)
 	{
 		cout << "   " ;
-		Show_card(*my_players[i]->Get_card_selection());
-		cout << ": J" << (my_players[i]->Get_number() + 1) << "   ";
+		Show_card(*selection_card[i]);
+		cout << ": J" << (selection_card[i]->Get_nbr_player() + 1) << "   ";
 	}
 }
 
@@ -166,64 +166,7 @@ inline void Game::Sort_asc(int my_tab[])
 
 #pragma region Game : Usefull Fonctions
 
-inline void Game::Look_add_in_row(Game_Board & plateau, Card * cards_selection[], Player * my_players[])
-{
-	int copy_number_diff[Const_Var::nmbr_Gamer];
 
-	for (int i = 0; i < Const_Var::nmbr_Gamer; i++) // On regarde toute les differences des nombres de la carte selectionné du joueur avec celles des rangées
-	{
-		for (int j = 0; j < Const_Var::nmbr_Gamer; j++)copy_number_diff[j] = (*cards_selection[i] - plateau.Get_row(j).Get_last_card());
-		// On stoque toute les differences de notre cards_selection[i] avec toute les cartes des rangées
-		int lower_diff = 0;
-		bool card_added_in_row = false;
-		Sort_asc(copy_number_diff); // On met dans l'ordre du plus petit au plus grand notre liste des differences mathématiques obtenues
-		for (int j = 0; j < Const_Var::nmbr_Rows; j++)
-		{
-			if (copy_number_diff[j] > 0) // Si nous arrivons a notre premiere differences > 0, Cas ou on peut poser la carte
-			{
-				lower_diff = copy_number_diff[j]; 
-				for (int k = 0; k < Const_Var::nmbr_Rows; k++) // On va comparer chaque rangée pour voir ou poser notre carte selectionnée
-				{
-					if (lower_diff == (*cards_selection[i] - plateau.Get_row(k).Get_last_card())) // Si nous recuperons la difference aparenté à la bonne rangé, on va ajouter notre carte selectionnée dans la rangée
-					{
-						if (plateau.Get_row(k).Get_nbr_cards_in() == Const_Var::nmbr_cards_in_Rows - 1) // si le nombre carte dans une rangée avant d'ajouter un carte est de 5
-						{
-							for (int m = 0; m < Const_Var::nmbr_Gamer; m++)
-							{
-								if (my_players[m]->Get_card_selection() == cards_selection[i])
-								{
-									my_players[m]->Add_to_number_score(plateau.Get_row(k).Get_sum_number_beef());
-								}
-							}
-							plateau.Get_row(k).Remove_all();
-						}
-						plateau.Get_row(k).Add_card(cards_selection[i]);
-						j = Const_Var::nmbr_Rows;
-						card_added_in_row = true;
-						break;
-					}
-					if (card_added_in_row == true) break;
-				}
-			}
-			else if( j == (Const_Var::nmbr_Rows - 1) ) // Si la carte a un nombre trop petit et ne peut être ajouté a aucune rangée
-			{
-				srand(time(0));
-				int rand_number = ((rand() % Const_Var::nmbr_Rows));
-				int index_player = 0;
-				cards_selection[i];
-				for (int m = 0; m < Const_Var::nmbr_Gamer; m++)
-				{
-					if (my_players[m]->Get_card_selection() == cards_selection[i])
-					{
-						my_players[m]->Add_to_number_score(plateau.Get_row(rand_number).Get_sum_number_beef());
-					}
-				}
-				plateau.Get_row(rand_number).Remove_all();
-				plateau.Get_row(rand_number).Add_card(cards_selection[i]);
-			}
-		}
-	}
-}
 
 inline void Game::Start(Player * les_joueurs[], Game_Board & plateau, Deck & my_deck)
 {
@@ -272,9 +215,15 @@ Game::Turn::Turn(Player * les_joueurs[], Game_Board & plateau, Deck & my_deck)
 
 	Sort_asc(cards_selection); // L'index de cartes dans cards_selection ne va plus corespondre a l'index du joueur
 
-	Show_cards_selection(les_joueurs);
-
-	Look_add_in_row(plateau, cards_selection, les_joueurs);
+	Show_cards_selection(les_joueurs,cards_selection);
+	
+	for (int i = 0; i < Const_Var::nmbr_Gamer; i++)
+	{
+		cout << "\n\n\n|||||||||  |||||||||  ||||||||| Au tour du Joueur " << this->cards_selection[i]->Get_nbr_player() + 1 << " |||||||||  |||||||||  |||||||||";
+		les_joueurs[this->cards_selection[i]->Get_nbr_player()]->Add_in_row(plateau,this->cards_selection);
+		Show_row(plateau);
+		cout << "\n\n\n|||||||||  |||||||||  |||||||||  |||||||||  |||||||||  ||||||||| |||||||||  |||||||||  ||||||||| ";
+	}
 
 	Show_row(plateau);
 	Show_player_scores(les_joueurs);

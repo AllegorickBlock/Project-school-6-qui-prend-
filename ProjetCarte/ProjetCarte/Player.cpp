@@ -118,6 +118,7 @@ void Bot_Player::Pick_selection_card(Card * selection_cards[])
 		if (&this->Get_hand_player().Get_card_of_hand(random_number) != nullptr) // Si l'objet Card que l'on recupere existe bien 
 		{
 			selection_cards[this->Get_number()] = &this->Get_hand_player().Get_card_of_hand(random_number); // On choisi cette carte pour jouer
+			this->Get_hand_player().Get_card_of_hand(random_number).Set_nbr_player(this->Get_number());
 			this->Get_hand_player().Remove_card(random_number);
 			this->Set_card_selection(selection_cards[this->Get_number()]);
 			choice_is_correct = true;
@@ -139,24 +140,37 @@ void Bot_Player::Add_in_row(Game_Board & my_board, Card * cards_selection[])
 	{
 		if (copy_number_diff[j] > 0) // Si nous arrivons a notre premiere differences > 0, Cas ou on peut poser la carte
 		{
-			for (int k = 0; k < Const_Var::nmbr_Rows && copy_number_diff[j] == (*this->Get_card_selection() - my_board.Get_row(k).Get_last_card()); k++) 
-			{	// On va recomparer chaque rangée pour voir leurs derniere carte et les comparer avec notre carte pour savoir ou la poser 
-				
-				if (my_board.Get_row(k).Get_nbr_cards_in() == Const_Var::nmbr_cards_in_Rows - 1)// si le nombre carte dans une rangée avant d'ajouter un carte est de 5
+			for (int k = 0; k < Const_Var::nmbr_Rows; k++) 
+			{	
+				if (copy_number_diff[j] == (*this->Get_card_selection() - my_board.Get_row(k).Get_last_card())) // On va recomparer chaque rangée pour voir leurs derniere carte et les comparer avec notre carte pour savoir ou la poser 
 				{
-					for (int m = 0; m < Const_Var::nmbr_Gamer && this->Get_card_selection() == cards_selection[m]; m++) // On 
+					if (my_board.Get_row(k).Get_nbr_cards_in() == Const_Var::nmbr_cards_in_Rows - 1)// si le nombre carte dans une rangée avant d'ajouter un carte est de 5 max
 					{
-						this->Add_to_number_score(my_board.Get_row(k).Get_sum_number_beef());
+						for (int m = 0; m < Const_Var::nmbr_Gamer ; m++) // On 
+						{
+							if (this->Get_card_selection() == cards_selection[m])
+							{
+								this->Add_to_number_score(my_board.Get_row(k).Get_sum_number_beef());
 
-						my_board.Get_row(k).Remove_all();
+								my_board.Get_row(k).Remove_all();
+								my_board.Get_row(k).Add_card(cards_selection[m]);
+							}
+						}
 
-
-						my_board.Get_row(k).Add_card(cards_selection[m]);
+						j = Const_Var::nmbr_Rows;
+						k = Const_Var::nmbr_Rows;
 					}
-					
+					else
+					{
+						for (int m = 0; m < Const_Var::nmbr_Gamer ; m++) // On 
+						{
+							if(this->Get_card_selection() == cards_selection[m]) my_board.Get_row(k).Add_card(cards_selection[m]);
+						}
+
+						j = Const_Var::nmbr_Rows;
+						k = Const_Var::nmbr_Rows;
+					}
 				}
-				j = Const_Var::nmbr_Rows;
-				k = Const_Var::nmbr_Rows;
 			}
 		}
 		else if (j == (Const_Var::nmbr_Rows - 1)) // Si la carte a un nombre trop petit et ne peut être ajouté a aucune rangée
@@ -187,18 +201,21 @@ void Human_Player::Pick_selection_card(Card * selection_cards[])
 {
 	int choice = 0;
 	bool choice_is_correct = false;
-	cout << "\n\n ~~~~~~~~~~~ ~~~~~~~~~~~ ~~~~~~~~~~~ Joueur " << (this->Get_number() + 1)<< " , a toi de jouer ! ~~~~~~~~~~~ ~~~~~~~~~~~ ~~~~~~~~~~~";
+	cout << "\n\n ~~~~~~~~~~~ ~~~~~~~~~~~ ~~~~~~~~~~~ Joueur " << (this->Get_number() + 1)<< " , choisi une carte ! ~~~~~~~~~~~ ~~~~~~~~~~~ ~~~~~~~~~~~";
 
 	while (choice_is_correct == false)
 	{
 		cout << "\n\tChoix : ";
 		cin >> choice;
-		if(choice > 0 && choice <= 10)// Si le joueur a tapé une entrée corecte
+
+
+		if(choice > 0 && choice <= Const_Var::nmbr_cards_in_Hand)// Si le joueur a tapé une entrée corecte
 		{
 			if (this->Get_hand_player().Card_in_hand(choice) == true)
 			{
 				choice_is_correct = true;
 				selection_cards[this->Get_number()] = &this->Get_hand_player().Get_card_of_hand((choice-1)); // On choisi cette carte pour jouer
+				this->Get_hand_player().Get_card_of_hand(choice-1).Set_nbr_player(this->Get_number()); 
 				this->Get_hand_player().Remove_card((choice - 1));
 				this->Set_card_selection(selection_cards[this->Get_number()]);
 				choice_is_correct = true;
@@ -211,4 +228,46 @@ void Human_Player::Pick_selection_card(Card * selection_cards[])
 
 void Human_Player::Add_in_row(Game_Board & my_board, Card * card_selection[])
 {
+	int choice = 0;
+	bool choice_is_correct = false;
+	cout << "\n\n ~~~~~~~~~~~ ~~~~~~~~~~~ ~~~~~~~~~~~ Joueur " << (this->Get_number() + 1) << " , choisie une rangée ! ~~~~~~~~~~~ ~~~~~~~~~~~ ~~~~~~~~~~~";
+
+	while (choice_is_correct == false)
+	{
+		cout << "\n\tChoix R : ";
+		cin >> choice;
+		if ( (choice - 1) >= 0 && (choice - 1) < Const_Var::nmbr_Rows)// Si le joueur a tapé une entrée corecte
+		{
+			choice_is_correct = true;
+			if ( (my_board.Get_row(choice - 1).Get_nbr_cards_in() < Const_Var::nmbr_cards_in_Rows - 1) && ( ( *this->Get_card_selection() - my_board.Get_row(choice-1).Get_last_card() ) > 0) )
+			{											// Cas ou lorsqu'on pose une carte, la rangée n'est pas composée de 6 carte																		
+														// ET que la difference de notre carte selectionné avec la derniere carte de cette ra,gée est superieur a 0
+				
+				for (int m = 0; m < Const_Var::nmbr_Gamer; m++)	//On va chercher pour effacer notre carte selectionnée dans notre tableau de cartes selectionné pour ce tour
+				{
+					if (this->Get_card_selection() == card_selection[m])
+					{
+						my_board.Get_row(choice -1).Add_card(card_selection[m]);
+						
+						break;
+					}
+				}
+			}
+			else
+			{
+				for (int m = 0; m < Const_Var::nmbr_Gamer; m++)	//On va chercher pour effacer notre carte selectionnée dans notre tableau de cartes selectionné pour ce tour
+				{
+					if (this->Get_card_selection() == card_selection[m])
+					{
+						this->Add_to_number_score(my_board.Get_row(choice - 1).Get_sum_number_beef());
+						my_board.Get_row(choice - 1).Remove_all();
+						my_board.Get_row(choice - 1).Add_card(card_selection[m]);
+						break;
+					}
+				}
+			}
+			
+		}
+		cout << "\nMauvaise entrée, veuillez essayer a nouveau en entrant un chifre valide !\n\n";
+	}
 }

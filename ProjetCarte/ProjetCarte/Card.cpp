@@ -36,6 +36,10 @@ void Card::Set_number(int nmbr) { this->number = nmbr; } // Permet de modifier l
 
 int Card::Get_beef_number() { return this->beef_Number; }
 
+int Card::Get_nbr_player() {	return nbr_current_player;	}
+
+void Card::Set_nbr_player(int nbr)	{	nbr_current_player = nbr;	}
+
 #pragma region surcharges operateurs
 
 Card Card::operator>(const Card & other_card) const	{	return this->number > other_card.number;	}

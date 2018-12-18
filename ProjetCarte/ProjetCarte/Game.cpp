@@ -30,7 +30,7 @@ Game::Game()
 	my_deck.Mix_card();
 
 	cout << " \n\n\t---- Deck melange ---- \n\n";
-	Show_deck(my_deck);
+	//Show_deck(my_deck);
 
 	for (int i = 0; i < Const_Var::nmbr_Gamer; i++) my_deck.Add_card_to_player(les_joueurs[i]);
 	for (int i = 0; i < Const_Var::nmbr_Rows; i++) my_deck.Add_card_to_row(plateau.Get_row(i));
@@ -39,9 +39,9 @@ Game::Game()
 
 	Show_row(plateau);
 
-	cout << "\n\n\n\n Carte restante dans le Paquets \n\n";
+	//cout << "\n\n\n\n Carte restante dans le Paquets \n\n";
 
-	Show_deck(my_deck);
+	//Show_deck(my_deck);
 	
 	this->Start(les_joueurs, plateau, my_deck);
 }

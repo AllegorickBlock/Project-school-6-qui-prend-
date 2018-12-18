@@ -14,6 +14,7 @@ public:
 	~Deck();
 
 	Card& Get_Card(int card_Number);	   
+
 	void Add_card_to_player(Player * my_player);
 	void Add_card_to_row(Game_Board::Row & my_row);
 	void Mix_card();

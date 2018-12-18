@@ -36,7 +36,6 @@ public:
 	static inline void Show_player_scores(Player * my_players[]);
 
 	static inline void Sort_asc(Card * my_tab[] ); // Trie dans l'ordre croissant un tableau de pointeurd de Card
-	static inline void Sort_asc(int my_tab[]);	// Trie dans l'ordre croissant le contenu d'un tableau d'entier
 	
 	inline void Start(Player * les_joueurs[], Game_Board& plateau, Deck& my_deck);
 };

@@ -20,15 +20,15 @@ public:
 	~Card();
 	
 	bool In_hand();
-	bool In_Deck();
-	bool In_Row();
+	bool In_deck();
+	bool In_row();
 	void Set_status(int nbr_status);// Si status : 0 = deck, 1 = hand, 2 = row 
 
 	int  Get_number();		     
 	void Set_number(int nmbr);	
 	int	 Get_beef_number();
-	int Get_nbr_player();
 	void Set_nbr_player(int nbr);
+	int Get_nbr_player();
 
 	Card operator>(const Card& other_card) const;
 	Card operator<(const Card& other_card) const;

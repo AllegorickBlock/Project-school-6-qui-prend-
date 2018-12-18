@@ -1,9 +1,9 @@
 #include "stdafx.h"
 #include "Player.h"
 
-#pragma region Classe Player
+#pragma region Class : Player
 
-#pragma region Player : Constructeur & Destructeur
+#pragma region Constructor & Destructor
 
 int mbr = 0;
 
@@ -13,7 +13,7 @@ Player::Player()
 	this->score = 0;
 	this->number = mbr++;
 
-} // On cree dynamiquement notre objet main apparente au joueur
+} // On cree dynamiquement notre objet main apparent au joueur
 
 Player::~Player() // Le destructeur va detruite l'instance dynamique cree par le constructeur
 {
@@ -22,46 +22,29 @@ Player::~Player() // Le destructeur va detruite l'instance dynamique cree par le
 }
 #pragma endregion
 
+#pragma region Functions : Get and Set
+
+int Player::Get_number() { return this->number; }
+
+int Player::Get_score() { return this->score; }
+
+void Player::Set_card_selection(Card * my_card) { this->selection_card = my_card; }
+
+Card * Player::Get_card_selection() { return this->selection_card; }
+
 Player::Hand_Player& Player::Get_hand_player() { return *this->hand; }
 
-void Player::Add_to_number_score(int beef_score)
-{
-	this->score += beef_score;
-}
+#pragma endregion
 
-int Player::Get_score()
-{
-	return this->score;
-}
+#pragma region Functions : Add & Remove
 
-void Player::Pick_selection_card(Card * selection_cards[])
-{
-}
+void Player::Add_to_number_score(int beef_score) { this->score += beef_score; }
 
-void Player::Add_in_row(Game_Board & my_board, Card * card_selection[])
-{
-}
+void Player::Remove_card_selection(Card * my_card) { this->selection_card = nullptr; }
 
+#pragma endregion
 
-void Player::Set_card_selection(Card * my_card)
-{
-	this->selection_card = my_card;
-}
-
-void Player::Remove_card_selection(Card * my_card)
-{
-	this->selection_card = nullptr;
-}
-
-Card * Player::Get_card_selection()
-{
-	return this->selection_card;
-}
-
-int Player::Get_number()
-{
-	return this->number;
-}
+#pragma region Functions : Sort
 
 inline void Player::Sort_asc(int my_tab[])
 {
@@ -75,19 +58,21 @@ inline void Player::Sort_asc(int my_tab[])
 	for (int i = 0; i < Const_Var::nmbr_Gamer; i++) my_tab[i] = my_copy_tab[i];
 }
 
-
-
+#pragma endregion
 
 #pragma endregion
 
-#pragma region Classe Player::Hand_Player
+#pragma region Class : Player::Hand_Player
 
 #pragma region Player::Hand_Player : Constructeur & Destructeur
+
 Player::Hand_Player::Hand_Player() { } 
 
 Player::Hand_Player::~Hand_Player() {} 
 
 #pragma endregion
+
+#pragma region Functions : Add & Remove
 
 void Player::Hand_Player::Add_card(Card * my_card, int index) // ON DOIT FAIRE UN PASSAGE PAR REFERENCE OU SINON LE DECK NE SE VERRA PAS MODIFIE -> CAR COPIE
 {
@@ -95,10 +80,13 @@ void Player::Hand_Player::Add_card(Card * my_card, int index) // ON DOIT FAIRE U
 	player_Cards[index]->Set_status(1);
 }
 
+void Player::Hand_Player::Remove_card(int index) { this->player_Cards[index] = nullptr; }
 
-void Player::Hand_Player::Remove_card(int index)	{	this->player_Cards[index] = nullptr;	}
+#pragma endregion
 
-bool Player::Hand_Player::Card_in_hand(int index)	{	return this->player_Cards[index] != nullptr;	}
+#pragma region Functions : Get and Set 
+
+bool Player::Hand_Player::Card_in_hand(int index) { return this->player_Cards[index] != nullptr; }
 
 Card& Player::Hand_Player::Get_card_of_hand(int card) // Gere les exceptions dans lesquelles on veut acceder a des cartes qui ne sont plus/pas dans la main du joueur
 {
@@ -107,7 +95,9 @@ Card& Player::Hand_Player::Get_card_of_hand(int card) // Gere les exceptions dan
 
 #pragma endregion
 
-#pragma region class Bot_Player
+#pragma endregion
+
+#pragma region Class : Bot_Player
 
 void Bot_Player::Pick_selection_card(Card * selection_cards[])
 {
@@ -193,7 +183,7 @@ void Bot_Player::Add_in_row(Game_Board & my_board, Card * cards_selection[])
 }
 #pragma endregion
 
-#pragma region class Human_Player
+#pragma region Class : Human_Player
 
 void Human_Player::Pick_selection_card(Card * selection_cards[])
 {

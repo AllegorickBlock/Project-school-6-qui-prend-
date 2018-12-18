@@ -1,14 +1,12 @@
 #include "stdafx.h"
 #include "Game.h"
 
+#pragma region Class : Game
 
-
-#pragma region Game
-
-#pragma region Game : Constructeur & Destructeur
-
+#pragma region Constructor & Destructor
 
 int number_turn;
+
 Game::Game()
 {
 	Bot_Player bot_1;
@@ -48,13 +46,11 @@ Game::Game()
 	this->Start(les_joueurs, plateau, my_deck);
 }
 
-Game::~Game()
-{
-}
+Game::~Game()	{	}
 
 #pragma endregion
 
-#pragma region Game : Show Functions
+#pragma region Functions : Show
 
 inline void Game::Show_beef_symbol()
 {
@@ -77,7 +73,7 @@ inline void Game::Show_deck(Deck &my_deck)
 	cout << "\n\n---- Carte dans deck ---- \n";
 	for (int j = 0; j < Const_Var::nmbr_deck_cards; j++)
 	{
-		if (my_deck.Get_Card(j).In_Deck()) Show_card(my_deck.Get_Card(j));
+		if (my_deck.Get_Card(j).In_deck()) Show_card(my_deck.Get_Card(j));
 		if ((j + 1) % 10 == 0) cout << "\n";
 	}
 }
@@ -130,7 +126,7 @@ inline void Game::Show_player_scores(Player * my_players[])
 
 #pragma endregion
 
-#pragma region Game : Fonctions Sort_asc
+#pragma region Functions : Sort & Start
 
 inline void Game::Sort_asc(Card * my_tab[]) // tri dans l'ordre croissant
 {
@@ -147,24 +143,6 @@ inline void Game::Sort_asc(Card * my_tab[]) // tri dans l'ordre croissant
 	for (int i = 0; i < Const_Var::nmbr_Gamer; i++) my_tab[i] = my_copy_tab[i];
 }
 
-inline void Game::Sort_asc(int my_tab[])
-{
-	int my_copy_tab[Const_Var::nmbr_Gamer];
-	for (int i = 0; i < Const_Var::nmbr_Gamer; i++) // on regarde le tableau de carte pris en parameter
-	{												// On regarde toute les carte de my_tab
-		int index = 0;								// on regarde les difference de notre carte[i] avec les tout les autres cartes[j]
-		for (int j = 0; j < Const_Var::nmbr_Gamer; j++) if (my_tab[i] > my_tab[j]) index++; 
-		my_copy_tab[index] = my_tab[i]; // ON assigne dans l'ordre les ellements de my_tab dans my_copy_tab
-	}
-	for (int i = 0; i < Const_Var::nmbr_Gamer; i++) my_tab[i] = my_copy_tab[i];
-}
-
-#pragma endregion
-
-#pragma region Game : Usefull Fonctions
-
-
-
 inline void Game::Start(Player * les_joueurs[], Game_Board & plateau, Deck & my_deck)
 {
 	for (this->end = false; end != true; )
@@ -178,9 +156,7 @@ inline void Game::Start(Player * les_joueurs[], Game_Board & plateau, Deck & my_
 				{
 					this->end = true;
 					my_deck.Recover_cards_and_mix(les_joueurs, &plateau);
-					
 					break;
-					
 				}
 			}
 		}
@@ -195,9 +171,9 @@ inline void Game::Start(Player * les_joueurs[], Game_Board & plateau, Deck & my_
 
 #pragma endregion
 
-#pragma region Turn
+#pragma region Class : Turn
 
-#pragma region Turn : Constructeur & Destructeur
+#pragma region Constructor & Destructor
 
 Game::Turn::Turn(Player * les_joueurs[], Game_Board & plateau, Deck & my_deck)
 {

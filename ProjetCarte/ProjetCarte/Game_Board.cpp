@@ -2,9 +2,9 @@
 #include "Game_Board.h"
 
 
-#pragma region Game
+#pragma region Class : Game_Board
 
-#pragma region Game_Board : Constructeurs et destructeurs
+#pragma region Constructor & Destructor
 
 Game_Board::Game_Board() { for (int i = 0; i < Const_Var::nmbr_Rows; i++) this->game_rows[i] = new Row(); }
 
@@ -19,6 +19,8 @@ Game_Board::~Game_Board()
 
 #pragma endregion
 
+#pragma region Functions : Get and Set
+
 Game_Board::Row & Game_Board::Get_row(int index)
 {
 	if (index >= 0 && index < Const_Var::nmbr_Rows) return *this->game_rows[index];
@@ -27,12 +29,11 @@ Game_Board::Row & Game_Board::Get_row(int index)
 
 #pragma endregion
 
-
-
+#pragma endregion
 
 #pragma region Row
 
-#pragma region Row : Constructeurs & Destructeurs
+#pragma region Constructor & Destructor
 
 Game_Board::Row::Row() { for (int i = 0; i < Const_Var::nmbr_cards_in_Rows; i++) row_card[i] = nullptr; }
 
@@ -40,7 +41,7 @@ Game_Board::Row::~Row() { for (int i = 0; i < Const_Var::nmbr_cards_in_Rows; i++
 
 #pragma endregion
 
-#pragma region Row : Fonctions modif cartes
+#pragma region Functions : Cards modifications
 void Game_Board::Row::Add_card(Card * my_card)
 {
 	for (int l = 0; l < Const_Var::nmbr_cards_in_Rows; l++)
@@ -67,9 +68,14 @@ void Game_Board::Row::Remove_all()
 	}
 }
 
+void Game_Board::Row::Remove_card(int & index)
+{
+	if (index >= 0 && index < Const_Var::nmbr_cards_in_Rows) this->row_card[index] = nullptr;
+}
+
 #pragma endregion
 
-#pragma region Row : Fonctions Get
+#pragma region Functions : Get
 
 int Game_Board::Row::Get_sum_number_beef()
 {
@@ -107,10 +113,6 @@ Card & Game_Board::Row::Get_last_card()
 	}
 }
 
-void Game_Board::Row::Remove_card(int & index)
-{
-	if (index >= 0 && index < Const_Var::nmbr_cards_in_Rows) this->row_card[index] = nullptr;
-}
 
 #pragma endregion
 

@@ -11,7 +11,7 @@ class Card
 	const int row_status = 2;
 
 	int number;
-	int beef_Number;
+	int beef_number;
 	int status;
 	int nbr_current_player;
 				
@@ -28,7 +28,7 @@ public:
 	void Set_number(int nmbr);	
 	int	 Get_beef_number();
 	void Set_nbr_player(int nbr);
-	int Get_nbr_player();
+	int  Get_nbr_player();
 
 	Card operator>(const Card& other_card) const;
 	Card operator<(const Card& other_card) const;

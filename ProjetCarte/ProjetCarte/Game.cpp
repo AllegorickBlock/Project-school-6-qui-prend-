@@ -73,7 +73,7 @@ inline void Game::Show_deck(Deck &my_deck)
 	cout << "\n\n---- Carte dans deck ---- \n";
 	for (int j = 0; j < Const_Var::nmbr_deck_cards; j++)
 	{
-		if (my_deck.Get_Card(j).In_deck()) Show_card(my_deck.Get_Card(j));
+		if (my_deck.Get_card(j).In_deck()) Show_card(my_deck.Get_card(j));
 		if ((j + 1) % 10 == 0) cout << "\n";
 	}
 }

@@ -7,20 +7,19 @@
 
 int number_turn;
 
-Game::Game()
+Game::Game(int nb_human_player)
 {
-	Bot_Player bot_1;
-	Human_Player  human_2;
-	Bot_Player bot_3;
-	Human_Player human_4;
+	Player * the_players[Const_Var::nmbr_Gamer];
+	Bot_Player the_bot_players[Const_Var::nmbr_Gamer];
+	Human_Player the_human_players[Const_Var::nmbr_Gamer];
 
-	Player * les_joueurs[Const_Var::nmbr_Gamer];
+	for(int i = 0; i < Const_Var::nmbr_Gamer; i++)
+	{
+		if(nb_human_player > i)	the_players[i] = &the_human_players[i];
+		else the_players[i] = &the_bot_players[i];
+	}
 
-	les_joueurs[0] = &bot_1;
-	les_joueurs[1] = &human_2;
-	les_joueurs[2] = &bot_3;
-	les_joueurs[3] = &human_4;
-	Game_Board plateau;
+	Game_Board the_game_board;
 	Deck my_deck;
 	number_turn = 0;
 
@@ -32,18 +31,18 @@ Game::Game()
 	cout << " \n\n\t---- Deck melange ---- \n\n";
 	Show_deck(my_deck);
 
-	for (int i = 0; i < Const_Var::nmbr_Gamer; i++) my_deck.Add_card_to_player(les_joueurs[i]);
-	for (int i = 0; i < Const_Var::nmbr_Rows; i++) my_deck.Add_card_to_row(plateau.Get_row(i));
+	for (int i = 0; i < Const_Var::nmbr_Gamer; i++) my_deck.Add_card_to_player(the_players[i]);
+	for (int i = 0; i < Const_Var::nmbr_Rows; i++) my_deck.Add_card_to_row(the_game_board.Get_row(i));
 	
-	for (int i = 0; i < Const_Var::nmbr_Gamer; i++) Show_hand(les_joueurs[i]);
+	for (int i = 0; i < Const_Var::nmbr_Gamer; i++) Show_hand(the_players[i]);
 
-	Show_row(plateau);
+	Show_row(the_game_board);
 
 	cout << "\n\n\n\n Carte restante dans le Paquets \n\n";
 
 	Show_deck(my_deck);
 	
-	this->Start(les_joueurs, plateau, my_deck);
+	this->Start(the_players, the_game_board, my_deck);
 }
 
 Game::~Game()	{	}

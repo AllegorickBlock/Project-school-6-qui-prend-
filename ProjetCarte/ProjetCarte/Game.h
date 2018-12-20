@@ -24,7 +24,7 @@ class Game
 	};
 
 public:
-	Game();
+	Game(int nb_human_player);
 	~Game();
 
 	static inline void Show_beef_symbol();

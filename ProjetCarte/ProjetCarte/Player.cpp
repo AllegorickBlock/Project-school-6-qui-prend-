@@ -12,6 +12,7 @@ Player::Player()
 	this->hand = new Player::Hand_Player();
 	this->score = 0;
 	this->number = mbr++;
+	if (mbr == Const_Var::nmbr_Gamer) mbr = 0; // Lorsqu'on cree des tableaux de joeurs et de joueurs bot et humain, ils auront un nombre équivalenbt a l'objet de la classe mere 
 
 } // On cree dynamiquement notre objet main apparent au joueur
 

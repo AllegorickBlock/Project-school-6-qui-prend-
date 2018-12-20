@@ -13,9 +13,9 @@ LA170005 : Bourlet Jason
 -[X] Etape 5  
 -[X] Etape 6  
 -[X] Etape 7  
-Le code réarengé fonctionne, il ne reste plus qu'a optimiser le tout et à lettre à jour l'UML
--[ ] Etape 8  
--[ ] Etape 9  
+-[x] Etape 8  
+-[x] Etape 9  
+Il ne reste plus qu'à se documenter pour savoir comment inserrer une base de donnée SQL avec le jeu et l'utiliser
 -[ ] Etape 10  
 
 

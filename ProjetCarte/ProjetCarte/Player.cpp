@@ -77,21 +77,21 @@ Player::Hand_Player::~Hand_Player() {}
 
 void Player::Hand_Player::Add_card(Card * my_card, int index) // ON DOIT FAIRE UN PASSAGE PAR REFERENCE OU SINON LE DECK NE SE VERRA PAS MODIFIE -> CAR COPIE
 {
-	player_Cards[index] = my_card;
-	player_Cards[index]->Set_status(1);
+	player_cards[index] = my_card;
+	player_cards[index]->Set_status(1);
 }
 
-void Player::Hand_Player::Remove_card(int index) { this->player_Cards[index] = nullptr; }
+void Player::Hand_Player::Remove_card(int index) { this->player_cards[index] = nullptr; }
 
 #pragma endregion
 
 #pragma region Functions : Get and Set 
 
-bool Player::Hand_Player::Card_in_hand(int index) { return this->player_Cards[index] != nullptr; }
+bool Player::Hand_Player::Card_in_hand(int index) { return this->player_cards[index] != nullptr; }
 
 Card& Player::Hand_Player::Get_card_of_hand(int card) // Gere les exceptions dans lesquelles on veut acceder a des cartes qui ne sont plus/pas dans la main du joueur
 {
-	if (card < Const_Var::nmbr_cards_in_Hand && card >= 0) return *player_Cards[card];
+	if (card < Const_Var::nmbr_cards_in_Hand && card >= 0) return *player_cards[card];
 }
 
 #pragma endregion

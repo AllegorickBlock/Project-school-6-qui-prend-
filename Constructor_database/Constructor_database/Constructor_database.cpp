@@ -47,7 +47,6 @@ int main(int argc, char* argv[]) {
 	string b = ")";
 	string ms = "INSERT INTO Player VALUES (" + to_string(a) + b;
 	strcat(sql, ms.c_str()); // Permet de concatener nos chaines de caractères
-	strcat(sql, ")");
 	
 	rc = sqlite3_exec(db, sql, callback, 0, &zErrMsg); // On execute la requette que l'on créé dans sql
 
@@ -59,7 +58,6 @@ int main(int argc, char* argv[]) {
 	else fprintf(stdout, "Records created successfully\n");
 	
 	sqlite3_close(db);
-	return 0;
-
+	cout << sql;
 	cin >> z;
 }

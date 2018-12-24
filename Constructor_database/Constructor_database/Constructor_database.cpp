@@ -2,10 +2,14 @@
 //
 
 #include "pch.h"
+#include <iostream>
+#include <string.h>
+#include <cstring>
+#include <string.h>
+#include <string>
 #include <stdlib.h>
 #include <stdio.h>
-#include <iostream>
-#include <string> // Pour le to_string 
+#include <errno.h>
 #include "sqlite3.h"
 
 using namespace std;
@@ -42,8 +46,8 @@ int main(int argc, char* argv[]) {
 	int a = 4;
 	string b = ")";
 	string ms = "INSERT INTO Player VALUES (" + to_string(a) + b;
-	strcat_s(sql, ms.c_str()); // Permet de concatener nos chaines de caractères
-	strcat_s(sql, ")");
+	strcat(sql, ms.c_str()); // Permet de concatener nos chaines de caractères
+	strcat(sql, ")");
 	
 	rc = sqlite3_exec(db, sql, callback, 0, &zErrMsg); // On execute la requette que l'on créé dans sql
 

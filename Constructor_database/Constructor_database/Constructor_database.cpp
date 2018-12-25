@@ -50,6 +50,9 @@ int main(int argc, char* argv[]) {
 	
 	rc = sqlite3_exec(db, sql, callback, 0, &zErrMsg); // On execute la requette que l'on créé dans sql
 
+	string query = "SELECT * FROM Player";
+	sqlite3_exec(db, query.c_str(), callback, NULL, NULL);
+
 	if (rc != SQLITE_OK)
 	{
 		fprintf(stderr, "SQL error: %s\n", zErrMsg);

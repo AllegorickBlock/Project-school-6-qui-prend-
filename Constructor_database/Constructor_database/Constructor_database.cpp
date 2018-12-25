@@ -10,6 +10,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <errno.h>
+#include <ctime>
 #include "sqlite3.h"
 
 using namespace std;
@@ -31,7 +32,6 @@ int main(int argc, char* argv[]) {
 	sqlite3 *db;
 	char *zErrMsg = 0;
 	int rc;
-	char sql[100] ="";
 
 	
 	rc = sqlite3_open("score.db", &db); // On ouvre la base de donné en specifiant le fichier
@@ -43,15 +43,36 @@ int main(int argc, char* argv[]) {
 	}
 	else fprintf(stderr, "Opened database successfully\n");
 	
-	int a = 4;
-	string b = ")";
-	string ms = "INSERT INTO Player VALUES (" + to_string(a) + b;
-	strcat(sql, ms.c_str()); // Permet de concatener nos chaines de caractères
-	
-	rc = sqlite3_exec(db, sql, callback, 0, &zErrMsg); // On execute la requette que l'on créé dans sql
+	//int a = 4;
+	//string b = ")";
+	//string ms = "INSERT INTO Player VALUES (" + to_string(a) + b;
+	//strcat(sql, ms.c_str()); // Permet de concatener nos chaines de caractères
+	//rc = sqlite3_exec(db, sql, callback, 0, &zErrMsg); // On execute la requette que l'on créé dans sql
 
-	string query = "SELECT * FROM Player";
+	int nb_player = 1;
+	int nb_score = 70;
+	int resultat = 0;
+
+
+	string Score_query = "";
+	string Game_query = "INSERT INTO Game (Gdate) VALUES(DATETIME('now','localtime'));";
+	sqlite3_exec(db, Game_query.c_str(), callback, NULL, NULL);
+	for (int i = 0; i < 4; i++, nb_player++)
+	{
+		char sql[150] = "";
+		Score_query = "INSERT INTO Score(IDPlayer,IDGame,NBscore,NBresult) VALUES("
+			+ to_string(nb_player) + ",(SELECT IDGame FROM Game WHERE IDGame = (SELECT max(IDGame) FROM Game)),"
+			+ to_string(nb_score) + "," + to_string(resultat) + ")";
+		strcat(sql, Score_query.c_str());
+		sqlite3_exec(db, Score_query.c_str(), callback, NULL, NULL);
+	}
+
+	string query = "SELECT s.IDGame,g.GDate,s.IDPlayer,s.NBscore,s.NBresult   FROM Game as g ,Score as s WHERE g.IDGame = s.IDGame ORDER BY g.GDate ";
 	sqlite3_exec(db, query.c_str(), callback, NULL, NULL);
+
+	query = "SELECT p.IDPLayer ,COUNT(p.IDPLAYER) as n° FROM Score as s, Player as P WHERE s.NBresult = 1 AND p.IDPLayer == s.IDPlayer GROUP BY p.IDPLAYER;";
+	sqlite3_exec(db, query.c_str(), callback, NULL, NULL);
+
 
 	if (rc != SQLITE_OK)
 	{
@@ -61,6 +82,12 @@ int main(int argc, char* argv[]) {
 	else fprintf(stdout, "Records created successfully\n");
 	
 	sqlite3_close(db);
-	cout << sql;
+
+	time_t now = time(0);
+	char * charDate = ctime(&now);
+
+	cout << "\n the current time is : " << charDate;
+
+
 	cin >> z;
 }

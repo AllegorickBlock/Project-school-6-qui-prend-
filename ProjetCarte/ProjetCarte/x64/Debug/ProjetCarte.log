@@ -1,9 +1,25 @@
-<<<<<<< HEAD
-﻿  Projet_Carte.cpp
+﻿  stdafx.cpp
+  Card.cpp
 c:\users\martin\desktop\vraiprojetprogra\groupe10\projetcarte\projetcarte\const_var.h(10): warning C4091: 'static ' : ignoré à gauche de 'Const_Var' quand aucune variable n'est déclarée
-  ProjetCarte.vcxproj -> C:\Users\Martin\Desktop\VraiProjetProgra\groupe10\ProjetCarte\x64\Debug\ProjetCarte.exe
-=======
-﻿  Game.cpp
-c:\users\jason\onedrive - haute ecole louvain en hainaut\projet carte\projet\groupe10\projetcarte\projetcarte\const_var.h(10): warning C4091: 'static ' : ignoré à gauche de 'Const_Var' quand aucune variable n'est déclarée
-  ProjetCarte.vcxproj -> C:\Users\Jason\OneDrive - Haute Ecole Louvain en Hainaut\Projet carte\Projet\groupe10\ProjetCarte\x64\Debug\ProjetCarte.exe
->>>>>>> origin
+  Deck.cpp
+c:\users\martin\desktop\vraiprojetprogra\groupe10\projetcarte\projetcarte\const_var.h(10): warning C4091: 'static ' : ignoré à gauche de 'Const_Var' quand aucune variable n'est déclarée
+c:\users\martin\desktop\vraiprojetprogra\groupe10\projetcarte\projetcarte\deck.cpp(62): warning C4244: 'argument' : conversion de 'time_t' en 'unsigned int', perte possible de données
+  Game.cpp
+c:\users\martin\desktop\vraiprojetprogra\groupe10\projetcarte\projetcarte\const_var.h(10): warning C4091: 'static ' : ignoré à gauche de 'Const_Var' quand aucune variable n'est déclarée
+  Game_Board.cpp
+c:\users\martin\desktop\vraiprojetprogra\groupe10\projetcarte\projetcarte\const_var.h(10): warning C4091: 'static ' : ignoré à gauche de 'Const_Var' quand aucune variable n'est déclarée
+  Player.cpp
+c:\users\martin\desktop\vraiprojetprogra\groupe10\projetcarte\projetcarte\const_var.h(10): warning C4091: 'static ' : ignoré à gauche de 'Const_Var' quand aucune variable n'est déclarée
+c:\users\martin\desktop\vraiprojetprogra\groupe10\projetcarte\projetcarte\player.cpp(105): warning C4244: 'argument' : conversion de 'time_t' en 'unsigned int', perte possible de données
+c:\users\martin\desktop\vraiprojetprogra\groupe10\projetcarte\projetcarte\player.cpp(169): warning C4244: 'argument' : conversion de 'time_t' en 'unsigned int', perte possible de données
+  Projet_Carte.cpp
+c:\users\martin\desktop\vraiprojetprogra\groupe10\projetcarte\projetcarte\const_var.h(10): warning C4091: 'static ' : ignoré à gauche de 'Const_Var' quand aucune variable n'est déclarée
+  Génération de code en cours...
+c:\users\martin\desktop\vraiprojetprogra\groupe10\projetcarte\projetcarte\player.cpp(95): warning C4715: 'Player::Hand_Player::Get_card_of_hand' : les chemins de contrôle ne retournent pas tous une valeur
+c:\users\martin\desktop\vraiprojetprogra\groupe10\projetcarte\projetcarte\game_board.cpp(88): warning C4715: 'Game_Board::Row::Get_sum_number_beef' : les chemins de contrôle ne retournent pas tous une valeur
+c:\users\martin\desktop\vraiprojetprogra\groupe10\projetcarte\projetcarte\game_board.cpp(101): warning C4715: 'Game_Board::Row::Get_card' : les chemins de contrôle ne retournent pas tous une valeur
+c:\users\martin\desktop\vraiprojetprogra\groupe10\projetcarte\projetcarte\game_board.cpp(114): warning C4715: 'Game_Board::Row::Get_last_card' : les chemins de contrôle ne retournent pas tous une valeur
+Game.obj : error LNK2019: symbole externe non rÚsolu sqlite3_close rÚfÚrencÚ dans la fonction "public: static void __cdecl Game::Sql_score_insertion(class Player * * const)" (?Sql_score_insertion@Game@@SAXQEAPEAVPlayer@@@Z)
+Game.obj : error LNK2019: symbole externe non rÚsolu sqlite3_exec rÚfÚrencÚ dans la fonction "public: static void __cdecl Game::Sql_score_insertion(class Player * * const)" (?Sql_score_insertion@Game@@SAXQEAPEAVPlayer@@@Z)
+Game.obj : error LNK2019: symbole externe non rÚsolu sqlite3_open rÚfÚrencÚ dans la fonction "public: static void __cdecl Game::Sql_score_insertion(class Player * * const)" (?Sql_score_insertion@Game@@SAXQEAPEAVPlayer@@@Z)
+C:\Users\Martin\Desktop\VraiProjetProgra\groupe10\ProjetCarte\x64\Debug\ProjetCarte.exe : fatal error LNK1120: 3 externes non rÚsolus

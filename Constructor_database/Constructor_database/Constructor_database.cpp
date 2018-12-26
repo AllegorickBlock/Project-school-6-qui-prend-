@@ -46,7 +46,7 @@ int main(int argc, char* argv[]) {
 	char sql[100] = "";
 	int a = 4;
 	string b = ")";
-	string ms = "INSERT OR REPLACE INTO Player(IDPlayer) Values(" + to_string(a) + ");
+	string ms = "INSERT OR REPLACE INTO Player(Name) VALUES(\"Salut je suis Paul\")";
 	strcat(sql, ms.c_str()); // permet de concatener nos chaines de caractères
 	rc = sqlite3_exec(db, sql, callback, 0, &zErrMsg); // on execute la requette que l'on créé dans sql
 

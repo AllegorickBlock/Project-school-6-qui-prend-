@@ -46,7 +46,7 @@ int main(int argc, char* argv[]) {
 	char sql[100] = "";
 	int a = 4;
 	string b = ")";
-	string ms = "insert or replace into player(idplayer)values(" + to_string(a) + b;
+	string ms = "INSERT OR REPLACE INTO Player(IDPlayer) Values(" + to_string(a) + ");
 	strcat(sql, ms.c_str()); // permet de concatener nos chaines de caractères
 	rc = sqlite3_exec(db, sql, callback, 0, &zErrMsg); // on execute la requette que l'on créé dans sql
 
@@ -56,7 +56,7 @@ int main(int argc, char* argv[]) {
 
 
 	string Score_query = "";
-	string Game_query = "INSERT INTO Game (Gdate) VALUES(DATETIME('now','localtime'));";
+	string Game_query = "INSERT INTO Game(GDate) VALUES(DATETIME('now','localtime'));";
 	sqlite3_exec(db, Game_query.c_str(), callback, NULL, NULL);
 	for (int i = 0; i < 4; i++, nb_player++)
 	{

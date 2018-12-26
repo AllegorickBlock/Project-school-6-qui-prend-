@@ -176,7 +176,7 @@ inline void Game::Sql_score_insertion(Player * my_players[])
 	char *zErrMsg = 0;
 	int rc = sqlite3_open("score.db", &db); // On ouvre la base de donné en specifiant le fichie, et on la lie à notre objet db
 
-	string Game_query = "INSERT INTO Game(Gdate) VALUES(DATETIME('now','localtime'));";
+	string Game_query = "INSERT INTO Game (Gdate) VALUES(DATETIME('now','localtime'));";
 	sqlite3_exec(db, Game_query.c_str(), callback, NULL, NULL);
 
 	for (int i = 0; i < 4; i++, Const_Var::nmbr_Gamer)
@@ -188,7 +188,7 @@ inline void Game::Sql_score_insertion(Player * my_players[])
 		if (my_players[i]->Get_score() >= 66) resultat = 0;
 		else resultat = 1;
 
-		string player_query = "INSERT OR REPLACE INTO Player(Name) VALUES(Paul" + to_string(1) + ");";
+		string player_query = "insert or replace into player(idplayer)values(" + to_string(my_players[i]->Get_number() + 1) + ");";
 		strcat(insert_player_query, player_query.c_str());
 		rc = sqlite3_exec(db, insert_player_query, callback, 0, &zErrMsg);
 

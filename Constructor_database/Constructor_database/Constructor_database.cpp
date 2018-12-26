@@ -43,15 +43,16 @@ int main(int argc, char* argv[]) {
 	}
 	else fprintf(stderr, "Opened database successfully\n");
 	
-	//int a = 4;
-	//string b = ")";
-	//string ms = "INSERT INTO Player VALUES (" + to_string(a) + b;
-	//strcat(sql, ms.c_str()); // Permet de concatener nos chaines de caractères
-	//rc = sqlite3_exec(db, sql, callback, 0, &zErrMsg); // On execute la requette que l'on créé dans sql
+	char sql[100] = "";
+	int a = 4;
+	string b = ")";
+	string ms = "insert or replace into player(idplayer)values(" + to_string(a) + b;
+	strcat(sql, ms.c_str()); // permet de concatener nos chaines de caractères
+	rc = sqlite3_exec(db, sql, callback, 0, &zErrMsg); // on execute la requette que l'on créé dans sql
 
 	int nb_player = 1;
-	int nb_score = 70;
-	int resultat = 0;
+	int nb_score = 24;
+	int resultat = 1;
 
 
 	string Score_query = "";

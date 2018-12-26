@@ -188,7 +188,7 @@ inline void Game::Sql_score_insertion(Player * my_players[])
 		if (my_players[i]->Get_score() >= 66) resultat = 0;
 		else resultat = 1;
 
-		string player_query = "INSERT OR REPLACE INTO Player(Name) VALUES(Paul" + to_string(1) + ");";
+		string player_query = "INSERT OR REPLACE INTO Player(Name) VALUES(\"Paul" + to_string(i) + "\");";
 		strcat(insert_player_query, player_query.c_str());
 		rc = sqlite3_exec(db, insert_player_query, callback, 0, &zErrMsg);
 

@@ -4,117 +4,116 @@
 
 #pragma region Class : Game_Board
 
-#pragma region Constructor & Destructor
+	#pragma region Constructor & Destructor
 
-Game_Board::Game_Board() { for (int i = 0; i < Const_Var::nmbr_Rows; i++) this->game_rows[i] = new Row(); }
+	Game_Board::Game_Board() { for (int i = 0; i < Const_Var::nmbr_Rows; i++) this->game_rows[i] = new Row(); }
 
-Game_Board::~Game_Board()
-{
-	for (int i = 0; i < Const_Var::nmbr_Rows; i++)
+	Game_Board::~Game_Board()
 	{
-		delete this->game_rows[i];
-		this->game_rows[i] = nullptr;
+		for (int i = 0; i < Const_Var::nmbr_Rows; i++)
+		{
+			delete this->game_rows[i];
+			this->game_rows[i] = nullptr;
+		}
 	}
-}
 
-#pragma endregion
+	#pragma endregion
 
-#pragma region Functions : Get and Set
+	#pragma region Functions : Get and Set
 
-Game_Board::Row & Game_Board::Get_row(int index)
-{
-	if (index >= 0 && index < Const_Var::nmbr_Rows) return *this->game_rows[index];
-	else throw new exception("On essaye d'acceder a une rangée inexistante");
-}
+	Game_Board::Row & Game_Board::Get_row(int index)
+	{
+		if (index >= 0 && index < Const_Var::nmbr_Rows) return *this->game_rows[index];
+		else throw new exception("On essaye d'acceder a une rangée inexistante");
+	}
 
-#pragma endregion
+	#pragma endregion
 
 #pragma endregion
 
 #pragma region Row
 
-#pragma region Constructor & Destructor
+	#pragma region Constructor & Destructor
 
-Game_Board::Row::Row() { for (int i = 0; i < Const_Var::nmbr_cards_in_Rows; i++) row_card[i] = nullptr; }
+	Game_Board::Row::Row() { for (int i = 0; i < Const_Var::nmbr_cards_in_Rows; i++) row_card[i] = nullptr; }
 
-Game_Board::Row::~Row() { for (int i = 0; i < Const_Var::nmbr_cards_in_Rows; i++) row_card[i] = nullptr; }
+	Game_Board::Row::~Row() { for (int i = 0; i < Const_Var::nmbr_cards_in_Rows; i++) row_card[i] = nullptr; }
 
-#pragma endregion
+	#pragma endregion
 
-#pragma region Functions : Cards modifications
-void Game_Board::Row::Add_card(Card * my_card)
-{
-	for (int l = 0; l < Const_Var::nmbr_cards_in_Rows; l++)
+	#pragma region Functions : Cards modifications
+
+	void Game_Board::Row::Add_card(Card * my_card)
 	{
-		if (row_card[l] == nullptr)
+		for (int l = 0; l < Const_Var::nmbr_cards_in_Rows; l++)
 		{
-			row_card[l] = my_card;
-			row_card[l]->Set_status(2);
-			my_card = nullptr;
-			break;
+			if (row_card[l] == nullptr)
+			{
+				row_card[l] = my_card;
+				row_card[l]->Set_status(2);
+				my_card = nullptr;
+				break;
+			}
 		}
 	}
-}
 
-void Game_Board::Row::Remove_all()
-{
-	for (int i = 0; i < Const_Var::nmbr_cards_in_Rows; i++)
+	void Game_Board::Row::Remove_all()
 	{
-		if (this->row_card[i] != nullptr) 
+		for (int i = 0; i < Const_Var::nmbr_cards_in_Rows; i++)
 		{
-			this->row_card[i]->Set_status(0); // Si on retire la carte c'est pour la remettre dans le deck
-			this->row_card[i] = nullptr;
+			if (this->row_card[i] != nullptr) 
+			{
+				this->row_card[i]->Set_status(0); // Si on retire la carte c'est pour la remettre dans le deck
+				this->row_card[i] = nullptr;
+			}
 		}
 	}
-}
 
-void Game_Board::Row::Remove_card(int & index)
-{
-	if (index >= 0 && index < Const_Var::nmbr_cards_in_Rows) this->row_card[index] = nullptr;
-}
-
-#pragma endregion
-
-#pragma region Functions : Get
-
-int Game_Board::Row::Get_sum_number_beef()
-{
-	int sum = 0;
-	for (int i = 0; i < Const_Var::nmbr_cards_in_Rows; i++) // On fait la sommes des numéros têtes de boeufs de toute les carte de la rangée
+	void Game_Board::Row::Remove_card(int & index)
 	{
-		if (this->row_card[i] != nullptr) sum += this->row_card[i]->Get_beef_number();
-		else return sum;
+		if (index >= 0 && index < Const_Var::nmbr_cards_in_Rows) this->row_card[index] = nullptr;
 	}
-}
 
-int Game_Board::Row::Get_nbr_cards_in()
-{
-	int index = 0;						// On fait la sommes des numéros têtes de boeufs de toute les carte de la rangée
-	for (int i = 0; i < Const_Var::nmbr_cards_in_Rows; i++) if (this->row_card[i] != nullptr)index++;						
-	return index;
-}
+	#pragma endregion
 
-Card & Game_Board::Row::Get_card(int index) 
-{
-	if (index < Const_Var::nmbr_cards_in_Rows && Const_Var::nmbr_cards_in_Rows >= 0) return *row_card[index];
+	#pragma region Functions : Get
 
-}
-
-Card & Game_Board::Row::Get_last_card()
-{
-	for (int i = 0; i < Const_Var::nmbr_cards_in_Rows; i++)		// On regarde toute les cartes de la rangée, et si la prochaine carte est inexistante,
-	{															// on considerra notre carte actuelle comme la derniere carte de la rangée
-		if (i == Const_Var::nmbr_cards_in_Rows - 1) return *this->row_card[Const_Var::nmbr_cards_in_Rows - 1];
-		else if (this->row_card[i + 1] == nullptr)
+	int Game_Board::Row::Get_sum_number_beef()
+	{
+		int sum = 0;
+		for (int i = 0; i < Const_Var::nmbr_cards_in_Rows; i++) // On fait la sommes des numéros têtes de boeufs de toute les carte de la rangée
 		{
-			return *this->row_card[i];
-			break;
+			if (this->row_card[i] != nullptr) sum += this->row_card[i]->Get_beef_number();
+			else return sum;
 		}
 	}
-}
 
+	int Game_Board::Row::Get_nbr_cards_in()
+	{
+		int index = 0;						// On fait la sommes des numéros têtes de boeufs de toute les carte de la rangée
+		for (int i = 0; i < Const_Var::nmbr_cards_in_Rows; i++) if (this->row_card[i] != nullptr)index++;						
+		return index;
+	}
 
-#pragma endregion
+	Card & Game_Board::Row::Get_card(int index) 
+	{
+		if (index < Const_Var::nmbr_cards_in_Rows && Const_Var::nmbr_cards_in_Rows >= 0) return *row_card[index];
+	}
+
+	Card & Game_Board::Row::Get_last_card()
+	{
+		for (int i = 0; i < Const_Var::nmbr_cards_in_Rows; i++)		// On regarde toute les cartes de la rangée, et si la prochaine carte est inexistante,
+		{															// on considerra notre carte actuelle comme la derniere carte de la rangée
+			if (i == Const_Var::nmbr_cards_in_Rows - 1) return *this->row_card[Const_Var::nmbr_cards_in_Rows - 1];
+			else if (this->row_card[i + 1] == nullptr)
+			{
+				return *this->row_card[i];
+				break;
+			}
+		}
+	}
+
+	#pragma endregion
 
 #pragma endregion
 

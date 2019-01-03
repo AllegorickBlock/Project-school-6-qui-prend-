@@ -11,17 +11,6 @@
 #include <ctime>   //Permet d'utiliser time()
 #include <cstdlib> //Permet d'utiliser srand()
 
-#include <iostream>
-#include <string.h>
-#include <cstring>
-#include <string>
-#include <stdlib.h>
-#include <stdio.h>
-#include <errno.h>
-#include "sqlite3.h"
-
-using namespace std;
-
 class Game
 {
 	bool end;
@@ -30,7 +19,7 @@ class Game
 		Card * cards_selection[Const_Var::nmbr_Gamer]; // cartes selectionné des joueurs pour 1ce tour
 
 	public:
-		Turn(Player * les_joueurs[], Game_Board& plateau, Deck& my_deck);
+		Turn(Player * the_players[], Game_Board& game_board, Deck& my_deck);
 		~Turn();
 	};
 
@@ -48,9 +37,5 @@ public:
 
 	static inline void Sort_asc(Card * my_tab[] ); // Trie dans l'ordre croissant un tableau de pointeurd de Card
 	
-	inline void Start(Player * les_joueurs[], Game_Board& plateau, Deck& my_deck);
-
-
-	static inline void Sql_score_insertion(Player * my_players[]);
-	static int callback(void *data, int argc, char **argv, char **azColName);
+	inline void Start(Player * the_players[], Game_Board& game_board, Deck& my_deck);
 };

@@ -15,7 +15,8 @@ LA170005 : Bourlet Jason
 -[X] Etape 7  
 -[x] Etape 8  
 -[x] Etape 9  
-Il ne reste plus qu'à se documenter pour savoir comment inserrer une base de donnée SQL avec le jeu et l'utiliser
+Du à l'impossibilité de compiler le code du jeu en y implementant le code necessaire pour enrengistrer les données demandée dans la base de donnée
+nous sommes retournés en arrière pour donner une version du projet que l'on peut compiler 
 -[ ] Etape 10  
 
 

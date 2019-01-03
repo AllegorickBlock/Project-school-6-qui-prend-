@@ -156,7 +156,6 @@
 			my_deck.Recover_cards_and_mix(the_players, &game_board);
 			for (int i = 0; i < Const_Var::nmbr_Gamer; i++)		my_deck.Add_card_to_player(the_players[i]);
 			for (int i = 0; i < Const_Var::nmbr_Rows; i++)	my_deck.Add_card_to_row(game_board.Get_row(i));
-			cout << "\n\n\ndTest" << endl;
 		}
 	}
 

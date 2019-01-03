@@ -15,12 +15,8 @@ LA170005 : Bourlet Jason
 -[X] Etape 7  
 -[x] Etape 8  
 -[x] Etape 9  
-Du à l'impossibilité de compiler le code du jeu en y implementant le code necessaire pour enrengistrer les données demandée dans la base de donnée
-nous sommes retournés en arrière pour donner une version du projet que l'on peut compiler 
 -[ ] Etape 10  
+Nous n'avons pas réussis à compiler le le projet comme demandé à l'étape 10 avec le sqlite à la compilation avec la command : "g++ Projet_Carte.cpp -sqlite3 -L. -o Projet_Carte.exe --std=c++11"
+Nous avons cepandant même prévus les insertions comme elles auraient du être dans le code dans le fichier "\ProjetCarte\Méthode d'ajout sql souhaité.cpp".
 
-
-
-
-
-
+Les requêtes sql pour l'affiche sont quand à elles fonctionnellent avec la compilation qui focntionne sans souci dans le "\Constructor_database".

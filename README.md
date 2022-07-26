@@ -1,7 +1,7 @@
 # Groupe10
 
 LA163852 : Beaussart Martin  
-LA170005 : Bourlet Jason
+xxxxxxxx: Bourlet Jason
 
 
 # Avancement du projet
@@ -17,16 +17,16 @@ LA170005 : Bourlet Jason
 -[x] Etape 9  
 -[ ] Etape 10  
   
-+ Nous n'avons pas réussis à compiler le le projet comme demandé à l'étape 10 avec le sqlite à la compilation avec la command : "g++ Projet_Carte.cpp -sqlite3 -L. -o Projet_Carte.exe --std=c++11"  
-Et cela à mettre en causes des d'erreurs qui subviennent lorsqu'on essaye de compiller de telle manière en mode console. Nous avons été incapables de les résoudres  
-Cependent, pour des raisons étranges le code se compile quand bien même au travers de l'outil de debugage de Visual Studio  
-Ainsi vous retrouverrez le .exe de notre programme que vous pourrez executer en entrant le nombre de joueurs souhaité : **ProjetCarte.exe** _'nombre de joueurs'_ (chemin de l'executable : _groupe10\ProjetCarte\x64\Debug\ProjetCarte.exe_)  
++ Nous n'avons pas rÃ©ussis Ã  compiler le le projet comme demandÃ© Ã  l'Ã©tape 10 avec le sqlite Ã  la compilation avec la command : "g++ Projet_Carte.cpp -sqlite3 -L. -o Projet_Carte.exe --std=c++11"  
+Et cela Ã  mettre en causes des d'erreurs qui subviennent lorsqu'on essaye de compiller de telle maniÃ¨re en mode console. Nous avons Ã©tÃ© incapables de les rÃ©soudres  
+Cependent, pour des raisons Ã©tranges le code se compile quand bien mÃªme au travers de l'outil de debugage de Visual Studio  
+Ainsi vous retrouverrez le .exe de notre programme que vous pourrez executer en entrant le nombre de joueurs souhaitÃ© : **ProjetCarte.exe** _'nombre de joueurs'_ (chemin de l'executable : _groupe10\ProjetCarte\x64\Debug\ProjetCarte.exe_)  
   
-+ Puis nous avon même prévus les insertions comme elles auraient du être dans le code dans le fichier _groupe10\ProjetCarte\Méthode d'ajout sql souhaité.cpp_.  
-Les requêtes sql pour l'affiche sont quand à elles fonctionnellent avec la compilation qui focntionne sans souci dans le fichier "\Constructor_database".  (chemin de l'executable : _groupe10\Constructor_database\Constructor_database\Exemple_affichage_insertion_sqlite.exe_)  
-Ce programme à pars montre malgrès tout que nous avons réussi à maitriser les insertions et affichages par rapport à une base de données sqlite3 au travers du c++  
++ Puis nous avon mÃªme prÃ©vus les insertions comme elles auraient du Ãªtre dans le code dans le fichier _groupe10\ProjetCarte\MÃ©thode d'ajout sql souhaitÃ©.cpp_.  
+Les requÃªtes sql pour l'affiche sont quand Ã  elles fonctionnellent avec la compilation qui focntionne sans souci dans le fichier "\Constructor_database".  (chemin de l'executable : _groupe10\Constructor_database\Constructor_database\Exemple_affichage_insertion_sqlite.exe_)  
+Ce programme Ã  pars montre malgrÃ¨s tout que nous avons rÃ©ussi Ã  maitriser les insertions et affichages par rapport Ã  une base de donnÃ©es sqlite3 au travers du c++  
   
-**Merci de votre compréhension, nous sommes désolé de ne pas avoir totallement fini le projet**
+**Merci de votre comprÃ©hension, nous sommes dÃ©solÃ© de ne pas avoir totallement fini le projet**
 
 
   
